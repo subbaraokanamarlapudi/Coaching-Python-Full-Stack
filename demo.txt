@@ -1,0 +1,107 @@
+* python is a interpreted , general purpose , object oriented programming
+language[1989]
+* Guido Van Rossum , he introduced the python. Monty pythons flying circus.
+
+FEATURES OF PYTHON:
+* Simple and easy to learn
+* Freeware and opensource
+* High level programming language
+* Platform independent
+* Portability
+* Dynamic typing programming language
+* Both procedure oriented and object oriented programming language
+* interpreted programming language
+* Extensible
+* Embeded
+* Extensive library
+
+LANGUAGE FUNDAMENTALS:
+1.IDENTIFIERs :
+* A name in the pythonn program is called as identifier.
+* It can be a class name or function or module name or variable name.
+
+RULES : 
+1.Alphabates(a-z/A-Z)
+2.Numbers(0-9)
+3.Under score(_)
+4.Not allowed to start with number
+
+Ex: cash = 100 --> valid
+cas&h = 100 ---> Invalid
+
+123total = 100 --> Invalid
+total = 100 --> valid
+
+total = 100
+TOTAL = 200
+
+firstNameLastName() --> camelcase(java)
+first_name_last_name() --> snake case(python)
+FirstNameLastName() --> Pascal case
+first-name-last-name --> kebab case(lisp programming language)
+
+It should print all the keywords in the python.
+
+import keyword
+keyword.kwlist
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+DATA TYPES:
+There are 2 types, 1.Fundamental datatype  2. collection datatype
+
+1.FUNDAMENTAL DATATYPE:
+* The basic building block of programming datatypes.
+* There are : int , float , string , bool , complex.
+* It is also called as primitive datatype.
+* Data types are ones in which we can only store one value in their variables, never more than one value of the same type.
+
+2. COLLECTION DATATYPE:
+* It is used to store the data in containers are commonly known as datastructures.
+* There are : List , tuple , dictionary , bytes , bytearray , set , frozenset , range , None.
+* It is also called as non-primitive datatype.
+* Data types are can store the multiple datatypes in one datatype.
+
+LIST:
+* It is a ordered mutable collection of elements.
+* It is denoted by [].
+* Insertion order is preserved.
+* Hetrogenious objects are allowed.
+* Duplicate values are allowed.
+* Growable in nature.
+* Indexing and slicing supported.
+
+TUPLE:
+* It is a ordered immutable collection of elements.
+* It is denoted by ().
+* Insertion order is preserved.
+* Hetrogenious objects are allowed.
+* Duplicate are allowed.
+* Growable nature are not allowed.
+* Indexing and slicing supported.
+
+SET:
+* It is a unordered and mutable collection of unique elements.
+* It is denoted by {}
+* Insertion order is preserved.
+* Hetrogenious objects are allowed.
+* Duplicates are not allowed.
+* Doesnot perform Indexing and slicing.
+
+DICTIONARY:
+* It is a ordered and mutable collection of elements.
+* It is denoted by {}.
+* It represents the key value pair in the dictionary.
+* Insertion order is preserved.
+* Hetrogenious objects are allowed.
+* Duplicate are not allowed.
+* Indexing and slicing are allowed.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+* When list and tuple comparison by default datatype is "TUPLE".
+* When set and dictionary comparison by default datatype is "DICTIONARY".
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+OPERATORS:
+* It is used to perform the operations on the data.
+* It is a symbol that performs certain operations.
+* There are 5 types are there : 1.Arithmetric operator  , 2.Relational operator , 
+3.Assignment operator , 4.Logical operator , 5.Bitwise operator.
