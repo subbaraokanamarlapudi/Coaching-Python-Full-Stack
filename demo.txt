@@ -104,4 +104,40 @@ OPERATORS:
 * It is used to perform the operations on the data.
 * It is a symbol that performs certain operations.
 * There are 5 types are there : 1.Arithmetric operator  , 2.Relational operator , 
-3.Assignment operator , 4.Logical operator , 5.Bitwise operator.
+3.Assignment operator , 4.Logical operator , 5.Bitwise operator , 6..Equality operator , 
+
+1.ARITHMETRIC OPERATORS:
+* It is used to perform the basic mathamatics between 2 arguments.
+* There are : +,-,*,/,//,%,**
+* / -> when 2 arguments are perform division(/) it gives the decimal[float] value.
+* // -> when 2 arguments are perform (//) it gives the integer value.
+* Atleast one arguments are one float and one integer value it should return the float value.
+
+Example:
+10/2 #5.0  ,  10.0/2 #5.0 
+10//2 #5   ,  10.0//2 #5.0
+
+Note : 
+* If want to use the string operator for both arguments,it should return the error  ----> Eg: 'sunny'+3 #Invalid , 'sunnu' + '3' # valid
+
+2.RELATIONAL OPERATOR:
+* It is used to compare the 2 arguments.
+* There are: <,<=,>,>=
+* we can apply the Relational operator for 'str' type also.
+
+Example:
+'sunny'<'mahesh' ---> By comparing the both string python complier observe the starting letter of both strings and give the output.
+* By comparing the 's' ASCII value and 'm' ASCII value in the both arguments.   ord(s) #115 , ord(m) #109
+
+3. Equality operator:
+* It is used to compare the value of given 2 arguments.
+* There are : == , !=
+
+Example: 
+10=='sunny' #False 
+10==10.0 #True
+10=='10' #False
+10.10 == 10.1 # True
+
+4.Logical operator:
+* 
