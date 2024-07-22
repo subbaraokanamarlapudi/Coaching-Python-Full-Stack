@@ -44,6 +44,10 @@ It should print all the keywords in the python.
 
 import keyword
 keyword.kwlist
+
+['False', 'None', 'True', 'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 
+'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 
+'return', 'try', 'while', 'with', 'yield']
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 DATA TYPES:
@@ -104,9 +108,10 @@ OPERATORS:
 * It is used to perform the operations on the data.
 * It is a symbol that performs certain operations.
 * There are 5 types are there : 1.Arithmetric operator  , 2.Relational operator , 
-3.Assignment operator , 4.Logical operator , 5.Bitwise operator , 6..Equality operator , 
+3.Assignment operator , 4.Logical operator , 5.Bitwise operator , 6..Equality operator , 7.Special operator , 8.Ternary operator
+-------------------------------
 
-1.ARITHMETRIC OPERATORS:
+1.ARITHMETIC OPERATORS:
 * It is used to perform the basic mathamatics between 2 arguments.
 * There are : +,-,*,/,//,%,**
 * / -> when 2 arguments are perform division(/) it gives the decimal[float] value.
@@ -119,6 +124,7 @@ Example:
 
 Note : 
 * If want to use the string operator for both arguments,it should return the error  ----> Eg: 'sunny'+3 #Invalid , 'sunnu' + '3' # valid
+-----------------------------------
 
 2.RELATIONAL OPERATOR:
 * It is used to compare the 2 arguments.
@@ -128,6 +134,7 @@ Note :
 Example:
 'sunny'<'mahesh' ---> By comparing the both string python complier observe the starting letter of both strings and give the output.
 * By comparing the 's' ASCII value and 'm' ASCII value in the both arguments.   ord(s) #115 , ord(m) #109
+----------------------------------------
 
 3. Equality operator:
 * It is used to compare the value of given 2 arguments.
@@ -138,6 +145,180 @@ Example:
 10==10.0 #True
 10=='10' #False
 10.10 == 10.1 # True
+----------------------------------------------------
 
 4.Logical operator:
-* 
+* It is used to combine multiple conditions together and evaluate them as a single boolean expression.
+* There are 3 types are there : 'and','or','not'.
+* 'and' --> If both arguments is True then only result is true.
+* 'or' --> If one argument is True then result is true.
+* 'not' --> Complement.
+
+Example: 
+    True and False #False
+	True or False #True
+	not False #True
+
+For non-boolean type behaviours:
+--------------------------------------------------
+-->0 means False
+-->non-zero means True
+-->Empty string always False.
+
+x and y:
+------------
+	If x evaluates to False return x otherwise return y.
+Ex:
+10 and 20 #20
+0 and 10 #0
+
+-->If the first argument is zero then result is zero otherwise result y.
+
+x or y:
+----------
+	If x evaluates to True then result is x otherwise result is y.
+Ex:
+	10 or 20 #10
+	0 or 20 #20
+
+not x:
+---------
+-->If x evaluates to False then the result is True otherwise False
+Ex:
+not 10 #False
+not '' #True
+
+Ex:
+'sunny' and 'mahesh' #'mahesh'
+'' and 'sunny' #''
+'' or 'sunny' #'sunny'
+'sunny' or '' #'sunny'
+not 'radhika' #False 
+10 or 10/0 #10
+0 or 10/0 #ZeroDivisionError
+--------------------------------------------
+
+5. Bitwise operator:
+* It is used to perform Bitwise calculations on integers.
+* The integers are converted into binary format and then operations are performed bit by bit.
+* It works on integers only and the final output is returned in the decimal format.
+
+------------------------------
+			&, |, ^, ~, <<,  >>
+
+0 & 0==>0			0 | 0==>0			0 ^ 0==>0
+0 & 1==>0			0 | 1==>1			0 ^ 1==>1
+1 & 0==>0			1 | 0==>1			1 ^ 0==>1
+1 & 1==>1			1 | 1==>1			1 ^ 1==>0
+
+&==>If both bits are 1 then only result is 1 otherwise 0.
+|==>If atleast one bit is 1 then the result is 1 otherwise result is 0.
+^==>x-or==.If bits are differentr then only result is 1 otherwise result is 0.
+~==>Bitwise complement operator
+
+Ex:
+	4 & 5 #4
+	4 | 5 #5
+	4 ^ 5 #1
+	~4 #-5
+
+<<(left shift operator):
+---------------------------------
+	10<<2 #40
+
+>>(Right shift operator):
+-----------------------------------
+	10>>2 #2
+
+Ex:
+True & False #False
+True | False # True
+True ^ False #True
+~True #
+True << 2 #4
+True >> 2 #0
+-----------------------------------
+
+6.Assignment operators:
+-------------------------------------
+-->We can use assignment operator to assign a value to the variable.
+Ex:
+		x = 10
+
+-->We can cobmine assignment operator with some other operator to form compound assignment operator.
+Ex:
+		x += 10 ===>x = x+10
+
+-->Compound assignment operators are:
+		+=,-=,*=,/=,..............
+
+-->No increment and decrement operators in python.
+Ex:
+		x++(Invalid)
+		x--(Invalid)
+		+(+x) ==>(valid)
+		-(-x)==>(valid)
+-----------------------------------------------
+
+7.Ternary Operator:
+------------------------------
+-->In java we can use:
+	x = (condition)?first value:second value
+
+Ex:
+	x = (10<20)?30:40
+	print(x)
+
+-->In python we can use:
+			x = first value if condition else second value.
+Ex:
+	x = 30 if 10<20 else 40
+	x #30
+	x = 30 if 10>20 else 40
+	x #40
+
+-->first value if condition-1 else second value if condition-2 else third value
+
+x = 10 if 20<30 else 40 if 50<60 else 70
+x #10
+x = 10 if 20>30 else 40 if 50<60 else 70
+x #40
+x = 10 if 20>30 else 40 if 50>60 else 70
+x #70
+-------------------------------------------
+
+8.Special Operators:
+--------------------------------
+1.Identity operators:
+	We can use identity operators for address comparision. 2-identity operators are available.
+							-->is
+							-->is not
+r1 is r2 returns True if both r1 and r2 are pointing to the same object.
+r1 is not r2 returns True if both r1 and r2 are not pointing to the same object.
+
+Ex:
+	a = 10
+	b = 10
+	a is b #True
+	a is not b #False
+Ex:
+	l1 = ['one','two','three']
+	l2 = ['one','two','three']
+	l1 is l2 #False
+	l1 == l2 #True
+
+Note:
+	We can use is operator for address comparision where as == operator for content comparision.
+
+2.Membership operator:
+	We can use membership operators to check whether the given object present in the given collection.(It may be list,tuple,string....)
+
+in==>Returns True if the given object present in the specified collection.
+not in==>Returns True if the given object not present in the specified collection.
+
+Ex:
+	l = [10,20,30]
+	30 in l #True
+	50 in l #False
+	50 not in l #True
+	30 not in l #False
