@@ -322,3 +322,129 @@ Ex:
 	50 in l #False
 	50 not in l #True
 	30 not in l #False
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+INPUT AND OUTPUT STREAMS:
+
+---------->  INPUT:
+* There are 2 functions are:
+	1.raw_input()
+	2.input()
+
+1. Raw_input():
+* This function always read the data from the keyword in the form of string format. 
+* we have to convert that string type to our required type by using type casting methods.
+
+2. Input():
+* It is a function can be used to read data directly in our required format.
+* we are not required to perform the type casting.
+
+Note:
+* But in python-3 version we have only input() method and raw_input() method is not available.
+* python-3 input() function behaviour exactly same as raw_input() method in python-2 i.e every input value is treated as str type only.
+
+EVAL FUNCTION:
+* eval() function can take a string and evaluate the result.
+* x = eval(input("Enter a expression: "))
+  print(x)
+
+COMMAND LINE ARGUMENTS:
+* The arguments which are passing at the time of execution are called as command line arguments.
+ Example : D:\Coaching-Python-Full-Stack\input and Output> py.input.py 
+
+* withinn the python program this command line args are available in "argv". which is present in "sys" module.
+* The type of arg is not an array it is a list.
+
+Note:
+* argv[0] represents name of the program,but not the first command line argument.
+* argv[1] represents first command line argument.
+* argv[2] represents second command line argument.
+
+Example:
+* from sys import argv
+print(type(argv))
+
+-------------> OUTPUT:
+
+Output Streams:
+-------------------------
+We can use print() function to display output
+
+Form-1:print() without arg
+-----------------------------------------
+Just it prints new line character
+
+Form-2:print(string)
+------------------------------
+print('Hello World')
+print('Hello\nWorld')
+print('Hello\tWorld')
+print(5*'Hi ')
+print('Hi '*5)
+print('Hello'+'World')
+print('Hello','World')
+
+Form-3:print() with variable number of args
+------------------------------------------------------------------
+a,b,c = 10,20,30
+print('The values are:',a,b,c)
+	
+-->Bydefault output values are separated by space. If we want we can specify separator by using 'sep' attribute.
+
+a,b,c = 10,20,30
+print(a,b,c,sep=':')
+print(a,b,c,sep='-')
+
+Form-4:print() with end attribute
+--------------------------------------------------
+print('Hello')
+print('Radhika')
+print('How r u?')
+
+-->If we want output in the same line with space.
+
+print('Hello',end=' ')
+print('Radhika',end=' ')
+print('How r u?')
+
+Form-5:print(object) statement
+-----------------------------------------------
+We can pass any object(like list,tuple,set.....) as arg to the print.
+
+Ex:
+	l = [10,20,30]
+	t = (10,20,30)
+	print(l)
+	print(t)
+
+Form-6:print(string,variable list)
+-------------------------------------------------
+s = 'Mahesh'
+a = 50
+s1 = 'Python'
+s2 = 'Django'
+print('Hello',s,'your age is:',a)
+print('You are teaching',s1,'and',s2)
+
+Form-7:print(formatted string)
+----------------------------------------------
+%d-->int
+%f-->float
+%s-->string type
+
+Syn:
+		print('formatted string'%(variablelist))
+
+a,b,c = 10,20,30
+print('a value is %d'%a)
+print('b value is %d and c value is %d'%(b,c))
+
+Form-8:print() with replacement operator {}
+------------------------------------------------------------------
+name = 'Mahesh'
+sal = 10000
+gf = 'Sunny'
+print('Hello {} your salary {} and your GF {} is waiting'.format(name,sal,gf))
+print('Hello {0} your salary {1} and your GF {2} is waiting'.format(name,sal,gf))
+print('Hello {n} your salary {s} and your GF {g} is waiting'.format(s=sal,g=gf,n=name))
