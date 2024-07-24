@@ -30,3 +30,11 @@ if age>=18:
     print("your can vote now")
     print("you are adult")
 print("sorry boss you are not eligible anything")
+
+# W.A.P to check the given number is in between 1 to 10.
+
+number = eval(input('Enter a number: '))
+if number >= 1 and number <= 10:
+    print('The number',number,'is between 1 to 10')
+else:
+    print('The number',number,'is not between 1 to 10')
