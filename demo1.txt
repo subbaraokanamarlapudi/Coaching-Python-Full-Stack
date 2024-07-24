@@ -1,0 +1,158 @@
+-----> This is another notes from flow control.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+FLOW CONTROL:
+===============
+-->Flow control describes the order in which statements will be executed at runtime.
+
+1.Conditional Statements:
+	-->if
+	-->if-else
+	-->if-elif-else
+
+2.Iterative Statements:
+	-->for loop
+	-->while loop
+
+3.Transfer Statements:
+	-->break
+	-->continue
+	-->pass
+
+
+1.Conditional statements:
+=======================
+1).if:
+		if condition:statement
+or
+		if condition:
+			stmt-1
+			stmt-2
+			stmt-3
+
+-->If condition is True then statements will be executed.
+
+name = input('Enter Name:')
+if name == 'sunny':
+	print('Hello sunny good evening')
+print('How r u?')
+
+2).if -else:
+----------------
+	if condition:
+		Action-1
+	else:
+		Action-2
+
+-->If condition is True Action-1 will be executed otherwise Action-2 will be executed.
+
+name = input('Enter Name:')
+if name == 'sunny':
+	print('Hello sunny good evening')
+else:
+	print('Hello guest good evening')
+print('How r u?')
+	
+3).if-elif-else:
+--------------------
+	if condition-1:
+		Action-1
+	elif condition-2:
+		Action-2
+	elif condition-3:
+		Action-3
+	else:
+		Default Action
+
+-->Based on condition the corresponding action will be executed.
+
+brand = input('Enter your favourite brand:')
+if brand == 'RC':
+	print('It is a childrens brand')
+elif brand == 'KF':
+	print('It is not that much kick')
+elif brand == 'Boom Boom':
+	print('Buy one get one free')
+else:
+	print('Other brands are not recommended')
+
+Q.w.a.p to find biggest of 3-given numbers?
+----------------------------------------------------------------
+n1 = int(input('Enter First Number:'))
+n2 = int(input('Enter Second Number:'))
+n3 = int(input('Enter Third Number:'))
+if n1 > n2 and n1 > n3:
+	print('Biggest Number:',n1)
+elif n2 > n3:
+	print('Biggest Number:',n2)
+else:
+	print('Biggest Number:',n3)
+
+Q.w.a.p to check whether the given number is in between 1-10?
+----------------------------------------------------------------------------------------------
+n = int(input('Enter Number:'))
+if n >= 1 and n <= 10:
+	print('The number',n,'is in between 1 to 10')
+else:
+	print('The number',n,'is not in between 1 to 10')
+
+
+
+2).Iterative Statements:
+-----------------------------------
+-->If we want to execute a group of statements multiple times then we should go for iterative statements.
+-->Python supports 2-types of iterative statements.
+					-->for loop
+					-->while loop
+1.for loop:
+---------------
+-->If we want to execute some action for every element present in some sequence(It may be list,tuple or string or collection) then we should go for 'for loop'.
+
+Syn:
+	for x in sequence:
+		body
+		------
+		------
+
+Ex:To print the characters present in the given string.
+----------------------------------------------------------------------------------
+s = 'sunny leone'
+for x in s:
+	print(x)
+
+Ex:To print chharacters present in string index wise.
+-------------------------------------------------------------------------------
+s = 'sunny leone'
+i = 0
+for x in s:
+	print('The character present at',i,'index:',x)
+	i += 1 
+
+Ex:To print 'Hello' 10-times.
+------------------------------------------
+for i in range(10):
+	print('Hello')
+
+To print numbers from 0-9
+----------------------------------------
+for i in range(10):
+	print(i)
+
+To display odd numbers from 0-20
+---------------------------------------------------
+for i in range(21):
+	if i%2 != 0:
+		print(i)
+or
+
+for i in range(1,21,2):
+	print(i)
+
+To display numbers from 10-1
+---------------------------------------------
+for i in range(10,0,-1):
+	print(i)
+
+Ex:
+n = int(input('Enter Number:'))#3
+for i in range(1,11):
+	print(i,'*',n,'=',i*n)
