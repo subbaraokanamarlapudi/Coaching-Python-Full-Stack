@@ -156,3 +156,51 @@ Ex:
 n = int(input('Enter Number:'))#3
 for i in range(1,11):
 	print(i,'*',n,'=',i*n)
+
+
+2).while loop:
+-------------------
+-->If we want to execute a group of statements iteratively until some condition False, then we should go for while loop.
+
+Syn:
+		while condition:
+			body
+
+Ex:To print numbers from 1 to 10 by using while loop
+--------------------------------------------------------------------------------
+x = 1
+while x <= 10:
+	print(x)
+	x += 1
+
+Ex:To display sum of first n numbers
+-------------------------------------------------------
+n = int(input('Enter Number:'))#10
+sum = 0
+i = 1
+while i <= n:
+	sum += i
+	i += 1
+print('The sum of the first',n,'numbers is:',sum)
+
+Ex:w.a.p to prompt user to enter some name until entering 'sunny'
+--------------------------------------------------------------------------------------------------
+name = ''
+while name != 'sunny':
+	name = input('Enter Name:')
+print('Thanks for confirmation')
+
+Ex:w.a.p to prompt user to enter name & pwd until 'mahesh' & 'sunny'
+---------------------------------------------------------------------------------------------------------
+name = ''
+pwd = ''
+while name != 'mahesh' or pwd != 'sunny':
+	name = input('Enter Correct Name:')
+	pwd = input('Enter Correct Pwd:')
+print('Thanks for confirmation')
+
+Ex:
+n = 6
+while n>0:
+	print(n)
+	n -= 2 if n%3==0 else 1
