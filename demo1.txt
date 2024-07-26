@@ -204,3 +204,121 @@ n = 6
 while n>0:
 	print(n)
 	n -= 2 if n%3==0 else 1
+
+-----------------------------------------------------------------------------
+Infinite Loops:
+----------------------
+i = 0
+while True:
+	i += 1
+	print('Hello',i)
+
+Nested loops:
+--------------------
+Sometimes we can take a loop inside another loop, which are also known as nested loops.
+
+for i in range(4):#0,1,2,3
+	for j in range(3):#0,1,2
+		print('i=',i,'j=',j)
+
+3).Transfer Statements:
+------------------------------------
+1).break:
+	We can use break statement inside loops to break loop execution based on some condition.
+
+for i in range(10):
+	if i == 3:
+		print('Processing is enough plz break.....')
+		break
+	print(i)
+
+Ex:
+cart = [10,20,600,60,70]
+for item in cart:
+	if item > 500:
+		print('To place this order insurance must be required')
+		break
+	print(item)
+
+2).continue:
+------------------
+	To skip surrent iteration and continue next iteration.
+
+for i in range(10):
+	if i%2 == 0:
+		continue
+	print(i)
+
+Ex:
+cart = [10,20,600,30,40,700,60,70]
+for item in cart:
+	if item > 500:
+		print("We can't process this item:",item)
+		continue
+	print(item)
+
+Ex:
+numbers = [10,20,0,5,0,25]
+for n in numbers:
+	if n == 0:
+		print("We can't devide with zero....just skipping")
+		continue
+	print('100/{}={}'.format(n,100/n))
+
+loops with else:
+----------------------
+Inside loop execution, if break statement not executed, then only else part will be executed.
+
+cart = [10,20,30]
+for item in cart:
+	if item > 500:
+		print("We can't process")
+		break
+	print(item)
+else:
+	print('Congrats.....all items processed successfully')
+
+Q.What is difference between for loop and while?
+------------------------------------------------------------------------
+-->We can use loops to repeat code execution.
+-->Repeat the code for every item in sequence==>for loop
+-->Repeat the code as long as condition is True==>while loop
+
+3).pass:
+------------
+-->In our programming syntactically if a block is required which wont do anything then we can define that empty block with pass keyword.
+
+pass:
+	-->It is an empty statement.
+	-->It is null statement.
+	-->It won't do anything.
+
+Ex:
+	if True:pass
+
+	def f1():pass
+
+Ex:
+for i in range(100):
+	if i%9 == 0:
+		print(i)
+	else:
+		pass
+
+del statement:
+---------------------
+-->del is a keyword in python.
+-->After using a variable it is highly recommended to delete that variable if it is no longer required, so that the corresponding object is eligible for garbage collection. We can delete variable by using del statement.
+
+Ex:
+x = 10
+print(x)
+del x
+print(x)#NameError: name 'x' is not defined
+
+Ex:
+s = 'sunny'
+del s[0] #TypeError: 'str' object doesn't support item deletion
+
+Note:
+	We can delete variables which are pointing to immutable objects. But we cant delete the elements present inside the immutable objects.
