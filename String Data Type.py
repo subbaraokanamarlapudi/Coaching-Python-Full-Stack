@@ -284,3 +284,98 @@ l = s.split('-')
 print(l)
 for i in l:
 	print(i)
+
+'''
+joining of strings:
+-------------------------
+We can join a group of strings(list or tuple) w.r.t the given separator.
+Syn:
+		s = separator.join(group of strings)
+'''
+
+# Example : 
+
+l = ('sunny' , 'bunny' , 'vinny' , 'cinny')
+print('-'.join(l))
+print(':'.join(l))
+
+'''
+Replacing a string with another string
+---------------------------------------------------------
+Syn:
+		s.replace(oldstring,newstring)
+-->Inside s, every occurance of old string will be replaced with new string.
+
+s = 'learning python is difficult'
+s1 = s.replace('difficult','easy')
+print(s1)
+
+Q.String objects are immutable then how we can change the content by using replace() method?
+Once we creates string object, we cant change the content. This non changable behaviour is nothing but immutability. 
+If we are trying to change the content by using any method, then with those changes a new object will be created and changes wont be happended in existing object.		
+Hence with replace() method also a new object got created but existing object wont be changed.
+
+'''
+#  Example : 
+
+s = 'abab'
+s1 = s.replace('a','b')
+print(s,'is available at:',id(s))
+print(s1,'is available at:',id(s1))
+
+# Changing cases in a string.
+
+s = 'learning python is very easy'
+print(s.lower())
+print(s.upper())
+print(s.capitalize())
+print(s.title())
+print(s.swapcase())
+
+# Checking starting and ending part of the string.
+
+s = 'learning python is very easy'
+print(s.startswith('learning'))
+print(s.endswith('learning'))
+print(s.endswith('easy'))
+
+'''
+To check type of characters present in a string
+----------------------------------------------------------------------
+1).isalnum():Returns True if all the characters are alphanumeric(a-z,A-Z,0-9)
+2).isalpha():Returns True if all the characters are only alphabate symbols(a-z,A-Z)
+3).isdigit():Returns True if all the characters are digits only(0-9)
+4).islower():Returns True if all the characters are lower case alphabate symbols.
+5).isupper():Returns True if all the characters are upper case alphabet symbols.
+6).istitle():Returns True if the string is in title case.
+7).isspace():Returns True if string contains only spaces.
+'''
+
+print('sunny123'.isalnum())
+print('sunny123'.isalpha())
+print('sunny'.isalpha())
+print('sunny'.isdigit())
+print('786'.isdigit())
+print('sunny'.islower())
+print('sunny123'.islower())
+print('SUNNY'.isupper())
+print('Learning Python Is Very Easy'.istitle())
+print(' '.isspace())
+
+# Example
+
+s = input("Enter any character: ")
+if s.isalnum():
+    print("It is a alpha numeric character")
+    if s.isalpha():
+        print("It is a alphabet character")
+        if s.islower():
+            print("It is a lower case alphabet character")
+        else:
+            print("It is a upper case alphabet character")
+    else:
+        print("It is a digit")
+elif s.isspace():
+    print("It is a space character")
+else:
+    print("It is a special character")
