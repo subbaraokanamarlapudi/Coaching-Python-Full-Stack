@@ -51,3 +51,236 @@ print(s[:])
 print(s[::])
 print(s[::-1])
 
+'''
+1).If step is +ve:									2).If step is -ve:	
+------------------------							------------------------		
+-->Forward direction(left to right)					-->Backward direction(right to left)
+-->Bydefault begin index is:0						-->Bydefault begin index:-1
+-->Begin to End-1								    -->Begin to End+1
+
+Note:
+--------
+-->In the backward direction if end value is -1 then result is always empty.
+-->In the forward direction if end value is 0 then result is always empty.
+
+'''
+
+n = '0123456789'
+print(n[2:8:1])
+print(n[2:8:-1])
+print(n[-1:-6:-1])
+print(n[2:-5:1])
+print(n[-5:0:-1])
+print(n[:0:-1])
+print(n[2:4:-6])
+
+# Case study
+
+s = 'abcdefghij'
+print(s[1:6:2])
+print(s[::1])
+print(s[::-1])
+print(s[::-2])
+print(s[3:7:-1])
+print(s[7:4:-1])
+print(s[0:1000:1])
+print(s[0:1000:2])
+print(s[-4:1:-1])
+print(s[-4:1:-2])
+print(s[5:0:1])
+# print(s[9:0:0])
+print(s[0:-10:-1])
+print(s[0:-11:-1])
+print(s[0:-12:-1])
+print(s[0:0:1])
+# print(s[0:0:0])
+print(s[0:-9:-2])
+print(s[-5:-9:-2])
+print(s[9:-1:-1])
+
+# W.A.P to access each character of string in forward direction and backward direction by using while loop.
+
+s = input("Enter a String: ")
+i = 0
+n = len(s)
+
+print("-------Forward Direction---------")
+while i<n:
+    print(s[i],end='')
+    i += 1
+print()
+
+print("-------Backward Direction---------")
+i = -1
+while i>=-n:
+    print(s[i],end='')
+    i -= 1
+print()
+
+print("-------Backward Direction---------")
+i = n-1
+while i>=0:
+    print(s[i],end='')
+    i -= 1
+
+# Another Method by using loop.
+
+s = input("Enter a string: ")
+print("---------Forward Direction----------")
+for i in s:
+    print(i,end='')
+print()
+
+print("---------Forward Direction------------")
+for i in s[::]:
+    print(i,end='')
+print()
+
+print("---------Backward Direction----------")
+for i in s[::-1]:
+    print(i,end='')
+
+'''
+Checking membership:
+----------------------------------
+We can check whether the character or string is the member of another string or not by using in and not in operators.    
+'''
+
+# Example
+
+s = input('Enter main string:')
+subs = input('Enter sub string:')
+if subs in s:
+	print(subs,'is found in main string')
+else:
+	print(subs,'is not found in main string')
+
+# Comparison of strings:
+# Example:
+
+s1 = input("Enter 1st String: ")
+s2 = input("Enter 2nd String: ")
+
+if s1==s2:
+    print("Both are same")
+elif s1<s2:
+    print("First string is less than second string")
+else:
+    print("First string is greater than second string")
+
+l1 = ['A','B','C']
+l2 = ['A','B','C']
+l3 = l2
+print(l1 is l2)#False
+print(l2 is l3)#True
+print(l1 == l2)#True
+
+'''
+Removing spaces from the string:
+--------------------------------------------------
+1.rstrip():To remove spaces at right hand side.
+2.lstrip():To remove spaces at left hand side.
+3.strip():To remove spaces both sides.
+
+'''
+
+city = input('Enter Your City:')
+scity = city.strip()
+if scity == 'hyderabad':
+	print('Hello Hyderabadi....gud mng')
+elif scity == 'chennai':
+	print('Hello Madrasi....Vanakkam')
+elif scity == 'bangalore':
+	print('Hello Kannadiga....Subhodaya')
+else:
+	print('Your enetered city is invalid')
+
+'''
+Finding substring:
+----------------------------
+For forward direction:
+	-->find()
+	-->index()
+
+For backward direction:
+	-->rfind()
+	-->rindex()
+
+1.find():
+	s.find(substring):
+		Returns index of the first occurence of the given substring. If it is not availbale we will get -1.
+
+2.index():
+	It is exactly same as find() method except that if the specified substring is not available then we will get ValueError.
+    
+Note:
+	Bydefault find() method can search total string. We can also specify the boundaries to search.
+
+'''
+
+s = "learning python is very easy"
+print(s.find('e'))
+print(s.index('e'))
+print(s.find('z'))
+print(s.index('z'))
+print(s.rfind('e'))
+print(s.rindex('e'))
+print(s.rfind('z'))
+print(s.rindex('z'))
+print(s.find('e'))#1
+print(s.find('e',2,15))#-1
+print(s.find('e',2,23))#20
+
+# W.A.P to display all the positions of substring in a given string.
+
+s = input("Enter a string: ")
+subs = input("Enter a sub string: ")
+pos = -1
+n = len(s)
+
+while True:
+    pos = s.find(subs,pos+1,n)
+    if pos == -1:
+        break
+    print("Found at position: ",pos)
+    flag = True
+
+if flag == False:
+    print("Not Found")
+
+'''
+Counting substring in the given string
+---------------------------------------------------------
+We can find the number of occurances of substring present in the given string by using count() method.
+
+1).count(substring)==>It will search through out the string.
+2).s.count(substring,begin,end)==>It will search from begin index to end-1 index.
+'''
+
+s = 'abbbbbbbcbabbbcba'
+print(s.count('a'))#3
+print(s.count('a',1,8))#0
+print(s.count('ab'))#2
+
+'''
+Splitting of string:
+--------------------------
+We can split the given string according to specified separator by using split() method.
+Syn:
+		l = s.split(separator)
+Default separator is space. The return type of split() method is list.
+'''
+
+# Ex: 01
+s = 'learning python is very easy'
+l = s.split()
+print(l)
+for i in l:
+	print(i)
+
+# Ex: 02
+s = '27-07-2024'
+l = s.split('-')
+print(l)
+for i in l:
+	print(i)
