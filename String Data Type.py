@@ -421,3 +421,62 @@ while i<len(i):
     l1.append(l[i][::-1])
     i += 1
 print(' '.join(l1))
+
+
+# W.A.P to print characters at odd positions and even positions for the given string
+# 1st way
+
+s = input('Enter some string:')
+print('Characters at even position:',s[0::2])
+print('Characters at odd position:',s[1::2])
+
+# 2nd way
+
+s = input('Enter some string:')
+print('Characters at even position:')
+i = 0
+while i < len(s):
+	print(s[i],end='')
+	i += 2
+print()
+print('Characters at odd position:')
+i = 1
+while i < len(s):
+	print(s[i],end='')
+	i += 2
+     
+# Q.w.a.p to merge chraracters of 2-strings into a single string by taking characters alternatively.
+
+# s1 = 'mahesh'
+# s2 = 'sunny'
+# o/p:'msauhnensyh'
+
+s1 = input('Enter first string:')
+s2 = input('Enter second string:')
+i,j = 0,0
+output = ''
+while i < len(s1) or j < len(s2):
+	if i < len(s1):
+		output += s1[i]
+		i += 1
+	if j < len(s2):
+		output += s2[j]
+		j += 1
+print(output)
+
+# Q.w.a.p to sort the characters of the string and first alphabte symbols followed by numeric values.
+# i/p:'B4A1D3'
+# o/p:'ABD134'
+
+s = input('Enter some string:')
+s1 = s2 = output = ''
+for x in s:
+	if x.isalpha():
+		s1 += x
+	else:
+		s2 += x
+for x in sorted(s1):
+	output += x
+for x in sorted(s2):
+	output += x
+print(output)
