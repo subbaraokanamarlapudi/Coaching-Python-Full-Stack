@@ -379,3 +379,45 @@ elif s.isspace():
     print("It is a space character")
 else:
     print("It is a special character")
+
+
+# Q.w.a.p to reverse order of words
+# 1st-way
+
+s = input("Enter a string: ")
+words = s.split()
+reversed_words = words[::-1]
+result = ' '.join(reversed_words)
+print(result)
+
+# 2nd way
+
+s = input("Enter a string: ")
+l = s.split()
+l1 = []
+i = len(l)-1
+while i>=0:
+    l1.append(l[i])
+    i -= 1
+print(' '.join(l1))
+
+# Q.W.A.P to reverse the content of each word
+# 1st way
+
+s = input("Enter a string: ")
+words = s.split()
+result = '' 
+for word in words:
+    result = result + word[::-1] +''
+print(result)
+
+# 2nd way
+
+s = input("Enter a string: ")
+l = s.split()
+l1 = []
+i = 0
+while i<len(i):
+    l1.append(l[i][::-1])
+    i += 1
+print(' '.join(l1))
