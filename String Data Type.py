@@ -480,3 +480,40 @@ for x in sorted(s1):
 for x in sorted(s2):
 	output += x
 print(output)
+
+# Q.w.a.p for the following requirement.
+# i/p:'a4b3c2'
+# o/p:'aaaabbbcc'
+
+s = input("Enter a string: ")
+s1 = ''
+i = 0
+
+while i<len(s):
+    char = s[i]
+    i += 1
+
+    num_str = ''
+    while i < len(s) and s[i].isdigit():
+        num_str += s[i]
+        i += 1
+
+    if num_str:
+        count = int(num_str)
+    else:
+        count = 1
+
+    s1 += char*count
+print(s1)
+
+
+# Q.Remove duplicates from the given string?
+# i/p:'ABCBABCBABCBDBABCB'
+# o/p:'ABCD'
+
+s = input("Enter a string: ")
+s1 = ''
+for x in s:
+    if x not in s1:
+        s1 += x
+print(s1)
