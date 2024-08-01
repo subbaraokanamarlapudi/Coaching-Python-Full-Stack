@@ -506,6 +506,17 @@ while i<len(s):
     s1 += char*count
 print(s1)
 
+# 2nd way
+
+s = input("Enter a string: ")
+output = ''
+for x in s:
+    if x.isalpha():
+        output += x
+        previous = x
+    else:
+        output += previous * (int(x) - 1)
+print(output)
 
 # Q.Remove duplicates from the given string?
 # i/p:'ABCBABCBABCBDBABCB'
@@ -517,3 +528,18 @@ for x in s:
     if x not in s1:
         s1 += x
 print(s1)
+
+# W.A.P for the following requirements
+# i/p : 'a4k3b2'
+# o/p : 'acknbd'
+
+s = input("Enter a string: ")
+output = ''
+for x in s:
+     if x.isalpha():
+          output += x
+          previous = x
+     else:
+        output += chr(ord(previous) + int(x))
+print(output)
+          
