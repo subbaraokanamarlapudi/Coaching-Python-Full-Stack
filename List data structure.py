@@ -220,3 +220,125 @@ Note :
 # n.insert(-100 , 111)
 # n.insert(-10 , 111)
 # print('n=',n)
+
+# 6. extend() : 
+
+# order1 = ['Chicken','Mutton','Fish']
+# order2 = ['RC','KF','Boom Boom']
+# order1.extend(order2)
+# print(order1)
+
+# Ex:
+# order1 = ['Chicken','Mutton','Fish']
+# order1.extend('Prawns')
+# print(order1)
+
+# 7. remove() :
+
+# n = [10,20,30,10,20,10,20]
+# n.remove(10)
+# print(n)
+
+# n = [10,20,30,10,20,10,20]
+# n.remove(50)#ValueError: list.remove(x): x not in list
+
+# l = [10,20,30,10,20]
+# x = eval(input("Enter element to be removed: "))
+# if x in l:
+#     l.remove(x)
+#     print("Removed successfully")
+# else:
+#     print("Element not found")
+
+# 8. pop() : 
+
+# l = [10,20,30,40]
+# print(l.pop())#40
+# print(l.pop())#30
+# print(l)#[10,20]
+
+# n = []
+# print(n.pop())  # IndexError
+
+# n = [10,20,1,2,30,40]
+# print(n.pop())#40
+# print(n.pop(1))#20
+# print(n.pop(10))#IndexError: pop index out of range
+
+# ------------------------------------------Ordering elements of the list ---------------------------------------------
+
+# 1. reverse() : 
+# ---------------
+# n = [20,10,40,30]
+# n.reverse()
+# print(n)
+
+# 2. sort() :
+# ------------
+
+'''
+* For numbers ===> default sorting order is ascending order.
+* For strings ===> default order is alphabatocal order.
+'''
+
+# Ex
+# n = [20,10,40,30]
+# n.sort()
+# print(n)#[10,20,30,40]
+
+# n = ['sunny','lilly','radhika']
+# n.sort()
+# print(n)#['lilly', 'radhika', 'sunny']
+
+# n = [10,'A',20,'B']
+# n.sort()  #'<' not supported between instances of 'str' and 'int'
+
+# Descending order : 
+# ------------------
+
+# n = [10,40,30,20]
+# n.sort()
+# print(n)
+# n.sort(reverse=True)
+# print(n)
+# n.sort(reverse=False)
+# print(n)
+
+'''
+Aliasing and cloning of list objects:
+-----------------------------------------------------
+-->The process of giving another reference variable to the existing list is called as aliasing.
+-->The problem in this approach is by using one reference variable if we are changing content, then those changes will be reflected to the other reference variable.
+-->To overcome this problem we should go for cloning.
+-->The process of creating exactly duplicate independent object is called as cloning.
+-->We can implement cloning by using slice operator or by using copy() function.
+
+1).By using slice operator					
+2).By using copy() function
+
+'='---> This is meant for the alising                   'copy'--------> It is meant fot the cloning.
+
+************************************ Difference between shallow copy and deep copy **********************************
+'''
+
+# x = [10,20,30,40]
+# y = x #Aliasing
+# y[1] = 333
+# print('x:',x)#[10,333,30,40]
+# print('y:',y)#[10,333,30,40]
+
+# By using slice operator : 
+
+# x = [10,20,30,40]
+# y = x
+# y[1] = 333
+# print('x:',x)
+# print('y:',y)
+
+# By using copy operator.
+
+x = [10,20,30,40]
+y = x.copy()
+y[1] = 333
+print('x:',x)
+print('y:',y)
