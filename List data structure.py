@@ -144,6 +144,10 @@ EXAMPLE : l=[10,20,30,40,[50,60]]
 NOTE : 
 * If the specified index is greater than max index then element will be inserted at last position.
 * If the specified index is smaller than min index then element will be inserted at first position.
+
+***** Difference between append() and insert()? ***********
+* append() : It adds item at the end of the list. That will be the last element.
+* insert() : It adds item at specified index position. That will be the first element.
 '''
 
 # 1. len() : 
@@ -180,8 +184,8 @@ NOTE :
 
 # 5.insert() : 
 
-n = [1,2,3,4]
-n.insert(1,100)
-n.insert(-100 , 111)
-n.insert(-10 , 111)
-print('n=',n)
+# n = [1,2,3,4]
+# n.insert(1,100)
+# n.insert(-100 , 111)
+# n.insert(-10 , 111)
+# print('n=',n)
