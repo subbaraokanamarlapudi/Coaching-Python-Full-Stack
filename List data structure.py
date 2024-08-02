@@ -122,6 +122,10 @@ EXAMPLE : l=[10,20,30,40,[50,60]]
 
 # 2 BY USING FOR-LOOP: 
 
+# n = [1,2,3,4,5,6,7,8,9,10]
+# for i in n:
+#     print(i)
+
 # l = ['A','B','C']
 # n = len(l)
 # for i in range(n):
@@ -141,3 +145,43 @@ NOTE :
 * If the specified index is greater than max index then element will be inserted at last position.
 * If the specified index is smaller than min index then element will be inserted at first position.
 '''
+
+# 1. len() : 
+
+# n = [1,2,4,5,7,8,'sun','pen']
+# print(len(n))
+
+# 2. count() : 
+
+# n = ['laptop' , 'python' , 100 , 10000 , True , 'laptop']
+# print(n.count('laptop'))
+# print(n.count(100))
+
+# 3.index() : 
+
+# n = ['laptop' , 'python' , 100 , 10000 , True , 'laptop']
+# print(n.index('laptop'))
+# print(n.index(100))
+
+# 4.append() : 
+
+# n = [10,20,30]
+# n.append(50)
+# n.append(100)
+# print(n)
+
+# To add all elements upto 100 which are divisible by 10.
+
+# l = []
+# for i in range(101):
+#     if i%10 == 0:
+#         l.append(i)
+# print(l)
+
+# 5.insert() : 
+
+n = [1,2,3,4]
+n.insert(1,100)
+n.insert(-100 , 111)
+n.insert(-10 , 111)
+print('n=',n)
