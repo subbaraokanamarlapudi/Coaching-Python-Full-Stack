@@ -148,6 +148,37 @@ NOTE :
 ***** Difference between append() and insert()? ***********
 * append() : It adds item at the end of the list. That will be the last element.
 * insert() : It adds item at specified index position. That will be the first element.
+
+6. extend() : To add all elements of one list to another list.
+7. remove() : To remove specified item from the list. If the item present multiple times
+              then only first occurance will be removed.
+8. pop() : It removes and returns the last element of the list.
+           If the list is empty then pop() function raises the indexError.
+
+Note : 
+* In general we can use append() and pop() function to implement stack data structure by using list , which follows LIFO[Last In First Out]
+* n.pop(Index)===> To remove and return element present at specified index.
+* n.pop()====> To remove and return last element of the list.
+
+********** Difference between remove() and pop() ? ************************
+
+POP : 
+----
+* To remove specified element from the list.
+* It can't return any value.
+* If the specified element not available we will get valueError.
+
+REMOVE :
+---------
+* To remove last element from the list.
+* It returned removed element
+* If list is empty then we will get an error:IndexError
+
+Note : 
+
+* List objects dynamic, i.e based on our requirement we can increase and decrease the size.
+* append(),insert(),extend()==>For increasing size/growable nature
+* remove(),pop()==.For decreasing size/shrinking nature.
 '''
 
 # 1. len() : 
