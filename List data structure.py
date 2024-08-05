@@ -480,13 +480,60 @@ print(x > y)#True
 # --------------------------------
 # 	In python we can represent matrix by using nested list.
 
-n = [[10,20,30],[40,50,60],[70,80,90]]
-print(n)
-print('Elements by row wise:')
-for r in n:
-	print(r)
-print('Elements by matrix style:')
-for i in range(len(n)):#0,1,2
-	for j in range(len(n[i])):#0,1,2
-		print(n[i][j],end=' ')
-	print()
+# n = [[10,20,30],[40,50,60],[70,80,90]]
+# print(n)
+# print('Elements by row wise:')
+# for r in n:
+# 	print(r)
+# print('Elements by matrix style:')
+# for i in range(len(n)):#0,1,2
+# 	for j in range(len(n[i])):#0,1,2
+# 		print(n[i][j],end=' ')
+# 	print()
+
+# List Comprehensions:
+# ===================
+# It is very easy way of creating list objects from any iterable objects based on some condition.
+# Syn:
+# 		l = [expression for i in sequence if condition]
+
+# Ex:print first 10-number squares in list format.
+
+# 1st-way
+
+# l = []
+# for i in range(1,11):
+#     l.append(i*i)
+# print(l)
+
+# 2nd-way By using comprehension : 
+
+# l = [i*i for i in range(1,11)]
+# print(l)
+
+# Even numbers and odd numbers.
+# l = [i for i in range(1,11) if i%2==0]
+# print("Even square numbers are : ", l)
+
+# o = [i*i for i in range(1,11) if i%2 !=0]
+# print("Odd square numbers are : ", o)
+
+# Ex:
+# word = 'the quick brown fox jums over the lazy dog'
+# o/p:[['THE',3],['QUICK',5],['BROWN',5],......['DOG',3]]
+
+# word = 'the quick brown fox jums over the lazy dog'
+# words = word.split()
+# l=[[w.upper(),len(w)] for w in words]
+# print(l)
+
+# w.a.p to display unique vowels present in the given string
+# --------------------------------------------------------------------------------------
+word = input('Enter the word to search for vowels:')
+vowels = ['a','e','i','o','u']
+found = [ ]
+for letter in word:
+	if letter in vowels:
+		if letter not in found:
+			found.append(letter)
+print(found)
