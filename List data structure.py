@@ -337,8 +337,88 @@ Aliasing and cloning of list objects:
 
 # By using copy operator.
 
-x = [10,20,30,40]
-y = x.copy()
-y[1] = 333
-print('x:',x)
-print('y:',y)
+# x = [10,20,30,40]
+# y = x.copy()
+# y[1] = 333
+# print('x:',x)
+# print('y:',y)
+
+'''
+Difference between shallow cloning and deep cloning.
+-----------------------------------------------------
+
+1.SHALLOE CLONING : 
+-------------------
+* It creates a new object,but inserts references into the objects found in the original.
+* The new object is a different instance, any nested objects within it are still references to the same objects found in the original.
+* Changes to nested objects affect both the original and the copy.
+
+EX : 
+
+import copy
+
+original = [1, 2, [3, 4]]
+shallow_copy = copy.copy(original)
+
+print("Original:", original)
+print("Shallow Copy:", shallow_copy)
+
+shallow_copy[2][0] = 99
+print("After modifying the nested list:")
+print("Original:", original)
+print("Shallow Copy:", shallow_copy)
+
+2. DEEP CLONING :
+-----------------
+* It creates a new objects and recursively copies all objects found in the original.
+* All nested objects are duplicated as well, resulting in a completely independent copy.
+* Changes to nested objects do not affect the original and vice versa
+
+EX : 
+
+import copy
+
+original = [1, 2, [3, 4]]
+deep_copy = copy.deepcopy(original)
+
+print("Original:", original)
+print("Deep Copy:", deep_copy)
+
+deep_copy[2][0] = 99
+print("After modifying the nested list:")
+print("Original:", original)
+print("Deep Copy:", deep_copy)
+
+'''
+
+# Shallow copy
+
+import copy
+
+original = [1, 2, [3, 4]]
+shallow_copy = copy.copy(original)
+
+print("Original:", original)
+print("Shallow Copy:", shallow_copy)
+
+shallow_copy[2][0] = 99
+print("After modifying the nested list:")
+print("Original:", original)
+print("Shallow Copy:", shallow_copy)
+
+
+# Deep copy
+
+import copy
+
+original = [1, 2, [3, 4]]
+deep_copy = copy.deepcopy(original)
+
+print("Original:", original)
+print("Deep Copy:", deep_copy)
+
+deep_copy[2][0] = 99
+print("After modifying the nested list:")
+print("Original:", original)
+print("Deep Copy:", deep_copy)
+
