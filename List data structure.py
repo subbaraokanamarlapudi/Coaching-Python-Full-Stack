@@ -393,32 +393,100 @@ print("Deep Copy:", deep_copy)
 
 # Shallow copy
 
-import copy
+# import copy
 
-original = [1, 2, [3, 4]]
-shallow_copy = copy.copy(original)
+# original = [1, 2, [3, 4]]
+# shallow_copy = copy.copy(original)
 
-print("Original:", original)
-print("Shallow Copy:", shallow_copy)
+# print("Original:", original)
+# print("Shallow Copy:", shallow_copy)
 
-shallow_copy[2][0] = 99
-print("After modifying the nested list:")
-print("Original:", original)
-print("Shallow Copy:", shallow_copy)
+# shallow_copy[2][0] = 99
+# print("After modifying the nested list:")
+# print("Original:", original)
+# print("Shallow Copy:", shallow_copy)
 
 
 # Deep copy
 
-import copy
+# import copy
 
-original = [1, 2, [3, 4]]
-deep_copy = copy.deepcopy(original)
+# original = [1, 2, [3, 4]]
+# deep_copy = copy.deepcopy(original)
 
-print("Original:", original)
-print("Deep Copy:", deep_copy)
+# print("Original:", original)
+# print("Deep Copy:", deep_copy)
 
-deep_copy[2][0] = 99
-print("After modifying the nested list:")
-print("Original:", original)
-print("Deep Copy:", deep_copy)
+# deep_copy[2][0] = 99
+# print("After modifying the nested list:")
+# print("Original:", original)
+# print("Deep Copy:", deep_copy)
 
+
+# using mathematical operators for list.
+
+# 1. Concatentation : ----> We can use + to concatenate 2 list into a single list.
+
+# a = [10,20,30]
+# b = [40,50,60]
+# c = a + b
+# print(c)
+
+# Ex : 
+
+# a = [10,20,30]
+# b = [40,50,60]
+# c = a.extend(b)
+
+# print('a',a)
+# print('b',b)
+# print('c',c)
+
+# Note: To use + operator both args should be list objects, otherwise we will get an error.
+
+# 2. Repetition : ----> We can use * operator to repeat elements of the list.
+
+# x = [10,20,30]
+# y = x * 3
+# print(y)
+
+# Comparing list objects:
+# ----------------------------------
+
+# Ex:
+x = [50,40,30]
+y = [10,20,30,40,50,60]
+print(x < y)#False
+print(x > y)#True
+
+# Membership operators:
+# 	-->in
+# 	-->not in
+
+# Nested Lists:
+# -------------------
+# * Sometimes we can take one list inside another list. Such type of lists are called as nested list.
+
+# n = [10,20,30,[40,50]]
+# print(n)
+# print(n[0])
+# print(n[1])
+# print(n[3][0])
+# print(n[3][1])
+
+# Note : We can access nested list elements by using index just like accessing multi dimensional array of elements.
+
+# Nested list as matrix:
+# --------------------------------
+# 	In python we can represent matrix by using nested list.
+
+n = [[10,20,30],[40,50,60],[70,80,90]]
+print(n)
+print('Elements by row wise:')
+for r in n:
+	print(r)
+print('Elements by matrix style:')
+for i in range(len(n)):#0,1,2
+	for j in range(len(n[i])):#0,1,2
+		print(n[i][j],end=' ')
+	print()
