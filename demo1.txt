@@ -1051,3 +1051,197 @@ y[1] = 333
 print('x:',x)
 print('y:',y)
 
+'''
+Difference between shallow cloning and deep cloning.
+-----------------------------------------------------
+
+1.SHALLOE CLONING : 
+-------------------
+* It creates a new object,but inserts references into the objects found in the original.
+* The new object is a different instance, any nested objects within it are still references to the same objects found in the original.
+* Changes to nested objects affect both the original and the copy.
+
+EX : 
+
+import copy
+
+original = [1, 2, [3, 4]]
+shallow_copy = copy.copy(original)
+
+print("Original:", original)
+print("Shallow Copy:", shallow_copy)
+
+shallow_copy[2][0] = 99
+print("After modifying the nested list:")
+print("Original:", original)
+print("Shallow Copy:", shallow_copy)
+
+2. DEEP CLONING :
+-----------------
+* It creates a new objects and recursively copies all objects found in the original.
+* All nested objects are duplicated as well, resulting in a completely independent copy.
+* Changes to nested objects do not affect the original and vice versa
+
+EX : 
+
+import copy
+
+original = [1, 2, [3, 4]]
+deep_copy = copy.deepcopy(original)
+
+print("Original:", original)
+print("Deep Copy:", deep_copy)
+
+deep_copy[2][0] = 99
+print("After modifying the nested list:")
+print("Original:", original)
+print("Deep Copy:", deep_copy)
+
+'''
+
+# Shallow copy
+
+# import copy
+
+# original = [1, 2, [3, 4]]
+# shallow_copy = copy.copy(original)
+
+# print("Original:", original)
+# print("Shallow Copy:", shallow_copy)
+
+# shallow_copy[2][0] = 99
+# print("After modifying the nested list:")
+# print("Original:", original)
+# print("Shallow Copy:", shallow_copy)
+
+
+# Deep copy
+
+# import copy
+
+# original = [1, 2, [3, 4]]
+# deep_copy = copy.deepcopy(original)
+
+# print("Original:", original)
+# print("Deep Copy:", deep_copy)
+
+# deep_copy[2][0] = 99
+# print("After modifying the nested list:")
+# print("Original:", original)
+# print("Deep Copy:", deep_copy)
+
+
+# using mathematical operators for list.
+
+# 1. Concatentation : ----> We can use + to concatenate 2 list into a single list.
+
+# a = [10,20,30]
+# b = [40,50,60]
+# c = a + b
+# print(c)
+
+# Ex : 
+
+# a = [10,20,30]
+# b = [40,50,60]
+# c = a.extend(b)
+
+# print('a',a)
+# print('b',b)
+# print('c',c)
+
+# Note: To use + operator both args should be list objects, otherwise we will get an error.
+
+# 2. Repetition : ----> We can use * operator to repeat elements of the list.
+
+# x = [10,20,30]
+# y = x * 3
+# print(y)
+
+# Comparing list objects:
+# ----------------------------------
+
+# Ex:
+x = [50,40,30]
+y = [10,20,30,40,50,60]
+print(x < y)#False
+print(x > y)#True
+
+# Membership operators:
+# 	-->in
+# 	-->not in
+
+# Nested Lists:
+# -------------------
+# * Sometimes we can take one list inside another list. Such type of lists are called as nested list.
+
+# n = [10,20,30,[40,50]]
+# print(n)
+# print(n[0])
+# print(n[1])
+# print(n[3][0])
+# print(n[3][1])
+
+# Note : We can access nested list elements by using index just like accessing multi dimensional array of elements.
+
+# Nested list as matrix:
+# --------------------------------
+# 	In python we can represent matrix by using nested list.
+
+# n = [[10,20,30],[40,50,60],[70,80,90]]
+# print(n)
+# print('Elements by row wise:')
+# for r in n:
+# 	print(r)
+# print('Elements by matrix style:')
+# for i in range(len(n)):#0,1,2
+# 	for j in range(len(n[i])):#0,1,2
+# 		print(n[i][j],end=' ')
+# 	print()
+
+# List Comprehensions:
+# ===================
+# It is very easy way of creating list objects from any iterable objects based on some condition.
+# Syn:
+# 		l = [expression for i in sequence if condition]
+
+# Ex:print first 10-number squares in list format.
+
+# 1st-way
+
+# l = []
+# for i in range(1,11):
+#     l.append(i*i)
+# print(l)
+
+# 2nd-way By using comprehension : 
+
+# l = [i*i for i in range(1,11)]
+# print(l)
+
+# Even numbers and odd numbers.
+# l = [i for i in range(1,11) if i%2==0]
+# print("Even square numbers are : ", l)
+
+# o = [i*i for i in range(1,11) if i%2 !=0]
+# print("Odd square numbers are : ", o)
+
+# Ex:
+# word = 'the quick brown fox jums over the lazy dog'
+# o/p:[['THE',3],['QUICK',5],['BROWN',5],......['DOG',3]]
+
+# word = 'the quick brown fox jums over the lazy dog'
+# words = word.split()
+# l=[[w.upper(),len(w)] for w in words]
+# print(l)
+
+# w.a.p to display unique vowels present in the given string
+# --------------------------------------------------------------------------------------
+word = input('Enter the word to search for vowels:')
+vowels = ['a','e','i','o','u']
+found = [ ]
+for letter in word:
+	if letter in vowels:
+		if letter not in found:
+			found.append(letter)
+print(found)
