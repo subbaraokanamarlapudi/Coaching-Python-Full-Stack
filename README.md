@@ -10,3 +10,4 @@
 * Flow controls.
 * String Data Structure.
 * List Data Structure.
+* Tuple Data Type
