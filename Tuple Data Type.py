@@ -152,3 +152,57 @@ for x in t:
 print('The sum is:',sum)
 print('The average is:',sum/l)
 
+'''
+Q.Difference between List and Tuple?
+-------------------------------------------------------
+			List											Tuple
+			------											--------
+1.List a group of comma separated values	1.Tuple is a group of comma separated
+within the square brackets and square		values within the parenthesis, It is an
+brackets are mandatory.							optional.
+Ex:	l = [10,20,30]										Ex: t=(10,20,30) or t = 10,20,30
+
+2.List objects are mutable. i.e once we		2.Tuple object is immutable. i.e once
+create list object we can perform any			we create tuple object we can't change
+changes in that object.								its content.
+
+3.If the content is not fixed and keep on	3.If the content is fixed and never 
+changing then we should go for list.			changes then we should go for tuple.
+
+4.Comprehension are available.					4.There is no comprehensions.
+
+'''
+
+t = (5,10,15)
+x,_,y = t
+print(x,y)#5 15
+
+# Q.
+a = 1_2
+b = a*2
+b #24
+
+# Q.
+x,y = 4,3
+z = (x--x) + (y--y)
+print(z)#14
+
+# Q.
+a = 2
+b = 3
+a**b*a**b #64
+
+# Q.
+a = 4
+b = 5
+c = 8
+print(a|b|c)#13
+
+# Q.
+print(min(max(False,-7.5,-7),2,1,9))
+
+# Q.
+text = 'hello world'
+expr = ('d', 'rld')
+result = text.endswith(expr)
+print(result)
