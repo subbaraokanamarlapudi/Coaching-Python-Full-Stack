@@ -98,7 +98,7 @@ DICTIONARY:
 * Insertion order is preserved.
 * Hetrogenious objects are allowed.
 * Duplicate are not allowed.
-* Indexing and slicing are allowed.
+* Indexing and slicing are not allowed.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 * When list and tuple comparison by default datatype is "TUPLE".
 * When set and dictionary comparison by default datatype is "DICTIONARY".
