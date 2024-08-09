@@ -6,8 +6,10 @@
 * Input and output streams.
 * demo --> short notes for the python upto[input and output streams]
 
-* demo1 is the file starting from the            Flow controls
+* demo1 is the file starting from the -------------->  Flow controls
 * Flow controls.
 * String Data Structure.
 * List Data Structure.
 * Tuple Data Type
+* Set Data Type
+* Dictionary Data Type
