@@ -174,3 +174,69 @@ d.update(d1)
 print(d)
 d.update([(333,'A')])
 print(d)
+
+#                        **************** PROBLEMS ****************
+# Q.w.a.p to find number of occurences of each letter present in the given string?
+# ----------------------------------------------------------------------------------------------------------------------
+# i/p:'missisippi'
+# o/p:
+# 	m occurs 1 time
+# 	i occurs 4 times
+# 	s occurs 3 times
+# 	p occurs 2 times
+
+word = input("Enter any word: ")
+d = {}
+for x in word:
+	d[x] = d.get(x,0) + 1
+for k,v in d.items():
+	print(k,'occurs',v,'times')
+
+# Q.w.a.p to find number of occurances of each vowel present in the given string
+
+word = input("Enter any word: ")
+vowels = {'a','e','i','o','u'}
+d = {}
+for x in word:
+	if x in vowels:
+		d[x] = d.get(x,0) + 1
+
+for k,v in d.items():
+	print(k,'occurs',v,'times')
+
+# Q.w.a.p to accept student name and marks from the keyboard and create a dictionary, also display student marks by taking student name as input.
+
+n = eval(input("Enter number of students: "))
+d = {}
+
+for i in range(n):
+	name = input("Enter student name: ")
+	marks = int(input("Enter marks: "))
+	d[name] = marks
+
+while True:
+	name = input("Enter student name to get marks: ")
+	print(d.get(name,-1))
+
+	if marks == -1:
+		print("Invalid student name")
+		break
+	else:
+		print("The marks of",name,"is",marks)
+	
+
+	option = input("Do you want to find another student marks[Yes | No] :")
+	if option.lower() == 'no':
+		break
+
+print("Thanks for using our application")
+
+
+# Dictionary comprehension:
+# ----------------------------------------
+# Comprehension concept applicable for dict also.
+
+squares = {i:i*i for i in range(1,6)}
+print(squares)
+doubles = {i:2*i for i in range(1,6)}
+print(doubles)
