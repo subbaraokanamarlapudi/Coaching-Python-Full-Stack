@@ -1,0 +1,211 @@
+'''
+* It is a group of statements is repeatedly required then it is not recommended to write these statements
+    everytime seperately. 
+* We have to define these statements as a single unit and we can call that unit any
+    number of times as per our requirement without re-writting. 
+    This unit is nothing but a function.
+* The main advantage of functions is code reusability.
+
+Note:
+* In other languages functions are known as methods,procedures,subroutines,etc..........
+
+****************** Types of Functions **********************
+
+1. Built-in Functions:
+* The functions which are coming along with python software automatically,are called as bulit-in functions (or) pre-defined function.
+Example : id(),type(),input(),eval(), etc....................
+
+2. User Defined Functions:
+* The functions which are developed by programmers explicitly according to business requirements,are called as user defined funcions.
+
+Syntax : 
+
+def function_name(parameter):   
+     statements
+     statements
+     statements
+    return value
+
+
+Parameters:
+-----------
+* Parameters are inputs to the function. If the function contains parameter,then at the time 
+    of calling ,compulsory we should provide values,otherwise we will get an error.
+
+Return statement: 
+----------------
+* Function can take input as parameter and executes business logic , and returns output to the caller within the return statement.
+* If we are not writing return statement then default return value is None.
+
+Returning multiple values from a function : 
+-------------------------------------------
+
+* In other languages like c,c++ and java functions can return atmost one value.
+* But in python we can return multiple values from a function.
+'''
+
+# Example 1:
+
+def wish():
+    print("Hello Good Morning")
+wish()
+
+# Parameter example : 
+
+def wish(name):
+    print("Hello Good Morning",name)
+wish("Vijay")
+wish("venkata")
+
+def wish(name):
+    print("Hello Good Morning",name)
+print(wish("Vijay")) # None
+print(wish("venkata")) # None
+
+# W.A.P a function to take number as input and print its square value.
+
+def squareit(num):
+    print("The square of ",num,"is",num*num)
+squareit(4)
+squareit(5)
+
+# Return statement example : 
+
+def add(x,y):
+    return x+y
+result = add(10,20)
+print('The sum is:',result)
+print('The sum is:',add(100,200))
+
+def f1():
+	print('Hi')
+print(f1())
+
+# W.A function to check whether the given number is even or odd?
+
+def even_odd(num):
+    if num%2==0:
+        print(num,"is even number")
+    else:
+        print(num,"is odd number")
+even_odd(10)
+even_odd(15)
+
+# W.A.P a function to check whether the given number is prime or not?
+
+def is_prime(num):
+    for i in range(2,num):
+        if num%i==0:
+            print(num,"is not prime number")
+            break
+    else:
+        print(num,"is prime number")
+
+is_prime(10)
+is_prime(3)
+
+# W.A.P a function to print all prime numbers between 1 to 100?
+
+def is_prime(num):
+    for i in range(2,num):
+        if num%i==0:
+            break
+    else:
+        print('The prime numbers are:',num)
+for i in range(1,101):
+    is_prime(i)
+
+# W.A a function to find the factorial of a given number.
+
+def fact(num):
+    result = 1
+    while num>=1:
+        result = result * num
+        num = num - 1
+    return result
+# print("The factorial of 5 is:",fact(5))
+
+for i in range(1,6):
+    print("The factorial of",i,"is:",fact(i))
+
+# -------------------> Returning multiple values Example.
+
+def sum_sub(a,b):
+    sum = a+b
+    sub = a-b
+    return sum,sub
+x,y = sum_sub(100,50)
+print("The sum is:",x)
+print("The sum is:",y)
+
+def calc(a,b):
+    sum = a+b
+    sub = a-b
+    mul = a*b
+    div = a/b
+    return sum,sub,mul,div
+
+x = calc(100,50)
+print(type(x))
+print("The results are:")
+for i in x:
+    print(i)
+
+'''
+--------------------------- Types of args --------------------------
+
+def f1(a,b):
+	-----
+	-----
+	-----
+f1(10,20)
+
+-->a,b are formal args where as 10,20 are actual args.
+
+There are 4-types of actual args are allowed in python.
+			1.positional args
+			2.keyword args
+			3.default args
+			4.variable length args
+
+1.positional args:
+-------------------------
+These are the args passed to function in correct positional order.
+-->The number of args and position of args must be matched. If we change the order then result may be chaned.
+
+-->If we change the number of args then we will get an error.
+sub(10) #sub() missing 1 required positional argument: 'b'
+sub(10,20,30)#sub() takes 2 positional arguments but 3 were given
+
+
+2).keyword args:
+------------------------
+We can pass argument values by keyword i.e by parameter name
+
+def wish(name,msg):
+	print('Hello',name,msg)
+wish(name='sunny',msg='good evening....')
+wish(msg='good evening....',name='sunny')
+
+-->Here the order of args is not important but number of args must be matched.
+
+Note:
+	We can use both positional and keyword args simultaneously. But first we have to take positional args and then keyword args, otherwise we will get an error.
+'''
+
+# Example : 1 -----> [positional arguments]
+
+def sub(a,b):
+    print(a-b)
+sub(10,20)
+sub(50,100)
+
+# Example : 2 -------> [keyword arguments]
+
+def wish(name,msg):
+	print('Hello',name,msg)
+wish(name='sunny',msg='good evening....')
+wish(msg='good evening....',name='sunny')
+wish('sunny','good evening....')#Valid
+wish('sunny',msg='good evening....')#Valid
+# wish(name='sunny','good evening....')#Invalid
