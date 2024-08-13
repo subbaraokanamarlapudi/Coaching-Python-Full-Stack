@@ -303,6 +303,16 @@
 # # f(arg3=10,arg4=20,30,40)#positional argument follows keyword argument
 # f(4,5,arg3=5,arg5=6)# f() got an unexpected keyword argument 'arg5'
 
+# def f(*,a,b):       # Keyword only argument
+#     print(a,b)
+#     # print(type(a),type(b))
+
+# f(a=10,b=20)
+# f(b=20,a=10)
+# f(10,20) #TypeError: f() takes 0 positional arguments but 2
+
+# def f(a,b,/):  # Positional only arguments.
+
 '''
 Function vs Module vs Package vs Library:
 ---------------------------------------------------------------
@@ -315,14 +325,209 @@ Types of variables:
 	1.Global variables
 	2.Local varisbles
 
+1.Global variables:
+------------------------
+-->If the value of a variable is defined outside a function then such type of variables are called as global variables.
+-->Global variables can be accessed inside as well as outside of the function.
+-->If we change the value of global variable inside a function then the change will be reflected in outside of the function also.
+-->If we declare a variable inside a function with same name as global variable then this local variable will be given preference.
+-->If we want to modify the value of global variable inside a function then we should use global keyword.
+
+Ex:
+a = 10 #global variables
+def f1():
+	print('f1:',a)
+def f2():
+	print('f2:',a)
+f1()
+f2()
+
+2.Local Variable:
+------------------
+-->The variable which are declared inside a function are called as local variable.
+-->Local Variable are available only for the function in which we declared it. i.e from outside of function we cant access.
+
+def f1():
+	a = 10 #local variables
+	print('f1:',a)
+def f2():
+	print('f2:',a)#NameError: name 'a' is not defined
+f1()
+f2()
+
+3.Global Keyword:
+------------------
+-->If we want to modify the value of global variable inside a function then we should use global keyword.
+-->To declare global variable inside a function.
+-->To make global variable available to the function so that we can perform requirement modifications.
+
+Ex:
+a = 10 
+def f1():
+	global a
+	a = 333 #global 
+	print('f1:',a)
+def f2():
+	print('f2:',a)
+f1()==>333						f2()==>10
+f2()==>333						f1()==>333
+
+Note : 
+* If the global variable and local variable having same name then we can access global variable inside a 
+  function by using globals() function.
+
+a = 10 
+def f1():
+	a = 333 
+	print('f1:',a)#333
+	print(globals()['a'])#10
+f1()
 '''
 
-def f(*,a,b):       # Keyword only argument
-    print(a,b)
-    # print(type(a),type(b))
+# Example : ---> Global variable.
 
-f(a=10,b=20)
-f(b=20,a=10)
-f(10,20) #TypeError: f() takes 0 positional arguments but 2
+# a = 10
+# def f1():
+#     print("The f1 value is:",a)
 
-# def f(a,b,/):  # Positional only arguments.
+# def f2():
+#     print("The f2 value is:",a)
+
+# f1()
+# f2()
+
+# Example : ---> Local variable.
+
+# def f1():
+#     a = 10
+#     print("The f1 value is:",a)
+
+# def f2():
+#     print("The f2 value is:",a)
+
+# f1()
+# f2()
+
+# Example : ---> Global keyword.
+
+# a = 10
+# def f1():
+#     global a
+#     a = 333
+#     print("The f1 value is:",a)
+
+# def f2():
+#     print("The f2 value is:",a)
+
+# f1()
+# f2()
+
+# # By using the globals keyword
+
+# a = 10
+# def f1():
+#     global a
+#     a = 333
+#     print("The f1 value is:",a)
+#     print(globals()['a'])
+
+# f1()
+
+'''
+RECURSIVE FUCNTION : 
+--------------------------------
+* A function that calls itself is know as recursive function.
+Ex:
+		factorial(3):3*factorial(2)
+						3*2*factorial(1)
+						3*2*1*factorial(0)
+		factorial(n):n*factorial(n-1)
+
+* The main advantages are :
+* We can reduce length of the code and improve readability.
+* We can solve complex problems easily.
+
+def factorial(n):
+	if n == 0:
+		result = 1
+	else:
+		result = n*factorial(n-1)
+	return result
+print('Factorial of 4 is:',factorial(4))
+print('Factorial of 5 is:',factorial(5))
+'''
+
+# Write a program factorial in recursive function
+
+# def factorial(n):
+#     if n == 0:
+#         result = 1
+#     else:
+#         result = n * factorial(n-1)
+#     return result
+
+# print('Factorial of 4 is:',factorial(4))
+# print('Factorial of 5 is:',factorial(5))
+
+'''
+ANONYMOUS FUNCTION :
+--------------------------------
+* Sometimes we can declare a function without name, such type of nameless functions are called as anonymous funcitons or lambda expressions.
+* The main advantage of anonymous function is just for instant use(i.e for one time useage.)
+
+Syn:
+		lambda argument_list:expression
+Note:
+	By using lambda functions we can write concise code so that readability of the program will be improved
+
+Note:
+	Lambda function internally returns expression value and we are not required to write retuen statement explicitly.
+
+
+Some times we can pass function as argument to another function. In such case lambda functions are best choice.
+
+We can use lambda functions very commonly with filter(), map() and reduce() functions bcoz these functions expect function as argument.
+'''
+
+# Write a program to create a lambda function to find square of given number.
+
+# Normal func:
+# --------------------
+# def squareit(n):
+# 	return n*n
+# print(squareit(3))
+# print(squareit(4))
+
+# # lambda func:
+# # --------------------
+# s = lambda n:n*n
+# print('The square of 3 is:',s(3))
+# print('The square of 5 is:',s(5))
+
+# Write a lambda to find sum of 2 given numbers.
+
+# s = lambda a,b : a + b
+# print('The sum of 10 and 20 is:',s(10,20))
+# print('The sum of 100 and 200 is:',s(100,200)).
+
+# Write a lambda function to find biggest of 2 numbers.
+
+# s = lambda a,b : a if a>b else b
+# print('The biggest of 10 and 20 is:',s(10,20))
+# print('The biggest of 100 and 200 is:',s(100,200))
+
+# Q.
+add = lambda x,y:x+y
+result = add(3,5)*(lambda x:x**2)(2)
+print(result)#32
+
+# Q.
+a = {1,1,1,2,2,6,6,6,6}
+b = list(a)
+print(b[2])
+
+# Q.
+s = 'python'
+for i in range(len(s)):
+	print(s)
+	s = 'a'
