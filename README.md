@@ -15,3 +15,4 @@
 * Dictionary Data Type
 
 * functions.txt -------> This is only for the python functions notes and examples
+* Functions
