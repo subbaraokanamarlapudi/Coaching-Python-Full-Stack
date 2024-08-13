@@ -479,5 +479,56 @@ Syn:
 		lambda argument_list:expression
 Note:
 	By using lambda functions we can write concise code so that readability of the program will be improved
+
+Note:
+	Lambda function internally returns expression value and we are not required to write retuen statement explicitly.
+
+
+Some times we can pass function as argument to another function. In such case lambda functions are best choice.
+
+We can use lambda functions very commonly with filter(), map() and reduce() functions bcoz these functions expect function as argument.
 '''
+
+# Write a program to create a lambda function to find square of given number.
+
+# Normal func:
+# --------------------
+# def squareit(n):
+# 	return n*n
+# print(squareit(3))
+# print(squareit(4))
+
+# # lambda func:
+# # --------------------
+# s = lambda n:n*n
+# print('The square of 3 is:',s(3))
+# print('The square of 5 is:',s(5))
+
+# Write a lambda to find sum of 2 given numbers.
+
+# s = lambda a,b : a + b
+# print('The sum of 10 and 20 is:',s(10,20))
+# print('The sum of 100 and 200 is:',s(100,200)).
+
+# Write a lambda function to find biggest of 2 numbers.
+
+# s = lambda a,b : a if a>b else b
+# print('The biggest of 10 and 20 is:',s(10,20))
+# print('The biggest of 100 and 200 is:',s(100,200))
+
+# Q.
+add = lambda x,y:x+y
+result = add(3,5)*(lambda x:x**2)(2)
+print(result)#32
+
+# Q.
+a = {1,1,1,2,2,6,6,6,6}
+b = list(a)
+print(b[2])
+
+# Q.
+s = 'python'
+for i in range(len(s)):
+	print(s)
+	s = 'a'
 
