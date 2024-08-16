@@ -639,3 +639,82 @@ We can use lambda functions very commonly with filter(), map() and reduce() func
 # f1 = outer	 #Function aliasing
 
 
+'''
+Function Decorators : 
+---------------------
+* Decorators is a function which can take a function as a argument and extends its functionality.
+
+input function ----> Decorator function --------> output with extended function.
+* The main objective of decorator function is we can extend the functionality of existing functions without modified that function.
+* Decorators helps to make our code shorter. This concept is very helpful while developing web applications with Django.
+
+Example : 
+def wish(name):
+	print("Hello",name,"good evening.......")
+
+This function can always print same output for any name.
+But we want to modify this function to provide different message if name is 'radhika'. 
+We can do this without touching wish() function by using decorator.
+
+
+****Decoartor chaining*********
+* We can define multiple decorators for the same function and all these decorators will perform decorator chaining.
+Ex:
+	@decor1
+	@decor
+	def num():
+
+-->For num() function we are applying 2-decorators. First inner decorator will work and then outer decorator.
+'''
+
+# Example : 
+
+def decor(func):
+    def inner(name):
+        if name == 'radhika':
+            print("Hello",name,"very very good evening......")
+        else:
+            func(name)
+    return inner
+
+@decor
+def wish(name):
+    print("Hello",name,"good evening.......")
+
+wish('naresh')
+wish('radhika')
+wish('mahesh')
+
+# How to call same function without decorator
+
+def smart_division(func):
+    def inner(a,b):
+        print("We are dividing",a,'with',b)
+        if b == 0:
+            print("We can't divide with zero")
+        else:
+            return func(a,b)
+    return inner
+@smart_division
+def division(a,b):
+    return a/b 
+print(division(20,2))
+print(division(20,0))
+
+# Decorator chaining example : 
+
+def decor(func):
+	def inner():
+		x = func()
+		return x*x
+	return inner
+def decor1(func):
+	def inner():
+		x = func()
+		return 2*x
+	return inner
+@decor1
+@decor
+def num():
+	return 10
+print(num())
