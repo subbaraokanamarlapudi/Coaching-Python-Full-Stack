@@ -517,17 +517,125 @@ We can use lambda functions very commonly with filter(), map() and reduce() func
 # print('The biggest of 100 and 200 is:',s(100,200))
 
 # Q.
-add = lambda x,y:x+y
-result = add(3,5)*(lambda x:x**2)(2)
-print(result)#32
+# add = lambda x,y:x+y
+# result = add(3,5)*(lambda x:x**2)(2)
+# print(result)#32
 
-# Q.
-a = {1,1,1,2,2,6,6,6,6}
-b = list(a)
-print(b[2])
+# # Q.
+# a = {1,1,1,2,2,6,6,6,6}
+# b = list(a)
+# print(b[2])
 
-# Q.
-s = 'python'
-for i in range(len(s)):
-	print(s)
-	s = 'a'
+# # Q.
+# s = 'python'
+# for i in range(len(s)):
+# 	print(s)
+# 	s = 'a'
+
+# '''
+# 1.filter() function : 
+#  -------------------
+# * We can use filter() function to filter values from the given sequence based on some conditions.
+# syntax : 
+# 	filter(function,sequence)
+# * Where function argument is responsible to perform conditional check, sequence can be list or tuple or string.
+
+# 2.map() function :
+#  ----------------
+# * For every element present in the given sequence,apply some functionality and generate new element woith the required modifications.
+#   For this we should go for map() function.
+
+# syntax : 
+#     map(function,sequence)
+# * The function can be applied on each element of sequence and generates new sequence.
+
+# 3. Reduce() function : 
+#   --------------------
+# * It reduces sequences of elements into a single element by applying the specified function.
+# syntax : 
+# 	reduce(function,sequence)
+# * Reduce function present in functools module , hence we should import the reduce
+# '''
+
+
+# # Q : W.A.P  to filter even numbers from the list by using filter()
+
+# # Without lambda function :
+
+# def is_even(num):
+#     if num % 2 == 0:           # For odd numbers we can use if num%2!=0:
+#         return True
+#     else:
+#         return False
+    
+# l = [0,1,2,3,4,5,6,7,8,9,10]
+# print(list(filter(is_even , l)))
+
+# # With lambda function : 
+
+# l = [0,5,10,15,20,25,30,35,40]
+# print(list(filter(lambda num:num%2==0,l)))
+# print(list(filter(lambda num:num%2!=0,l)))
+
+# # -------------------------------------------- Map function --------------------------------------------
+# # Q : W.A.P to print every element present in the list perform double and generates new list of doubles.
+# # Without lambda function
+
+# l = [1,2,3,4,5]
+# def doubleit(n):
+#     return 2*n
+# print(list(map(doubleit,l)))
+
+# # With lambda function
+
+# l = [1,2,3,4,5]
+# print(list(map(lambda x:2*x , l)))
+# print(list(map(lambda x:x*x , l)))
+
+# l1 = [1,2,3,4,5]
+# l2 = [6,7,8,9,10]
+
+# print(list(map(lambda x,y : x*y , l1,l2)))
+
+# # -----------------------------------------------------Reduce function -----------------------------------------
+
+# # EXAMPLE : 
+
+# from functools import reduce
+# l = [10,20,30,40,50]
+# result = reduce(lambda x,y : x+y , l)
+# print(result)
+
+# #  Q. W.A.P to print sum of first 100 numbers.
+
+# from functools import reduce
+# result = reduce(lambda x,y:x+y,range(1,101))
+# print(result)
+
+# # Nested Functions:
+# # --------------------------
+# def f1():
+# 	def inner(a,b):
+# 		print('The sum is:',a+b)
+# 		print('The product is:',a*b)
+# 		print()
+# 	inner(10,20)
+# 	inner(20,30)
+# 	inner(30,40)
+# f1()
+
+# # Ex:
+# def outer():
+# 	print('Outer function started')
+# 	def inner():
+# 		print('Inner function started')
+# 	print('Outer function returning inner function')
+# 	return inner
+# f1 = outer()
+# f1()
+
+# # Note:
+# f1 = outer() #Function call
+# f1 = outer	 #Function aliasing
+
+
