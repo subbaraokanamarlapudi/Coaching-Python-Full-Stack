@@ -717,3 +717,84 @@ def decor1(func):
 def num():
 	return 10
 print(num())
+
+
+'''
+Generators in python : 
+----------------------
+* Generators is a function which is responsible to generate a sequence of values.
+* We can write generator function just like ordinary function,but it uses yield keyword to return values.
+
+		yield---------->Generator----------------->A sequence of values.
+
+Ex:
+def mygen():
+	yield 'A'
+	yield 'B'
+	yield 'C'
+g = mygen()
+print(type(g))
+print(next(g))
+print(next(g))
+print(next(g))
+
+Advantages of generator functions:
+----------------------------------------------------
+-->When compared with class level iterations, generators are very easy to use.
+-->Improves memory utilization and performance.
+-->Generators are best suitable for reading data from large number of large files.
+-->Memory utilization, bcoz we are not required to store all values at  a time.
+'''
+
+# Example :
+
+def mygen():
+    yield 'A'
+    yield 'B'
+    yield 'C'
+
+g = mygen()
+print(type(g))
+print(next(g))
+print(next(g))
+print(next(g))
+
+# Generate a sequence of values from 5 to 1
+
+def countdown(num):
+    print('Started countdown')
+    while num > 0:
+        yield num
+        num = num - 1
+    
+values = countdown(5)
+for x in values:
+    print(x)
+
+# To generate first n numbers
+
+def first(num):
+    i = 1
+    while i<= num:
+        yield i
+        i += 1
+values = first(10)
+for x in values:
+    print(x)
+    
+# # we can convert generator into a list
+values = first(5)
+print(list(values))
+
+# To generate to fibonacci number :  ------------>0,1,1,2,3,5,8,13,21,.....................
+
+def fib():
+    a,b = 0,1
+    while True:
+        yield a
+        a,b = b,a+b
+    
+for x in fib():
+    if x > 100:
+        break
+    print(x)
