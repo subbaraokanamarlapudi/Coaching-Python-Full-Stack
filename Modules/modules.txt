@@ -1,0 +1,44 @@
+**********************Modules**********************
+
+-> A group of functions,variables and classes saved into a file,which is nothing but module.
+-> Every python file(.py) acts as a module.
+-> Advantages of module are : Reusability,Readability and Maintainability.
+
+# kvsr.py
+---------
+x = 333
+def add(a,b):
+	return a+b
+def product(a,b):
+	return a*b
+
+-->kvsr module contains one variable and 2-functions.
+-->If we want to use members of the module in our program then we should import that module.
+
+                **** import modulename ****
+-->We can access members by using module name
+
+modulename.variable
+modulename.function()
+
+test.py
+----------
+import kvsr
+print(kvsr.x)
+print(kvsr.add(10,20))
+print(kvsr.product(10,20))
+
+Renaming a module at the time of import(module aliasing)
+----------------------------------------------------------------------------------------
+Ex:
+		import kvsr as k
+
+-->Here kvsr is original module name and m is alias name.
+-->We can access members by using alias name m.
+
+test.py
+----------
+import kvsr as k
+print(k.x)
+print(k.add(20,30))
+print(k.product(20,30))
