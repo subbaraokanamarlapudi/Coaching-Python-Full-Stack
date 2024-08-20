@@ -186,3 +186,120 @@ print(dir(kvsr))
 
 import kvsr
 kvsr.f1()
+
+#  Working  with math module : 
+
+from math import *
+print(sqrt(4))#2.0
+print(ceil(10.1))#11
+print(floor(10.1))#10
+print(fabs(-10.6))#10.6
+print(fabs(10.6))#10.6
+
+'''
+Working with random module:
+---------------------------------------------
+-->This module defines several functions to generate random numbers.
+
+1.random():
+	To generates some float value between 0 and 1(not inclusive)
+								0 < x < 1
+
+from random import *
+for i in range(10):
+	print(random())
+
+2.randint():
+	To generate random integer between two given numbers(inclusive)
+
+from random import *
+for i in range(10):
+	print(randint(1,10))#generates random number int value between 1 and 10(inclusive)
+
+-->Generate 10 4-digit random numbers.
+from random import *
+for i in range(10):
+	print(randint(0,9),randint(0,9),randint(0,9),randint(0,9))
+
+3.uniform():
+	To terurn random float value between 2-given numbers(not inclusive)
+
+from random import *
+for i in range(10):
+	print(uniform(1,10))
+
+4.randrange([start],stop,[step]):
+	Returns a rnadom number from the range
+			start <=x < stop
+	start arg is optional and default value is 0.
+	step arg is optional and default value is 1.
+
+Ex:
+	from random import *
+	for i in range(10):
+		print(randrange(10))#generates a number from 0 to 9
+		print(randrange(1,11))#generates a number from 1 to 10
+		print(randrange(1,11,2))#generates a number from 1,3,5,7,9
+
+5.choice():
+	It wont return random number.
+	It will return a random object from the given list,tuple or str.
+
+from random import *
+l = ['sunny','bunny','vinny','chinny','pinny']
+for i in range(10):
+	print(choice(l))
+
+Ex:to generate random pwd of 6-length where as 1,3,5 are alphabates 2,4,6 are digits.
+Ex:
+		X0D3H6
+
+from random import *
+for i in range(10):
+	print(chr(randint(65,90)),randint(0,9),chr(randint(65,90)),randint(0,9),chr(randint(65,90)),randint(0,9))
+
+'''
+
+# 1.
+from random import *
+for i in range(10):
+	print(random())
+
+# 2.
+from random import *
+for i in range(10):
+	print(randint(1,10))#generates random number int value between 1 and 10(inclusive)
+
+# Generate 10 4-digit random numbers.
+
+from random import *
+for i in range(10):
+	print(randint(0,9),randint(0,9),randint(0,9),randint(0,9))
+
+# 3.
+
+from random import *
+for i in range(10):
+	print(uniform(1,10))
+
+# 4.
+
+from random import *
+for i in range(10):
+	print(randrange(10))#generates a number from 0 to 9
+	print(randrange(1,11))#generates a number from 1 to 10
+	print(randrange(1,11,2))#generates a number from 1,3,5,7,9
+
+
+# 5.
+from random import *
+l = ['sunny','bunny','vinny','chinny','pinny']
+for i in range(10):
+	print(choice(l))
+
+# To generate random password of 6-length where as 1,3,5 are alphabets and 2,4,6 are numbers.
+# Ex : X0D3H6
+
+from random import *
+for i in range(10):
+	print(chr(randint(65,90)),randint(0,9),chr(randint(65,90)),randint(0,9),chr(randint(65,90)),randint(0,9))
