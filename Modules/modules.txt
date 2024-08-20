@@ -169,10 +169,7 @@ test.py
 import module1
 module1.f1()
 
-D:\Mahesh_Classes>py module1.py
-The code executed directly as a program
-The value of __name__: __main__
-
-D:\Mahesh_Classes>py test.py
 The code executed indirectly as a module from some other module
-The value of __name__: module1
+The value of __name__: kvsr
+The code executed indirectly as a module from some other module
+The value of __name__: kvsr
