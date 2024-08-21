@@ -16,3 +16,6 @@
 
 * functions.txt -------> This is only for the python functions notes and examples
 * Functions
+* Modules
+* Packages
+-----------------------------------------------------------------------------Core Python is completed-----------------------------------------------------------
