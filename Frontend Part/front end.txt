@@ -57,3 +57,57 @@ Client:
 * client devices are supporting browsing.
 * EX : computer, tv, watch, projector, car, bike......etc.
 * It is interface/media between end-user and server.
+
+---------------------------------------------------------------------- HTML --------------------------------------------------------------
+
+* HTML was developed by "Tim-Berners-Lee". It was released in 1993 and maintained by W3C org.
+* SGML ---> Standard Generalized Markup Language.
+* HTML ---> HyperText Markup Language.
+* The web was born in a particle physics laboratory(CERN) in geneva,switerland in 1989.
+* Technically, HTML is not a progrmming language,but rather than a Markup language. HTML is a tag oriented progrmming.
+* HTML is used to design "Static web pages".means HTML is used to create element(such as heading,paragraphs,icons,menus,logs,textboxes,buttoons,....etc) in the web pages.
+* Static web pages means, that page always showing same information.
+*HTML is used in all real time web sites today. HTML is the onlly language that is supported by all web browsers and available for desigining web pages.
+* HTML is a 'Client-side tech'.That means the html code executes on the client browsers but not in servers.
+* HTML is supported by all the browsers such as google chrome , Mozilla , firefox, Edge,......etc.
+* HTML is case insensitive language that means you can write the html code in either uppercase (or) lowercase.
+* HTML is a error free progrmming.
+* For working html no need to install any software. Browser is responsible for executing and producing output of html code.
+        Typing and saving -------> Notepad
+        Execution and output ------> Browser.
+* HTML is a interpreter-based language. Browser interprects HTML code.
+
+TAG:
+----
+* It is a pre-defined program,set of instructions.
+    browser => html,css,JS
+* Browser following these instructions and produces output.
+* If we write wrong code it wont raises the error.
+* Tag is an end word, every tag name should be enclosed with <>.
+* EX:  <h1>, <img>, <table>
+        <button> Login </button>
+
+----> Types of tags:
+--------------------
+* Bascially tags are classified into 2-types.
+1.Paired tags.
+2.unpaired tags.
+
+1.Paired tags:
+---------------
+* It is a tag which has opening and closing tags.
+* These parent tags are called as body tags.
+    Syntax:
+        <tag></tag>
+EX: <h1>, <p>, <table>, <img>, <a>, <div>, <span>, <ul>, <ol>, <li>, <form>, <input>, <select>, <option>, <textarea>, <label>, <button>, <br>, <hr>, <hr/>, <meta>, <title>, <head>, <body>, <html>, <!DOCTYPE>, <script>, <style>, <link>, <meta>, <iframe>, <video>, <audio>, <canvas>, <svg>, <math>, <svg>, <math>, <svg>, <math>, <svg>, <math>, <svg>, <math>, <svg>, <math>, <svg>, <math>, <svg>, <math>, <svg>, <math>, <svg>,
+
+2. Unpaired Tags:
+------------------
+* It is a tag which has opening tags only.
+* These parent tags are called as self closing tags.
+* These tags are not having closing tags.
+* These tags are not having body tags.
+
+Syntax:
+        <tag/>
+* EX: <br> , <link/> , </meta>.............etc.
