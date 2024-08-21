@@ -43,3 +43,17 @@ Web Technologies are divided into 2 ways:
 * Generally to perform server side operations, like db , session, authentication operations.....etc.
 * EX: servelt,springmvc,django,php,nodejs,asp.net,perl,ruby.....etc.
 
+
+Server:
+-------
+* It is one type of computer(super).
+* It stores data, files, db, related projects(web site/application).
+* It provides data services to client machines.
+* Types of servers: web server , application server, db server , proxy servers,mailing server, dns server.....etc.
+
+Client:
+-------
+* It is a device (electronic, electric, auto.....)
+* client devices are supporting browsing.
+* EX : computer, tv, watch, projector, car, bike......etc.
+* It is interface/media between end-user and server.
