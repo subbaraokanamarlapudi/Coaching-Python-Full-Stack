@@ -1,0 +1,45 @@
+Web Tech (Frontend) :
+* There are 4  technologies are used to develop or design web sites or web applications.
+* These technologies are called as Frontend/Client side technology.
+
+HTML:
+* HTML stands for Hyper Text Markup Language. Version - 5
+* It is used to design structure of web pages.
+* It is used to design "Static web pages".
+
+CSS : 
+* CSS stands for Cascading style sheet. Version - 2
+* It is used to change the look and feel of web pages(make over) , animations,......etc.
+
+JAVASCRIPT:
+* Latest Version - 6 
+* It is used to make web pages dynamic.
+* It follows ECMAScript.
+* It is used to make web pages interactive.
+
+BOOTSTRAP:
+* Latest Version - 5
+* It is used to make web pages responsive.
+* It is used to make web pages mobile friendly.
+* It is the framework of CSS 
+
+Web Technologies are divided into 2 ways:
+
+1. Frontend Technologies (Client side):
+----------------------------------------
+* It is directly interactable to user those are called as "FET".
+* It is used to store in server, but translation,execution and producing output in client sysetem.
+* No need to download and install any software.
+* Generally to design the web pages.
+* EX: HTML,css,JS,bs,xml......etc
+
+
+2. Backend Technologies (server side):
+---------------------------------------
+* It doesnt store directly interactable to user those are called as "BET".
+* It is used to storing,translation,execution in server, but it producing output in client sysetem.
+* Need one core software and one web server/application server.
+* EX: Python + uvicorn.
+* Generally to perform server side operations, like db , session, authentication operations.....etc.
+* EX: servelt,springmvc,django,php,nodejs,asp.net,perl,ruby.....etc.
+
