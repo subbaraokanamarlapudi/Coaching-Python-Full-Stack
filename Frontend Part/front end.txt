@@ -111,3 +111,74 @@ EX: <h1>, <p>, <table>, <img>, <a>, <div>, <span>, <ul>, <ol>, <li>, <form>, <in
 Syntax:
         <tag/>
 * EX: <br> , <link/> , </meta>.............etc.
+
+STRUCTURE OF HTML:
+------------------
+* As per W3C org we have to follow the following structure of web design pages.
+
+<html>
+<head></head>
+<body></body>
+</html>
+
+* Generally structure of html having 3 sections are:
+1. Versioning section
+2. Head section.
+3. Body section.
+
+1. Versioning section:
+-----------------------
+* This is providing info to the browser which version we are using in web/program.
+* So browser is interprecting code and producing output as per given specification.
+
+2. Head section:
+-----------------
+* It contains page settings and configurations.
+* EX: title,link,base,css,meta..etc.
+
+3. Body section:
+-----------------
+* It contains page content.
+* EX: h1,h2,h3,h4,h5,h6,p,img,table,form,input,select,textarea,button,a,div,span,ul,ol,li,iframe,video,audio,canvas,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math,svg,math
+
+* COMMENT LINES:
+-----------------
+* Comments lines are to provide some description about our program
+* Comments lines are not executed by the browser.
+* Comments lines are not visible in the output.
+
+Syntax :   <!--Comments-->
+
+Heading Tags: 
+--------------
+* These tags are used to print data/text in heading format with different sizes.
+* HTML provides 6 heading tags, those are h1,h2,h3,h4,h5,h6
+* six tags are paired tags and block level elements.
+
+Syntax :  <h1>Text</h1>....................<h6>Text</h6>
+Note: Inside the body section we can repeat any tag and no.of times.
+
+<html>
+    <head>
+        <title> 
+            Welcome to my page
+        </title>
+    </head>
+
+    <body>
+        <h1>Welcome</h1>
+        <h2>Welcome</h2>
+        <h3>Welcome</h3>
+        <h4>Welcome</h4>
+        <h5>Welcome</h5>
+        <h6>Welcome</h6>
+    </body>
+</html>
+
+Paragraph Tag:
+--------------
+* 'p' means Paragraph
+* p tag used to print multiple lines of text.
+* p tag is a paired tag and block level element.
+
+Syntax:  <p> text or data </p>
