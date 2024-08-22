@@ -219,3 +219,54 @@ Inline element:
 * Inline elements do not force any new line
 * Inline elements continue the flow of the current line without any line breaks
 * EX: <span></span> , <a></a> , <button></button>......etc.
+
+Break Tag:
+----------
+* br stands for break line.
+* br tag used to move the cursor to the beginning of next line.
+* It is unpaired and block level tag.
+
+*EX: <br> (or) </br>
+
+HTML Entities:
+--------------
+* Entities nothing but special characters or operators.
+* Special characters are used to perform some task (or) to print some symbols.
+* Special characters are not allowed in html pages.
+* Special characters is a english word.
+
+Syntax : &word;
+        &frac34; , &divide 
+* Hexa decimal codes, these operators are starts with "#".
+  Hexa-dec base 16 ---> 0,1,2,3,4,5,6,7,8,9,a,b,c,d,e,f 
+
+Syntax : &#hex-code
+        &#6digits; &#4digits;
+        &#128526 ===> print emojis
+
+EX:
+
+<html>
+    <head>
+        <title> 
+            Welcome to my page
+        </title>
+    </head>
+
+    <body>
+        <b>Apple</b>
+        <br/>
+        Hello &nbsp; &nbsp;World <br/>
+        siva &nbsp; &nbsp; &nbsp; &nbsp; kumar</br>
+        100$</br>
+        100&#8377;</br>
+        100&pounds;
+        <br/>
+        100&euro; 
+        <br/>
+        core&copy; I9&Trade; Processor
+        <br/>
+        &#128511; &#128521; &#128531; &#128541;</br>
+        &#128555; &#128611; &#128710; &#128011;
+    </body>
+</html>
