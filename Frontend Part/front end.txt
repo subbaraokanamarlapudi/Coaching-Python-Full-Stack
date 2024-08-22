@@ -182,3 +182,40 @@ Paragraph Tag:
 * p tag is a paired tag and block level element.
 
 Syntax:  <p> text or data </p>
+* EX: 
+
+<html>
+    <head>
+        <title> 
+            Welcome to my page
+        </title>
+    </head>
+
+    <body>
+        <p>
+            Coding tells a machine which actions to perform and how to complete tasks.
+        </p>
+    </body>
+</html>
+
+* Difference between block element and inline element.
+-------------------------------------------------------
+Block element:
+--------------
+* It covers the whole horizontal line in which they are used.
+* Heights and widths are key properties that can be used with block elements.
+* It accepts the margins from all sides i.e top,bottom,left,right.
+* Block elements like div and semantic tags are extensively used for defining layouts od the web page.
+* It is force a new line before and after they are used.
+* Block elements break the flow of the current line by forcing line breaks.
+* EX: <div></div> , <h1></h1> , <p></p>......etc.
+
+Inline element:
+---------------
+* Inline elements cover only the area which is required for the content it holds.
+* Heights and widths are not considered for inline elements
+* Only left and right margins have an effect on inline elements
+* Inline elements are used generally to give inline styles and effects.
+* Inline elements do not force any new line
+* Inline elements continue the flow of the current line without any line breaks
+* EX: <span></span> , <a></a> , <button></button>......etc.
