@@ -270,3 +270,140 @@ EX:
         &#128555; &#128611; &#128710; &#128011;
     </body>
 </html>
+
+*** Formating Tags ***:
+* These tag used to change the look of text are called as presentational tags.
+
+1. Strong Tag (or) Bold Tag:
+----------------------------
+* To display the data is strong format (or) bold format.
+* It is a paired tag and inline element.
+
+Syntax :  <b> text </b>    (or)  <strong> text </strong>
+
+2. em tag (or) itallic tag:
+----------------------------
+* To display the data is italic format.
+* It is a paired tag and inline element.
+Syntax :  <em> text </em> (or) <i> text </i>
+
+3. insert tag (or) underlined tag:
+-------------------------------------
+* It is used to display the plain text with underline.
+* It is a paired tag and inline element.
+Syntax :  <ins> text </ins>  (or)  <u> text </u>
+
+4. delete tag:
+---------------
+* It is used to display the plain text with strike line.
+* It is a paired tag and inline element.
+Syntax :  <del> text </del>
+
+5. sub tag:
+------------
+* It is used to display the text in subscript
+* It is a paired tag and inline element.
+Syntax :  <sub> text </sub>
+
+6. sup tag:
+------------
+* It is used to display the text in superscript
+* It is a paired tag and inline element.
+Syntax :  <sup> text </sup>
+
+7. span tag:
+-------------
+* It is used to display the text in same line.
+* It is a paired tag and inline element.
+Syntax :  <span> text </span>
+
+8. pre-tag:
+-------------
+* It is used to display the text in same line.
+* It is a paired tag and block element.
+Syntax :  <pre> text </pre>
+
+--> Pre-tag is only the block-level tag. Remaining all tags are related to inline tags.
+
+EXAMPLE : 
+
+<html>
+    <head>
+        <title> 
+            Welcome to my page
+        </title>
+    </head>
+
+    <body>
+        <strong>HTML</strong>
+        <b>CSS</b>
+        <br/>
+        <i>JavaScript</i>
+        <em>Bootstrap</em>
+        <br/>
+        <u>ReactJS</u>
+        <ins>AngularJS</ins>
+        <br/>
+        <del>VueJS</del>
+        <s>NodeJS</s>
+        <br/>
+        <strike>MongoDB</strike>
+        <br/>
+        <small>ExpressJS</small>
+        <br/>
+        <big>Django</big>
+        <br/>
+        <tt>Flask</tt>
+        <br/>
+        <mark>Django</mark>
+        <br/>
+        <h3>H<sub>2</sub>SO<sub>4</sub></h3>
+        <h3>A<sup>2</sup>+B<sup>2</sup></h3>
+        <br/>
+        <span>ExpressJS</span>
+        <br/>
+        <pre>
+            This is a pre tag
+            Docker , NextJs framework
+        </pre>
+    </body>
+</html>
+
+* Title Tag:
+--------------
+* It is used to set a title for web pages,title displaying with in the tab 
+     FOR EXAMPLE : If a website contains 10 pages, there will be 10 titles
+* It is paired tag.
+* Title should be sub tag of head section.
+
+Syntax : <title> text </title>
+
+* Link Tag:
+------------
+* It is used to set a favicon/logo for web page.
+* It is unpaired tag.
+* Link should be sub tag of head section.
+
+Syntax : <link rel="icon" href="google.jpg">
+
+* HTML Attributes:
+-------------------
+* It is a special property of the tag, means tag setting.
+* Every tag has some attributes.
+* Using attributes we can change the default settings of tags like alignment,width,height,color,look.
+  we can give some instructions to the browser,some additional info,add functionality to the tags etc.
+
+Syntax :  <tag attribute="value" attribute="value"....>
+
+Note:
+-----
+* Right side of tag.
+* Every attribute should be seperated with some space.
+* Value we can enclosed with "" (or) '' (or) no quotes.
+
+Types of Attributes:
+---------------------
+1. Global Attributes
+2. Specific Attributes
+3. Optional Attribute
+4. Event Attributes
