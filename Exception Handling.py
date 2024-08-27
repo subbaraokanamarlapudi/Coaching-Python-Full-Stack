@@ -120,6 +120,102 @@ try:
 except ZeroDivisionError as msg:
 	print("Exception raised and it's description is:",msg)
 
+try with multiple except blocks:
+---------------------------------
+--> The way of handling exception is varied exception to exception. Hence for every exception type a separate except block we have to provide. i.e
+	try with multiple except block is possible and recommended.
+--> If try with multiple except blocks are available then based on raised exception the corresponding except block will be executed.
+
+try:
+	x = int(input('Enter first number:'))
+	y = int(input('Enter second number:'))
+	print(x/y)
+except ZeroDivisionError:
+	print("Can't devide with zero")
+except ValueError:
+	print('Pls provide int values')
+
+-->If try with multiple except blocks available then the order of these except blocks is important. Python interpreter will always consider top to bottom until matched except block identified.
+
+try:
+	x = int(input('Enter first number:'))
+	y = int(input('Enter second number:'))
+	print(x/y)
+except ArithmeticError:
+	print('ArithmeticError')
+except ZeroDivisionError:
+	print("ZeroDivisionError")
+    
+Single except block that can handle multiple exceptions:
+----------------------------------------------------------
+
+try:
+	x = int(input('Enter first number:'))
+	y = int(input('Enter second number:'))
+	print(x/y)
+except (ZeroDivisionError,ValueError) as msg:
+	print("Pls provide valid numbers only problem is:",msg)
+    
+-->We can use default except block to handle any type of exception.
+-->In default except block generally we can print normal error messages.
+
+Syn:
+		except:
+			statements
+
+try:
+	x = int(input('Enter first number:'))
+	y = int(input('Enter second number:'))
+	print(x/y)
+except ZeroDivisionError:
+	print("ZeroDivisionError:Can't devide with zero")
+except :
+	print('DefaultExcept:Pls provide valid input')
+
+Note:
+	If try with multiple except blocks available then the default except block should be last, otherwise we will get SyntaxError.
+						SyntaxError: default 'except:' must be last
+
+Various combinations of except block
+--------------------------------------------------------
+1.except ZeroDivisionError:
+2.except ZeroDivisionError as msg:
+3.except (ZeroDivisionError,ValueError):
+4.except (ZeroDivisionError,ValueError) as msg:
+5.except:
+
+
+finally block:
+----------------
+--> It is not recommend to maintain clean up code(Resource deallocation core or resource releasing code) inside try block because there is no guarantee for the execution of every statement inside try block always.
+--> It is not recommend to maintain clean up code inside except block, because if there is no exception then except block wont be executed.
+--> Hence we required some place to maintain clean up code which should be executed always irrespective of whether exception raised or not raised and whether exception handled or not handled.
+	such type of best place is nothing but finally block.
+--> Hence the main purpose of finally block is to maintain clean up code.
+
+Syn:
+	try:
+		Rsiky code
+	except :
+		Handling code
+	finally:
+		Clean up code
+
+Note:
+	There is only one situation where finally block wont be executed i.e whenever we are using os._exit(0) function.
+
+	Whenever we are using os._exit(0) function then PVM itself will be shutdown. In this particular case finally block won't be executed.
+
+import os
+try:
+	print('try')
+	os._exit(0)
+except NameError:
+	print('except')
+finally:
+	print('finally')
+
+os._exit(0):0 represents status code and it indicates normal termination.
 '''
 
 x = 10
@@ -138,3 +234,87 @@ try:
 except ZeroDivisionError:
     print(10/2)
 print('statement-3')
+
+try:
+    print(10/0)
+except ZeroDivisionError as msg:
+    print("Exception raised and it's description is:", msg)
+
+# Ex:
+
+try:
+    x = int(input('Enter first number:'))
+    y = int(input('Enter second number:'))
+    print(x/y)
+except ZeroDivisionError:
+    print("Can't devide with zero")
+except ValueError:
+    print('Pls provide int values')
+
+try:
+    x = int(input('Enter first number:'))
+    y = int(input('Enter second number:'))
+    print(x/y)
+except ArithmeticError:
+    print("Can't devide with zero")
+except ZeroDivisionError:
+    print('Pls provide int values')
+
+# Single except block that can handle multiple exceptions
+
+try:
+	x = int(input('Enter first number:'))
+	y = int(input('Enter second number:'))
+	print(x/y)
+except (ZeroDivisionError,ValueError) as msg:
+	print("Pls provide valid numbers only problem is:",msg)
+
+# Default except block:
+# ----------------------
+
+try:
+    x = int(input('Enter first number:'))
+    y = int(input('Enter second number:'))
+    print(x/y)
+except ZeroDivisionError:
+    print("ZeroDivisionError:Can't devide with zero")
+except :
+    print('DefaultExcept:Pls provide valid input')
+
+# finally block
+# ---------------
+
+# Case-1:If there is no exception
+# ----------------------------------------------
+try:
+	print('try')
+except:
+	print('except')
+finally:
+	print('finally')
+
+# o/p:try		finally
+
+# Case-2:If there is an exception raised but handled
+# ---------------------------------------------------------------------------
+try:
+	print('try')
+	print(10/0)
+except ZeroDivisionError:
+	print('except')
+finally:
+	print('finally')
+
+# o/p:try		except		finally
+
+# Case-3:If there is an exception raised but not handled
+# ---------------------------------------------------------------------------------
+try:
+	print('try')
+	print(10/0)
+except NameError:
+	print('except')
+finally:
+	print('finally')
+
+# o/p:try		finally		Abnormal termination.
