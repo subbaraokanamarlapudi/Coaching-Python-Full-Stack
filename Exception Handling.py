@@ -216,6 +216,83 @@ finally:
 	print('finally')
 
 os._exit(0):0 represents status code and it indicates normal termination.
+
+* Control floe of try-except -finally
+-------------------------------------------------
+try:
+	stmt-1
+	stmt-2
+	stmt-3
+except:
+	stmt-4
+finally:
+	stmt-5
+stmt-6
+
+Case-1:If there is no exception
+			1,2,3,5,6 Normal Termination
+
+Case-2:If an exception raised in stmt-2 and the corresponding except block matched.
+			1,4,5,6 Graceful termination
+
+Case-3:If an exception raised in stmt-2 and the corresponding except block not matched.
+			1,5 Abnormal termination
+
+Case-4:An exception raised at stmt-5 or stmt-6 then it is always abnormal termination.
+
+Case-5:An exception raised at stmt-4 then it always abnormal termination but before that finally block will be executed.
+
+Nested try-except-finally block:
+----------------------------------------------
+* Generally risky code we have to take inside outer try block and too much risky code we have to take inner try block.
+* Inside inner try block if any exception raised then inner except block is responsible to handle.
+* If unable to handle then outer except block is responsible to handle.
+
+try:
+	print('Outer try block')
+	try:
+		print('Inner try block')
+		print(10/0)
+	except NameError:
+		print('Inner except block')
+	finally:
+		print('Inner finally block')
+except:
+	print('Outer except block')
+finally:
+	print('Outer finally block')
+
+else block with try-except-finally:
+-------------------------------------------------
+-->We can use else block with try-except-finally block
+-->else block will be executed if and only if there are no exceptions inside try block.
+
+Syn:
+-------
+try:
+	Risky code
+except:
+	will be executed if exception inside try
+else:
+	will be executed if there is no exception inside try
+finally:
+	will be executed whether exception raised or notraised handled or not handled.
+
+Ex:
+-----
+try:
+	print('try')
+	print(10/0)===>Line-1
+except:
+	print('except')
+else:
+	print('else')
+finally:
+	print('finally')
+
+-->If we comment Line-1 then else block will be executed bcoz there is no exception inside try. In this case the output is:try	else	finally
+
+-->If we are not commenting Line-1 then else block wont be executed bcoz there is an exception inside try block. In this case output is:try		except		finally
 '''
 
 x = 10
@@ -318,3 +395,33 @@ finally:
 	print('finally')
 
 # o/p:try		finally		Abnormal termination.
+
+# Nested try-except-finally block
+# ----------------------------------------------
+try:
+	print('Outer try block')
+	try:
+		print('Inner try block')
+		print(10/0)
+	except NameError:
+		print('Inner except block')
+	finally:
+		print('Inner finally block')
+except:
+	print('Outer except block')
+finally:
+	print('Outer finally block')
+
+# else block with try-except-finally:
+# ----------------------------------------------
+
+try:
+	print('try')
+	print(10/0)
+	# print(10/0)===>Line-1
+except:
+	print('except')
+else:
+	print('else')
+finally:
+	print('finally')
