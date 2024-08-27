@@ -295,11 +295,11 @@ finally:
 -->If we are not commenting Line-1 then else block wont be executed bcoz there is an exception inside try block. In this case output is:try		except		finally
 '''
 
-x = 10
-if x == 10
-    print("Hi")
+# x = 10
+# if x == 10
+#     print("Hi")
 
-print 'Hi'
+# print 'Hi'
 
 print(10/0)  #==>ZeroDivisionError
 print(10/'ten')  #==>TypeError
