@@ -21,3 +21,5 @@
 * --------------------------------------------Core Python is completed------------------------------------------------
 
 * Exception Handling.
+* Logging Modules.
+  
