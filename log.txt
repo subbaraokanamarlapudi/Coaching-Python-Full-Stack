@@ -1,0 +1,11 @@
+WARNING:root:This is warning message
+ERROR:root:This is error message
+CRITICAL:root:This is critical message
+INFO:root:A new request came
+ERROR:root:division by zero
+Traceback (most recent call last):
+  File "d:\Coaching-Python-Full-Stack\Logging module.py", line 64, in <module>
+    print("The result:",x/y)
+                        ~^~
+ZeroDivisionError: division by zero
+INFO:root:Request processing completed
