@@ -136,3 +136,137 @@ print(type(lines))
 for line in lines:
 	print(line,end='')
 f.close()
+
+
+'''
+* with statement:
+-------------------
+* The with statement can be used while opening a file. we can use this to group file opeartion statement with a block.
+* The advantage of with statement is it will take care closing of file, after completing all operations automatically even in explicitly.
+
+EX:
+with open('abcd.txt','w') as f:
+	f.write('Naresh\n')
+	f.write('IT\n')
+	f.write('Technologies')
+	print('Is file is closed:',f.closed)
+print('Is file is closed:',f.closed)
+
+tell() and seek()
+-------------------
+
+1.tell(): To return the current position of the file pointer.
+
+f = open('abc.txt','r')
+print(f.tell())
+print(f.read(3))
+print(f.tell())
+
+
+2.seek(offset,from): To change the position of the file pointer.It is just like string index.
+
+data = 'All Students Are BAD'
+f = open('abc.txt','w')
+f.write(data)
+with open('abc.txt','r+') as f:
+	text = f.read()
+	print(text)
+	print('The current position:',f.tell())
+	f.seek(17)
+	print('The current position:',f.tell())
+	f.write('GEMS!!!!!')
+	f.seek(0)
+	text = f.read()
+	print('Data after modification')
+	print(text)
+'''
+
+with open('abcd.txt','w') as f:
+	f.write('Naresh\n')
+	f.write('IT\n')
+	f.write('Technologies')
+	print('Is file is closed:',f.closed)
+print('Is file is closed:',f.closed)
+
+# tell():
+
+f = open('abc.txt','r')
+print(f.tell())
+print(f.read(3))
+print(f.tell())
+
+# seek():
+
+data = 'All students are Bad'
+f = open('abc.txt','w')
+f.write(data)
+
+with open('abc.txt','r+') as f:
+    text = f.read()
+    print(text)
+    print('The current position:',f.tell())
+    f.seek(17)
+    print('The current position:',f.tell())
+    f.write('GEMS!!!!!')
+    f.seek(0)
+    text = f.read()
+    print('Data after modification')
+    print(text)
+
+# How to check a particular file exist or not ?
+# --------------------------------------------------
+
+# --> We can use os library to get information about files in our system.
+# --> os.path.isfile(filename) returns True if file exists otherwise False.
+#  syntax :         os.path.isfile(filename)
+
+# Q: W.A.P to check whether the given file exists or not. If it is available then print its
+
+import os
+import sys
+
+fname = input("Enter File Name: ")
+
+if os.path.isfile(fname):
+    print("File Exists:", fname)
+    f = open(fname, 'r')
+else:
+    print("File does not exist")
+    sys.exit(0)
+
+print('The content of the file is:')
+data = f.read()
+print(data)
+f.close()  
+
+# Q: W.A.P to print number of lines,words and characters present in given file ?
+
+import os,sys 
+fname = input("Enter File Name:")
+if os.path.isfile(fname):
+	print("File Exists:",fname)
+	f = open(fname,'r')
+else:
+	print("File does not exist")
+	sys.exit(0)
+
+lcount=wcount=ccount=0
+for line in f:
+	lcount=lcount+1
+	ccount=ccount+len(line)
+	words=line.split()
+	wcount=wcount+len(words)
+print('The number of lines:',lcount)
+print('The number of words:',wcount)
+print('The number of characters:',ccount)
+
+
+# Handling Binary Data:
+# ---------------------------------
+# w.a.p to read image file and write to a new image file.
+
+f1 = open('sunny.jpg','rb')
+f2 = open('newpic.jpg','wb')
+bytes = f1.read()
+f2.write(bytes)
+print('New image is available with the name:newpic.jpg')
