@@ -466,3 +466,41 @@ Syntax:
   2.Internal ------> It move one section to another section [same page]
 
 EX:
+<html>
+    <head>
+        <title>Frontend Part</title>
+    </head>
+
+    <body>
+        <h3>Anchor Tag</h3>
+        <a href="a.html"> Click Here </a>
+        <br>
+        <a href="b.html"> Click </a>
+        <br>
+        <a href="https://www.google.co.in/"> Google </a>
+        <br>
+        <a href="https://www.facebook.com/"> Facebook </a>
+        <br>
+        <a href="https://www.google.co.in/"><img src="images/google.jpeg"/>Google</a>
+
+
+    <h3 id="top">demo on internal hyperlinks</h3>
+	<a href="#tata">Tata Motors</a> &nbsp; 
+	<a href="#maruthi">Maruthi Motors</a>
+	<br> <br>
+	
+	<h1 id="tata">TATA Motoros</h1>
+	  info about tata
+
+	<h4 align="right">
+	  <a href="#top"> Top </a>
+	</h4>
+	
+	<h1 id="maruthi">Maruthi Motors</h1>
+	   info about maruthi
+	
+	<h4 align="right">
+	  <a href="#top"> Top </a>
+	</h4>
+    </body>
+</html>
