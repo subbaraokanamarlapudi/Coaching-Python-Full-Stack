@@ -407,3 +407,62 @@ Types of Attributes:
 2. Specific Attributes
 3. Optional Attribute
 4. Event Attributes
+
+EX:
+
+<html>
+    <head>
+        <title>Frontend Part</title>
+        <link rel="icon" href="images/google.jpeg"/>
+    </head>
+
+    <body bgcolor="lightgreen">
+        <h3 align="center"> Html attributes </h3>
+        <p align="justify">Hypertext Markup Language (HTML) is the standard markup language for documents designed to be displayed in a web browser. It defines the content and structure of web content. It is often assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript</p>
+        <button onclick="alert('hey, why you are clicking on me')">Click here</button>
+        <h1 id="head1" onmouseover="head1.innerText='Civil Engi'" onmouseout="head1.innerText='Siva Kumar Y'">
+            Siva Kumar Yarrapati
+        </h1>
+            
+        <h1 id="head2" onmouseout="head2.style.fontSize='32px'" onmouseover="head2.style.fontSize='40px'">
+        UI Tech
+        </h1>
+    </body>
+</html>
+
+Image Tag:
+------------
+* By using img tag we can display images in our website.
+* we can display all types of images
+* It is unpaired and inline tag.
+* imag tag can write in body tag only
+
+<html>
+    <head>
+        <title>Frontend Part</title>
+        <link rel="icon" href="images/google.jpeg"/>
+    </head>
+
+    <body>
+        <h3> Displaying Images </h3>
+        <img src="images/car.jpeg"/>
+        <img src="images/leaf.jpeg" alt="leaf"/>
+        <img src="images/sun.png" width="500px" height="360px"/>
+    </body>
+</html>
+
+Anchor Tag:
+-----------
+* It is used to create hyperlinks
+* hyperlinks is used to navigations of links
+* paired and inlilne tag.
+
+Syntax:
+<a href="url">text</a>
+<a href="url"><img/></a>
+
+* There are 2-types of hyperlinks are there:
+  1.External ----> It move one page to another page [2 different pages]
+  2.Internal ------> It move one section to another section [same page]
+
+EX:
