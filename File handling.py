@@ -270,3 +270,139 @@ f2 = open('newpic.jpg','wb')
 bytes = f1.read()
 f2.write(bytes)
 print('New image is available with the name:newpic.jpg')
+
+# Handling CSV files:
+# =================
+# 			CSV==>Comma Separated Values
+# 			To handle CSV files python provides module:csv
+
+# Writting data to csv file:
+# ------------------------------------
+
+import csv
+with open('emp.csv','w',newline='') as f:
+	w = csv.writer(f)#Return csv write object pointing to f
+	w.writerow(['ENO','ENAME','ESAL','EADDR'])
+	n = int(input('Enter number of employees:'))
+	for i in range(n):
+		eno = input('Enter Employee No:')
+		ename = input('Enter Employee Name:')
+		esal = input('Enter Employee Salary:')
+		eaddr = input('Enter Employee Address:')
+		w.writerow([eno,ename,esal,eaddr])
+print('Total employees data written to csv file successfully.....')
+
+# Note:Observe the difference with newline attribute and without.
+
+# with open('emp.csv','w',newline='') as f:
+# with open('emp.csv','w') as f:
+
+# -->If we are not using newline attribute then in the csv file blank lines will be included between data. To prevent these blank lines, newline attribute is required.
+
+# Reading data from csv file:
+# ----------------------------------------
+
+import csv
+f = open('emp.csv','r')
+r = csv.reader(f)#Returns csv reader object
+print(type(r))
+data = list(r)
+for line in data:
+	for word in line:
+		print(word,'\t',end='')
+	print()
+
+# Zipping and Unzipping files:
+# -----------------------------------------
+# -->The main advantages are:
+# 	1).To improve memory utilization.
+# 	2).We can reduce transport time.
+# 	3).We can improve performance.
+# -->To perform zip and unzip operations, python contains one in-built module zipfile. This module contains ZipFile class.
+
+# To create zip file:
+# --------------------------
+# -->We have to create ZipFile class object with name of the zip file, mode and constant ZIP_DEFLATED. This constant represents we are creating zip file.
+# 						f = ZipFile('files.zip','w',ZIP_DEFLATED)
+# -->Once we created ZipFile object, we can add files by using write() method.
+# 						f.write(filename)
+	
+from zipfile import *
+f = ZipFile('files.zip','w',ZIP_DEFLATED)
+f.write('cricketers.txt')
+f.write('heroes.txt')
+f.write('social.txt')
+print('files.zip file created successfully.....')
+
+# To perform unzip operation:
+# ------------------------------------------
+# -->We have to create ZipFile object as:
+# 					f = ZipFile('files.zip','r',ZIP_STORED)
+# -->ZIP_STORED represents unzip operation. This is the default value and hence we are not required to specify.
+# -->Once we create ZIpFile object for unzip operation, we can get all file names present in that zip file by using namelist() method.
+# 					names = f.namelist()
+
+from zipfile import *
+f = ZipFile('files.zip','r',ZIP_STORED)
+f.extractall()
+names = f.namelist()
+print(names)
+for name in names:
+	print('File Name:',name)
+	print('The content in the file is:')
+	f1 = open(name,'r')
+	print(f1.read())
+	print()
+
+# Working with directories:
+# -------------------------------------
+# -->To know the current working directory.
+# -->To create a new directory.
+# -->To remove an existing directory.
+# -->To rename a directory.
+# -->To list content of directory.
+# etc.............
+
+# To perform these operations python provides in-built module:os, which contains several methods to perform directory related operations.
+
+# Q.To know the current working directory
+# --------------------------------------------------------------
+import os
+cwd = os.getcwd()
+print('Current working directory:',cwd)
+
+# Q.To create a sub directory in the current working directory
+# -----------------------------------------------------------------------------------------
+import os
+os.mkdir('sunny')
+print('My sub dir created cwd')
+
+# Q.To create sub dir in sunny dir
+# ------------------------------------------------
+import os
+os.mkdir('sunny/bunny')
+print('My sub dir created inside sunny')
+
+# Q.To create multiple dirs like sub1 in that sub2 in that sub3
+# -----------------------------------------------------------------------------------------
+import os
+os.makedirs('sub1/sub2/sub3')
+print('sub1 sub2 sub3 dirs created')
+
+# Q.To remove a directory
+# -------------------------------------
+import os
+os.rmdir('sunny/bunny')
+print('bunny was deleted')
+
+# Q.To remove sub directories
+# ------------------------------------------
+import os
+os.removedirs('sub1/sub2/sub3')
+print('All 3- directories sub1,sub2,sub3 removed')
+
+# Q.To rename a directory
+# -------------------------------------
+import os
+os.rename('sunny','bunny')
+print('sunny renamed as bunny')
