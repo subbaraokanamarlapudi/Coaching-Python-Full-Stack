@@ -406,3 +406,64 @@ print('All 3- directories sub1,sub2,sub3 removed')
 import os
 os.rename('sunny','bunny')
 print('sunny renamed as bunny')
+
+
+# Q.To know content of directory?
+# ------------------------------------------------
+# We can use listdir() to list out the contents of the specified directory. It won't display the content of sub directory.
+
+import os
+print(os.listdir('.'))
+
+# -->If we want the content of a directory including sub directories then we should go for walk() function.
+
+# Ex:To display all contents of current directory including sub dirs.
+# --------------------------------------------------------------------------------------------------
+import os
+for dirpath,dirnames,filenames in os.walk('.'):
+	print('Current directory path:',dirpath)
+	print('Directories:',dirnames)
+	print('Files:',filenames)
+	print()
+
+# Note:
+# 	To display contents of a particular directory, we have to provide that directory name as argument to walk() function.
+# 							os.walk('dirname')
+
+# Q.What is the difference between listdir() and walk() functions?
+# ---------------------------------------------------------------------------------------------
+# 	In case of listdir(), we will get contents of specified directory but not sub directory contents. But in the case of walk() function we will get contents of specified directory and it's sub sirectories also.
+
+# Running other programs from the python program
+# ----------------------------------------------------------------------------
+# -->os module contains system() function to run the programs and commands.
+# -->It is exactly same as system() function in C-Language.
+# Syn:
+# 		os.system('command string')
+# -->The argument is any command which is executing from DOS.
+
+import os
+os.system('dir *.py')
+os.system('py test1.py')
+
+# How to get information about file:
+# ---------------------------------------------------
+# We can get statistics of a file like size, last accessed time, last modified time etc..by using stat() function of os module.
+
+import os
+stats = os.stat('abc.txt')
+print(stats)
+
+# Note:
+# 	st_atime,st_mtime and st_ctime returns the time as number of milliseconds since Jan 1st 1970, 12:00AM(Epoche Time Standard). By using datetime module fromtimestamp() function, we can get exact date and time.
+
+# Ex:To print specified properties
+# ------------------------------------------------
+import os
+from datetime import *
+stats = os.stat('abc.txt')
+print('File Size in Bytes:',stats.st_size)
+print('File Last Accessed Time:',datetime.fromtimestamp(stats.st_atime))
+print('File Last Modified Time:',datetime.fromtimestamp(stats.st_mtime))
+
+# Pickling and Unpickling of objects?
