@@ -508,3 +508,152 @@ t1.m1()
 print('t1:',t1.a,t1.b)#333 20
 print('t2:',t2.a,t2.b)#333 20
 print(Test.a,Test.b)#333 999
+
+# How to delete static variables of a class?
+# ------------------------------------------------------------
+# We can delete static variables from anywhere by using ClassName.
+# 				del ClassName.variablename
+
+# But inside classmethod we can also use cls variable.
+# 				del cls.variablename
+# Ex:
+
+class Test:
+	a = 10
+	@classmethod
+	def m1(cls):
+		del cls.a
+Test.m1()
+print(Test.__dict__)
+
+# Ex:
+class Test:
+	a = 10
+	def __init__(self):
+		Test.b = 20
+		del Test.a
+	def m1(self):
+		Test.c = 30
+		del Test.b
+	@classmethod
+	def m2(cls):
+		Test.d = 40
+		del Test.c
+	@staticmethod
+	def m3():
+		Test.e = 50
+		del Test.d
+t = Test()
+t.m1()
+t.m2()
+t.m3()
+del Test.e
+print(Test.__dict__)
+
+# Note:
+# 	By using object reference variable or self we can read static variables, but we cannot modify or delete.
+	
+# 	If we are trying to modify, then a new instance variable will be added to that particular object.
+	
+# 	If we are trying to delete then we will get an error.
+
+# Ex:
+class Test:
+	a = 10
+t = Test()
+del t.a #AttributeError: a
+
+# -->We can modify or delete static variables only by using ClassName od cls variable.
+
+# Ex:
+import sys
+class Customer:
+	'''Customer class with bank operations.....'''
+	bank_name = 'SunnyBank'
+	def __init__(self,name,balance=0.0):
+		self.name = name
+		self.balance = balance
+	def deposit(self,amt):
+		self.balance += amt
+	def withdraw(self,amt):
+		if amt > self.balance:
+			print("Insufficient funds...can't perform this operation")
+			sys.exit()
+		self.balance -= amt
+		print('Balance after withdraw:',self.balance)
+print('Welcome to',Customer.bank_name)
+name = input('Enter Your Name:')
+c = Customer(name)
+while True:
+	print('d-Deposit\nw-Withdraw\ne-Exit')
+	option = input('Enter your option:')
+	if option == 'd' or option == 'D':
+		amt = float(input('Enter amount:'))
+		c.deposit(amt)
+	elif option == 'w' or option == 'W':
+		amt = float(input('Enter amount:'))
+		c.withdraw(amt)
+	elif option == 'e' or option == 'E':
+		print('Thanks for Banking!!!!!!!!!!!')
+		sys.exit()
+	else:
+		print('Invalid option.....Pls choose valid option')
+
+# 3).Local Variables:
+# ---------------------------
+# -->Sometimes to meet temporary requirements of programmer, we can declare variables inside a method directly, such type of variables are called local variables or temporary variables.
+# -->Local variables will be created at the time of method execution and destroyed once method completes.
+# -->Local variables of a method cannot be accessed from outside of method.
+
+# Ex:
+class Test:
+	def m1(self):
+		a = 1000
+		print(a)
+	def m2(self):
+		b = 2000
+		print(b)
+		print(a)#NameError: name 'a' is not defined
+t = Test()
+t.m1()
+t.m2()
+
+
+# Types of methods:
+# 	1.Instance methods
+# 	2.Class methods
+# 	3.Static methods
+
+# 1.Instance methods:
+# -------------------------------
+# -->Inside method implementation if we are using instance variables then such type of methods are called as instance methods. Inside instance method declaration, we have to pass self variable.
+# 							def m1(self):
+# -->By using self variable inside method we can able to access instance variables.
+# -->Within the class we can call instance methods by using self variable and from outside of the class we can call by using object reference.
+
+# Ex:
+
+class Student:
+	def __init__(self,name,marks):
+		self.name = name
+		self.marks = marks
+	def display(self):
+		print('Hi',self.name)
+		print('Your marks are:',self.marks)
+	def grade(self):
+		if self.marks >= 60:
+			print('You got First Grade')
+		elif self.marks >= 50:
+			print('You got Second Grade')
+		elif self.marks >= 35:
+			print('You got Third Grade')
+		else:
+			print('Congrats you are failed....')
+n = int(input('Enter number of students:'))
+for i in range(n):
+	name = input('Enter Name:')
+	marks = int(input('Enter Marks:'))
+	s = Student(name,marks)
+	s.display()
+	s.grade()
+	print()
