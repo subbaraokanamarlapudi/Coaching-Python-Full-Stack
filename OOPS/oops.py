@@ -657,3 +657,126 @@ for i in range(n):
 	s.display()
 	s.grade()
 	print()
+
+# setter and getter methods:
+# -------------------------------
+# We can set and get the values of instance variable by using setter and getter methods.
+
+#  setter method:
+# ----------------------
+# It can be used to set the instance variable, setter method also known as mutator method.
+# Syn:
+# 		def set_variable(self,variable):
+# 			self.variable = variable
+
+# Getter method:
+# -----------------------
+# 	It can be used to get values of the instance variables. Getter method also known as accessor method.
+# Syn:
+# 		def get_variable(self):
+# 			return self.variable
+
+# Examle on setter and getter method:
+# -------------------------------------
+
+class Student:
+    def set_name(self, name):
+        self.name = name
+
+    def get_name(self):
+        return self.name
+
+    def set_marks(self, marks):
+        self.marks = marks
+
+    def get_marks(self):
+        return self.marks
+
+l = []
+n = int(input("Enter number of students: "))
+for i in range(n):
+    s = Student()
+    name = input("Enter name: ")
+    s.set_name(name)
+    marks = int(input("Enter marks: "))
+    s.set_marks(marks)
+    l.append(s)
+
+# Display details of all students
+for s in l:
+    print("Name:", s.get_name())
+    print("Marks:", s.get_marks())
+    print()
+    
+# 2).Class Methods:
+# --------------------------
+# -->Inside method implementation if we are using only class variables(static variables) then such type of methods we should declare as classmethod.
+# -->We can declare classmethod explicitly by using @classmethod decorator. For classmethod we should provide cls variable at the time of declaration.
+# -->We can call classmethod by using ClassName or object reference variable.
+
+# Ex:
+class Animal:
+	legs = 4
+	@classmethod
+	def walk(cls,name):
+		print('{} walks with {} legs'.format(name,cls.legs))
+Animal.walk('Dog')
+Animal.walk('Cat')
+
+# w.a.p to track the number of objects created for a class
+# -----------------------------------------------------------------------------------
+class Test:
+	count = 0
+	def __init__(self):
+		Test.count += 1
+	@classmethod
+	def no_of_objects(cls):
+		print('The number of objects created for Test class:',cls.count)
+t1 = Test()
+t2 = Test()
+Test.no_of_objects()
+t3 = Test()
+t4 = Test()
+Test.no_of_objects()
+
+# 3).Static Methods:
+# ---------------------------
+# -->These methods are general utility methods. Inside these methods we wont use any instance or class variables. Here we wont provide self or cls args at the time of declaration.
+# -->We can declare static method explicitly by using @staticmethod decorator. We can access static methods by using ClassName or object reference.
+
+# Note:
+	# In general we can use only instance and static methods. Inside static method we can access class level variables by using ClassName.
+	# class methods are rarely used methods in python.
+
+# Ex:
+class MaheshMath:
+	@staticmethod
+	def add(x,y):
+		print('The sum is:',x+y)
+	
+	@staticmethod
+	def product(x,y):
+		print('The product is:',x*y)
+
+MaheshMath.add(10,20)
+MaheshMath.product(10,2)
+
+# Passing members of one class to another class:
+# ----------------------------------------------------------------------
+# We can access members of one class inside another class.
+
+class Employee:
+	def __init__(self,eno,ename,esal):
+		self.eno = eno
+		self.ename = ename
+		self.esal = esal
+	def display(self):
+		print('Employee Number:',self.eno)
+		print('Employee Name:',self.ename)
+		print('Employee Salary:',self.esal)
+class Test:
+	def modify(emp):
+		emp.esal += 8000
+		emp.display()
+e = Employee(101,'Sunny',12000)
+Test.modify(e)
