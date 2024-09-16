@@ -780,3 +780,151 @@ class Test:
 		emp.display()
 e = Employee(101,'Sunny',12000)
 Test.modify(e)
+
+'''
+Inner Classes:
+----------------
+* Sometimes we can declare a class inside another class, such type of classes are called inner classes.
+* without exisiting one type of object if there is no chance of exisiting another type of object, then we should go for inner classes.
+
+Ex-1:Without existing Car object there is no chance of existing Engine object. Hence Engine class should be part of Car class.
+			class Car:
+				class Engine:
+
+Ex-2:Without existing University object there is no chance of existing Department object.
+			class University:
+				class Department:
+
+Ex-3:Without existing Human there is no chance of existing Head. Without Head no chance of Brain.
+			class Human:
+				class Head:
+					class Brain:
+
+Note:
+-----
+* without existing outer class object there is no chance of exisiting inner class object. Hence Inner class object is always associated with outer class object.
+'''
+
+# Example:
+
+class Outer:
+    def __init__(self):
+        print("Outer class object creation...")
+    
+    class Inner:
+        def __init__(self):
+            print('Inner class object creation...')
+        
+        def m1(self):
+            print('Inner class m1() method')
+
+o = Outer()
+i = o.Inner()
+i.m1()
+
+i = Outer().Inner()
+i.m1()
+
+Outer().Inner().m1()
+
+# Example - 1
+
+class Human:
+    def __init__(self):
+        self.name = 'sunny'
+        self.head = self.Head()
+        self.brain = self.Head().Brain()
+    
+    def display(self):
+        print('Hello, my name is', self.name)
+        self.head.talk()
+        self.brain.think()
+    class Head:
+        def talk(self):
+            print('Talking...')
+        class Brain:
+            def think(self):
+                print('Thinking...')
+
+h = Human()
+h.display()
+
+# Nested methods:
+# ----------------
+# * Nested Method : A method inside the method.
+# * Purpose : To define method specific repeatedly required functionality.
+
+# Example : 
+
+class Test:
+    def m1(self):
+        def calc(a,b):
+            print('The sum is:',a+b)
+            print('The product is:',a*b)
+            print()
+        calc(10,20)
+        calc(100,200)
+
+t = Test()
+t.m1()
+
+'''
+Garbage Collections:
+----------------------
+-->In old langauges like C++ programmer is responsible for both creation and destruction of objects. Usually programmer is taking very much care while creating object, but neglecting destruction of useless objects. 
+Because of this total memory can be filled with useless objects which creates memory problems and total performance will be down with 'out of memory' error
+
+-->But in python we have some assiatant which is always running in the background to destroy useless objects. Because of this assistant the chance of failing python program with memory problems is very less. This is assistant is nothing but 
+Garbage Collector(GC).
+
+-->The main objective of GC is destroy useless objects.
+
+-->If an object does not have any reference variable then that object is eligible for GC.
+
+How to enable and disable GC in our program?
+---------------------------------------------------------------------
+Bydefault GC is enabled, but we can disable based on our requirement. In this context we can use the functions of gc module.
+
+import gc
+class Test:
+	print(gc.isenabled())
+	gc.disable()
+	print(gc.isenabled())
+	gc.enable()
+	print(gc.isenabled())
+
+
+Destructor:
+-----------------
+-->Destrucor is a special method and the name of should be __del__(). Just before destroying an object GC always calls destructor to perform clean up activities(Resource deallocation activities like close database connection etc).
+-->Once destructoe execution completed then GC automatically destroy that object.
+
+Note:
+	The job of destructor is not destroy object and it is just to perform clean up activities.
+'''
+
+# Example : 1
+
+import time 
+class Test:
+    def __init__(self):
+        print('Object Initialization...')
+    def __del__(self):
+        print('Fulfilling last wish and performing clean up activities')
+
+t = Test()
+t = None
+time.sleep(10)
+print('End of application')
+
+# Example : 2
+
+import time
+class Test:
+	def __init__(self):
+		print('Constructor Exection......')
+	def __del__(self):
+		print('Destructor Execution.......')
+l = [Test(),Test(),Test()]
+time.sleep(5)
+print('End of application...')
