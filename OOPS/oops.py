@@ -928,3 +928,21 @@ class Test:
 l = [Test(),Test(),Test()]
 time.sleep(5)
 print('End of application...')
+
+
+# How to find number references of an object:
+# --------------------------------------------------
+# sys module contains getrefcount() function
+
+# Example : 
+
+import sys
+class Test:
+    pass
+t1 = Test()
+t2 = t1
+t3 = t1
+t4 = t1
+print(sys.getrefcount(t1))
+
+# Note : For every object, pytho internally maintains one default reference variable self.
