@@ -142,3 +142,5 @@ class C(P):
 
 c1 = C()
 print(c1.a,c1.b,c1.c,c1.d)
+
+# If we comment line-1 then variable 'b' is not available to the child class.
