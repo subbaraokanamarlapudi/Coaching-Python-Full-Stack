@@ -22,5 +22,8 @@
 
 * Exception Handling.
 * Logging Modules.
-* File handling 
+* File handling.
+* OOPS 
+   -> oops - 1 ===> Basic oops concepts like class,object,constructor,methods,Inner classes and variables
+   -> oops - 2 ===> IS-A and HAS-A relationships and inheritance and types of inheritance, super() method , MRO(Method Resolution Order) , Composition vs Aggregation
   
