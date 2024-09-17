@@ -121,3 +121,24 @@ print(c.b)
 c.m1()
 c.m2()
 c.m3()
+
+# * In the above example Parent class contains 10-methods and these methods automatically available to the child class and 
+# these methods automatically available to the child class and we are not required to re-write those methods(code re-usability). Hence child class contains 15-methods.
+
+# similarly variables also.
+
+# Example 2:
+
+class P:
+    a = 10
+    def __init__(self):
+        self.b = 20
+
+class C(P):
+    c = 30
+    def __init__(self):
+        super().__init__()
+        self.d = 40
+
+c1 = C()
+print(c1.a,c1.b,c1.c,c1.d)
