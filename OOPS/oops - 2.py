@@ -518,6 +518,7 @@ class P:
     def __init__(self):
         self.b = 20
 
+
 class C(P):
     def m1(self):
         print(super().a)
@@ -527,3 +528,88 @@ class C(P):
 
 c = C()
 c.m1()
+
+
+'''
+Method Resolution Order(MRO):
+-------------------------------
+* In hybrid inheritance the method resolution order is decided based on MRO algorithm.
+* The algorithm is also known as C3 algorithm
+* SAMUELE PEDRONI  proposed this algorithm.
+* It follows DLR(Depth First Left to Right).
+* That is child will get more priority than parent.
+* Left parent will get more priority than right parent
+*        MRO(X) = X + Merge(MRO(P1),MRO(P2),..........,ParentList)
+
+
+ Head element vs Tail Terminology:
+ ----------------------------------
+* Assume C1,C2,C3,..............., are classes
+* In the list: C1C2C3C4C5....................
+* C1 is considered as Head element and remaining is considered as tail.
+
+How to find Merge:
+-------------------
+* Take the head of the first list.
+* If the head is not in the tail part of any other list, then add this head to result and remove it from the lists in the merge.
+* If the head is present in the tail part of any other list, then consider the head element of the next list and continue the same process.
+
+Note:
+------
+* We can find MRO of any class by using mro() function.
+
+syntax:  print(ClassName.mro())
+'''
+
+# EX - 1
+
+class A:pass
+class B(A):pass
+class C(A):pass
+class D(B,C):pass
+print(D.mro())
+
+# EX - 2    
+
+# Finding mro(P) by using C3 algorithm:
+# ---------------------------------------------------------
+# MRO(X) = X + Merge(MRO(P1),MRO(P2),....,ParentList)
+
+# mro(P)	= P + Merge(mro(X),mro(Y),mro(C),XYC)
+# 			= P + Merge(XABO,YBCO,CO,XYC)
+# 			= P + X + Merge(ABO,YBCO,CO,YC)
+# 			= P + X + A + Merge(BO,YBCO,CO,YC)
+# 			= P + X + A + Y + Merge(BO,BCO,CO,C)
+# 			= P + X + A + Y + B + Merge(O,CO,CO,C)
+# 			= P + X + A + Y + B + C + O
+
+# ----------
+class A:pass
+class B:pass
+class C:pass
+class X(A,B):pass
+class Y(B,C):pass
+class P(X,Y,C):pass
+print(P.mro())
+
+# Ex-3:
+# --------
+# mro(D)=D,object
+# mro(E)=E,object
+# mro(B)=B,DE,object
+# mro(C)=C,D,F,object
+# mro(A)=A + Merge(mro(B),mro(C),BC)
+# 		  =A + Merge(BDEO,CDFO,BC)
+# 		  =A + B + Merge(DEO,CDFO,C)
+# 		  =A + B + C + Merge(DEO,DFO)
+# 		  =A + B + C + D + Merge(EO,FO)
+# 		  =A + B + C + D + E + Merge(O,FO)
+# 		  =A + B + C + D + E + F + O
+
+class D:	pass
+class E:	pass
+class F:pass
+class B(D,E):pass
+class C(D,F):pass
+class A(B,C):pass
+print(A.mro())
