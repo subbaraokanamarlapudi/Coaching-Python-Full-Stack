@@ -309,3 +309,221 @@ class Student(Person):
     
 s = Student('sunny',25,101,98)
 print(s)
+
+'''
+TYPES OF INHERITANCE :
+-----------------------
+
+1. Single Inheritance:
+------------------------
+* The concept of inheriting the properties from one class to another class is known as single inheritance.
+
+2. Multi-level Inheritance:
+--------------------------
+* The concept of inheriting the properties from multiple classes to single class with the concept of one after another is known as multi-level inheritance.
+
+3. Hierarchical Inheritance:
+------------------------------
+* The concept of inheriting properties from one class into multiple classes which are present at the same level is know as hierarchical inheritance.
+
+4. Multiple Inheritance:
+--------------------------
+* The concept of inheriting the properties from multiple classes into single class at a time, is know as multiple inheritance.
+* If the same method is inhertied from the both parent classes,then python will always consider the order of parent classes in the declartion of the child class.
+
+                class C(P1,P1):==>P1 method will be considered.
+				class C(P2,P1):==>P2 method will be considered.
+
+5. Hybrid Inheritance:
+-----------------------
+* The combiniation of single, multiple-level, multiple and hierarchical inheritance is known as hybrid inheritance.
+
+6. Cyclic Inheritance:
+-----------------------
+* The concept of inheriting properties from class to another class in cyclic way, is called as cyclic inheritance.
+* Python wont support cyclic inheritance of course it is really not required.
+
+'''
+
+# 1. Single Inheritance :
+# ---------------------------
+
+class P:
+    def m1(self):
+        print('Parent Method')
+
+class C(P):
+    def m2(self):
+        print('Child Method')
+
+c = C()
+c.m1()
+c.m2()
+
+
+# 2. Multi-level Inheritance:
+# ------------------------------
+
+class P:
+    def m1(self):
+        print("Parent Method")
+
+class C(P):
+    def m2(self):
+        print("Child Method")
+
+class CC(C):
+    def m3(self):
+        print("Sub Child Method")
+
+c = CC()
+c.m1()
+c.m2()
+c.m3()
+
+# 3. Hierarchical Inheritance:
+
+class P:
+    def m1(self):
+        print("Parent Method")
+
+class C1(P):
+    def m2(self):
+        print("Child-1 Method")
+
+class C2(P):
+    def m3(self):
+        print("Child-2 Method")
+
+c1 = C1()
+c1.m1()
+c1.m2()
+c2 = C2()
+c2.m1()
+c2.m3()
+
+# 4. Multiple Inheritance:
+
+class P1:
+    def m1(self):
+        print("Parent-1 Method")
+
+class P2:
+    def m2(self):
+        print("Parent-2 Method")
+
+class C(P2,P1):
+    def m3(self):
+        print("Child Method")
+
+c = C()
+c.m1()
+c.m2()
+c.m3()
+
+class P1:
+	def m(self):
+		print('Parent-1 Method')
+class P2:
+	def m(self):
+		print('Parent-2 Method')
+class C(P2,P1):
+	def m1(self):
+		print('Child Method')
+c = C()
+c.m()
+c.m1()
+
+# 6. Cyclic Inheritance:
+# -----------------------
+
+# Ex-1
+# class A(A):pass
+# # NameError: name 'A' is not defined
+
+# # Ex-2:
+# class A(B):
+# 	pass
+# class B(A):
+# 	pass
+# # NameError: name 'B' is not defined
+
+# super() method:
+# ==============
+# 	super() is a built-in method which is useful to call the super class constructors, variables and methods from the child class.
+
+# EX : 1
+# ---------
+
+class Person:
+    def __init__(self,name,age):
+        self.name = name
+        self.age = age
+    
+    def display(self):
+        print('Name:',self.name)
+        print('Age:',self.age)
+
+class Student(Person):
+    def __init__(self,name,age,rollno,marks):
+        super().__init__(name,age)
+        self.rollno = rollno
+        self.marks = marks
+
+    def display(self):
+        super().display()
+        print('Rollno:',self.rollno)
+        print('Marks:',self.marks)
+
+s = Student('Durga',48,101,100)
+s.display()
+
+# EX - 2 :
+
+class P:
+    a = 10
+    def __init__(self):
+        self.b = 20
+    
+    def m1(self):
+        print("Parent Instance Method")
+    
+    @classmethod
+    def m2(cls):
+        print("Parent Class Method")
+
+    @staticmethod
+    def m3():
+        print("Parent Static Method")
+
+class C(P):
+    a = 333
+
+    def __init__(self):
+        self.b = 999
+        super().__init__()
+        print(super().a)
+        super().m1()
+        super().m2()
+        super().m3()
+
+
+c = C()
+
+# From the child class we are not allowed to access parent. Class instance variable by using super(), Compulsory we should use self only.
+# But we can access parent class static variable by using super().
+
+class P:
+    a = 10
+    def __init__(self):
+        self.b = 20
+
+class C(P):
+    def m1(self):
+        print(super().a)
+        # print(super().b)  #Invalid
+        super().__init__()
+        print(self.b)
+
+c = C()
+c.m1()
