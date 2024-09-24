@@ -96,8 +96,8 @@ What is the type of obj?
 # 	We can use same operator for multiple purposes, which is nothing but operator overloading.
 
 # Ex:
-	10 + 20 #30
-	'10' + '20' #'1020'
+	# 10 + 20 #30
+	# '10' + '20' #'1020'
 
 # Ex:To use + operator for our class objects
 # ---------------------------------------------------------------
@@ -161,3 +161,147 @@ e = Employee('Sunny',800)
 t = TimeSheet('Sunny',25)
 print('This month salary:',e * t)
 print('This month salary:',t * e)
+
+
+# 2. Method Overloading:
+# --------------------------
+# * If the 2-methods having same name but different type of args then those methods are said to be overloaded methods.
+
+# Ex:
+# 		m1(int a)
+# 		m1(float a)
+
+# * But in python method overloading is not possible.
+# * If we are trying to declare multiple methods with same name and different type of args then python will always consider only last method.
+
+# Ex:
+
+class Test:
+    def m1(self):
+        print('no-arg method')
+    def m1(self,a):
+        print('one-arg method')
+    def m1(self,a,b):
+        print('two-arg method')
+
+t = Test()
+t.m1() #Test.m1() missing 2 required positional arguments: 'a' and 'b'
+t.m1(10) #Test.m1() missing 1 required positional argument: 'b'
+t.m1(10,20) #two-args method
+
+# How we can handle overloaded method requirement in python:
+# ------------------------------------------------------------
+# * Most of the times, if method with number of args required then we can handle with default args or with variable number of args methods. 
+
+class Test:
+    def sum(self,a=None,b=None,c=None):
+        if a!=None and b!=None and c!=None:
+            print('The sum of 3 numbers:',a+b+c)
+        elif a!=None and b!=None:
+            print('The sum of 2 numbers:',a+b)
+        else:
+            print('Please provide 2 or 3 arguments')
+
+t = Test()
+t.sum(10,20,30)
+t.sum(10,20)
+t.sum(10)
+t.sum()
+
+# Ex:with variable number of args
+# ------------------------------------------------
+class Test:
+	def sum(self,*a):
+		total = 0
+		for x in a:
+			total += x
+		print('The sum is:',total)
+t = Test()
+t.sum(10,20,30)
+t.sum()
+t.sum(10)
+t.sum(1,2,3,4,5,6,7,8,9)
+
+# 3).Constructor Overloading:
+# -----------------------------------------
+# -->Constructor overloading is not possible in python.
+# -->If we define multiple constructor then the last condtructor will be considered.
+
+class Test:
+	def __init__(self):
+		print('No-Arg constructor')
+	def __init__(self,a):
+		print('One-Args constructor')
+	def __init__(self,a,b):
+		print('Two-Args constructor')
+t = Test()#Invalid
+t = Test(10)#Invalid
+t = Test(10,20)#Valid
+
+# -->But based on our requirement we can declare constructor with default args and variable number of args.
+
+# Ex:Constructor with default args
+# -------------------------------------------------
+class Test:
+	def __init__(self,a=None,b=None,c=None):
+		print('Constructor with 0|1|2|3 number of args')
+t1 = Test(10,20,30)
+t2 = Test()
+t3 = Test(10,20)
+t4 = Test(10)
+
+# Ex:Constructor with variable number of args
+# ------------------------------------------------------------------
+class Test:
+	def __init__(self,*a):
+		print('Constructor with variable number of args')
+t1 = Test(10,20,30,40,50,60)
+t2 = Test()
+t3 = Test(10,20)
+t4 = Test(10)
+
+
+# OVERRIDING:
+# 1.Method overriding 
+# 2.Constructor overriding
+
+
+# 1).Method Overriding:
+# ------------------------
+# * Whatever members available in the parent class are by default available to the child class through inheritance. 
+# * If the child class not satisifed with parent class implementation then child class is allowed to re-define that method in the child class based on its requirement.
+# * This concept is called as overriding.
+# * Overriding applicable for both method and constructor.
+
+# Ex:
+
+class P:
+	def property(self):
+		print('Gold+Land+Cash+Power')
+	def marry(self):
+		print('Appalamma')
+
+class C(P):
+	def marry(self):
+		super().marry()
+		print('Katrina Kaif')
+
+c = C()
+c.property()
+c.marry()
+
+# From overriding method of child class, we can call parent class method also by using super() method.
+
+# Ex:Constructor overriding
+# ----------------------------------------
+class P:
+	def __init__(self):
+		print('Parent Constructor')
+class C(P):
+	def __init__(self):
+		print('Child Constructor')
+c = C()
+
+# -->In the above example, if child class does not contain constructor then parent class constructor will be executed.
+
+# -->From child class constructor we can call parent class constructor by using super() method.
