@@ -152,3 +152,181 @@ print(a.no_of_wheels())
 # 				Interface			:No Implementation
 # 				Abstract class		:Partial Implementation
 # 				Concrete class		:Full Implementation
+
+
+# EX : 
+
+from abc import *
+class CollegeAutomation(ABC):
+	@abstractmethod
+	def m1():pass
+	@abstractmethod
+	def m2():pass
+	@abstractmethod
+	def m3():pass
+
+class AbsClass(CollegeAutomation):
+	def m1(self):
+		print('M1 method implemetation')
+	
+	def m2(self):
+		print('M2 method implemetation')
+
+class ConcreteClass(AbsClass):
+	def m3(self):
+		print('M3 method implemetation')
+
+c = ConcreteClass()
+c.m1()
+c.m2()
+c.m3()
+
+# In general if an abstract class contains only abstract methods such type of abstract class is considered as interface.
+
+# EX:
+
+from abc import *
+class DBinterface(ABC):
+	@abstractmethod
+	def connect(self):pass
+	@abstractmethod
+	def disconnect(self):pass
+
+class Oracle(DBinterface):
+	def connect(self):
+		print('Connecting to Oracle DB')
+	def disconnect(self):
+		print('Disconnecting from Oracle DB')
+
+class MongoDB(DBinterface):
+	def connect(self):
+		print('Connecting to MongoDB')
+	def disconnect(self):
+		print('Disconnecting from MongoDB')
+
+dname = eval(input("Enter Database: "))
+className = globals()[dname]
+print(globals()[dname])
+d = className()
+d.connect()
+d.disconnect()
+
+# Note : The inbuilt function globals()[str] converts the string 'str' into a className and returns the className.
+
+from abc import *
+class Printer(ABC):
+	@abstractmethod
+	def print_it(self,text):pass
+	@abstractmethod
+	def disconnect(self):pass
+
+class Epson(Printer):
+	def print_it(self,text):
+		print('Printing from Epson Printer')
+	def disconnect(self):
+		print('Disconnecting from Epson Printer')
+
+
+class HP(Printer):
+	def print_it(self,text):
+		print('Printing from HP Printer')
+	def disconnect(self):
+		print('Disconnecting from HP Printer')
+
+with open('config.txt','r') as f:
+	pname=f.readline()
+
+className = globals()[pname]
+c = className
+c.print_it('This data has to print....')
+c.disconnect()
+
+
+# public, private and protected attributes
+# ----------------------------------------------------------
+# -->Bydefault every attribute is public. We can access from anywhere either within the class or from outside of the class.
+# Syn:	variablename = value
+# Ex:	name = 'sunny'
+
+# test.py
+# ----------
+class Test:
+	x = 10
+	def __init__(self):
+		self.y = 20
+
+# test1.py
+# ------------
+from test import Test
+class Test1:
+	t = Test()
+	print(t.x)
+	print(t.y)
+
+# -->Protected variables can be accessed with in the class anywhere but from outside of the class only in child class. We can specify an attribute as protected by prefixing with _ symbol.
+
+# Syn: _variablename = value
+# Ex:	_name = 'sunny'
+
+# test.py
+# ----------
+class Test:
+	_x = 10
+	def __init__(self):
+		self._y = 20
+t = Test()
+print(t._x)
+print(t._y)
+
+# -->But it is just convention and in reality does not exist protected attributes.
+
+# -->Private attributes can be accessed only within the class. i.e from outside of the class we cannot access. We can declare a variable as private explicitly by prefixing with 2 underscore symbols.
+
+# Syn:	__variablename = value
+# Ex:	__name = 'sunny'
+
+class Test:
+	x = 10
+	_y = 20
+	__z = 30
+	def m1(self):
+		print(Test.x)
+		print(Test._y)
+		print(Test.__z)
+t = Test()
+t.m1()
+print(Test.x)
+print(Test._y)
+print(Test.__z)
+
+# How to access private variables from outside of the class?
+# ---------------------------------------------------------------------------------------
+# We cannot access private variables directly from outside of the class.
+# But we can access indirectly as:
+# 				objreference._ClassName__variablename
+# Ex:
+class Test:
+	__x = 10
+	def __init__(self):
+		self.__y = 20
+t = Test()
+#print(t.__dict__)
+print(t._Test__y)
+print(Test._Test__x)
+
+# __str__() method:
+# -------------------------
+# -->Whenever we are printing any object reference internally __str__() method will be called which returns string in the following format.
+# 				<__main__.Student object at 0x000001B36242BB20>
+# -->To return meaningful string representation we have to override __str__() method
+# Ex:
+class Student:
+	def __init__(self,name,rollno):
+		self.name = name
+		self.rollno = rollno
+	def __str__(self):
+		return 'This is Student with Name:{} and RollNo:{}'.format(self.name,self.rollno)
+s1 = Student('Radhika',101)
+s2 = Student('Lilly',102)
+print(s1)
+print(s2)
