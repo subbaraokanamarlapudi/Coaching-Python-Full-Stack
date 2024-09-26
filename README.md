@@ -23,7 +23,10 @@
 * Exception Handling.
 * Logging Modules.
 * File handling.
-* OOPS 
-   -> oops - 1 ===> Basic oops concepts like class,object,constructor,methods,Inner classes and variables
-   -> oops - 2 ===> IS-A and HAS-A relationships and inheritance and types of inheritance, super() method , MRO(Method Resolution Order) , Composition vs Aggregation
+* OOPS <br>
+   -> oops - 1 ===> Basic oops concepts like class,object,constructor,methods,Inner classes and variables.<br>
+   -> oops - 2 ===> IS-A and HAS-A relationships and inheritance and types of inheritance, super() method , MRO(Method Resolution Order) , Composition vs Aggregation.<br>
+   -> oops - 3 ===> Polymorphism , Overloading , Overriding concepts.<br>
+   -> oops - 4 ===> Abstract class , Abstract method , Interface , Public , Private , Protected , __str__() method
+                    Difference Between str() and ref() functions.
   
