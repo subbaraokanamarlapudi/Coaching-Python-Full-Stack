@@ -425,3 +425,94 @@ else:
 	print('else')
 finally:
 	print('finally')
+
+'''
+Types of Exceptions:
+----------------------
+1. Predefined Exceptions
+2. User Defined Exceptions
+
+1. Predefined Exceptions:
+---------------------------
+* Also know as inbuilt exceptions.
+* The exceptions which are raised automatically by python virtual machine whenever a particular event occurs, are called as pre-defined exceptions.
+
+* Ex:
+    ZeroDivisionError
+    ValueError
+    TypeError
+    
+2. User defined exceptions:
+-----------------------------
+* Also known as customized exceptions or programatic exceptions.
+* some times we have to define and raise exceptions explicitly to indicate that something goes wrong, such type of exceptions
+are called as user defined exceptions. or customized exceptions.
+* programmer is responsible to define these exceptions and python not having any idea about these. Hence we have to raise explicitly based on out requirement by using raise keyword.
+
+* Ex:
+    InsufficientFundsException
+    InvalidAgeException
+    InvalidChoiceException
+    InvalidInputException
+    InvalidInputException
+    InvalidInputException
+    InvalidInput
+    
+'''
+
+# How to define and raised customized exceptions?
+# --------------------------------------------------
+# syn : 
+# 	class ClassName(Exception):
+# 		def __init__(self,args):
+# 			self.msg = arg
+
+# Ex:
+
+class TooYoungException(Exception):
+    def __init__(self,args):
+        self.msg = args
+
+class TooOldException(Exception):
+    def __init__(self,args):
+        self.msg = args
+        
+age = eval(input("Enter Age: "))
+if age > 18:
+    raise TooYoungException('Plz wait some more time you will get best match soon!!!!!')
+elif age < 18:
+    raise TooOldException('Your age already crossed marriage age...no chance of getting marriage')
+else:
+    print('You will get match details soon by email..........')
+
+
+# Pickling and Unpickling of objects:
+# ==============================
+# -->Sometimes we have to write total state of object to the file and we have to read total object from the file.
+# -->The process of writing state of object to the file is called as pickling and the process of reading state of an object from the file is called as unpickling.
+# -->We can implement pickling and unpickling by using pickle module.
+# -->pickle module contains dump() function to perform pickling.
+# 					pickle.dump(object,f)
+# -->pickle module contains load() function to perform unpickling.
+# 					pickle.load(f)
+
+
+
+# Q.writting and reading state of object by using pickle module
+# -------------------------------------------------------------------------------------------
+import pickle
+class Employee:
+	def __init__(self,eno,ename,eaddr):
+		self.eno = eno
+		self.ename = ename
+		self.eaddr = eaddr
+	def display(self):
+		print(self.eno,'\t',self.ename,'\t',self.eaddr)
+with open('emp.dat','wb')as f:
+	e = Employee(101,'Radhika','Hyd')
+	pickle.dump(e,f)
+	print('Pickling of Employee object completed.....')
+with open('emp.dat','rb') as f:
+	obj  = pickle.load(f)
+	print('Printing employee information after unpickling....')
+	obj.display()
