@@ -1,0 +1,67 @@
+* In 1995, JS was created by a Netscape(Mozilla) developer named "Brendan Eich".
+* Mocha-------->LiveScript---------->Javascript(1997-Present)
+* Netscape first introduced a JS interpreter in navigator 2.
+* Later JS became ECMA(Eurpean Computer Manufactures Associations) standards in 1997. ECMAScript is the official name of language.
+* JS is implemented of ES. ES is the specification of JS.
+* EX : RBI ==> SBI,HDFC,.....etc  -----> Customer    ES ===> JS -> Programmer 
+* JS is a speed, lightweight, interoperability, extended functionality, dynamic , loosely typed, cross platform, free ware and open source
+* speed ----> JS application runs faster than other
+* lightweight ----> JS is a lightweight language.
+* interoperability ----> JS is a interoperable language.
+* extended functionality ----> JS is a extended functionality language.
+* dynamic ----> JS is a dynamic language.
+* loosely typed ----> JS is a loosely typed language.
+* cross platform ----> JS is a cross platform.
+* It is a single threaded Programmer.
+* JS is a object based (or) prototype programming language.
+* JS is a Client-side programming language. That means it executes on the browser.
+* It can be also be used in server-side program.
+* JS is a Case sensitive language. To work with JS we dont want to install any software. JS is interpreter language it is used to read line-by-line.
+
+
+How many ways to implement JS?
+--------------------------------
+* We can implement the js in 3-ways
+1.Inline Scripiting    ----> It is nothing but writing a code within the tag, by using even/dynamic attributes for this we need tag and event attributes.
+2.Internal Scripting   ----> It is used to write the code in the head and body section of the html code.
+3.External Scripting   ----> It is used to write the js code seperate file and link with the html file. In that seperate js file we should no write the html tags,css,no script tag.
+
+
+Types of comments:
+--------------------
+* Single line comment  -----> "/ code /"
+* Multi line comment   ------> "/* code */"
+
+Object:
+--------
+* It is a instance of a class (copy of class).
+* It is a collection of properties and methods.
+* It is a interface.
+
+Window:
+--------
+* It is a based object for all JS object. It is an object used for interacting with browser Window perform some operations.     
+
+Document:
+----------
+* It is a sub object of the Window. It is a object used for interacting with web page/web documents to perform some operations.  Syn: window.document  (or) document.
+
+Console:
+---------
+* It is a sub object of the window. It is a object used for interacting with browser Console to perform some operations.  Syn:  window.console  (or) console.
+
+
+JS printing methods:
+-----------------------
+
+1.write() method:
+--------------------
+* The write() method writes HTML expressions (or) JS code to a document withoutline breaking  Syn: window.document.write(val1,val2........)
+
+2.writeln() method:
+--------------------
+* The writeln() method writes HTML expressions (or) JS code to a document with line breaking  Syn: window.document.writeln(val1,val2........)
+
+3.log() method:
+--------------------
+* The log() method writes HTML expressions (or) JS code to a document with line breaking  Syn: window.console.log(val1,val2........)
