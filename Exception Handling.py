@@ -516,3 +516,49 @@ with open('emp.dat','rb') as f:
 	obj  = pickle.load(f)
 	print('Printing employee information after unpickling....')
 	obj.display()
+
+
+# Q : Writing multiple employee objects to the file.
+
+# emp.py
+# ---------
+
+
+class Employee:
+	def __init__(self,eno,ename,eaddr):
+		self.eno = eno 
+		self.ename = ename
+		self.eaddr = eaddr
+	
+	def display(self):
+		print(self.eno,'\t',self.ename,'\t',self.eaddr)
+
+
+# pick.py
+# ---------
+
+import pickle,emp
+f = open('emp.dat','wb')
+n = int(input('Enter number of employees:'))
+for i in range(n):
+	eno = int(input('Enter employee number: '))
+	ename = input('Enter employee name: ')
+	eaddr = input('Enter employee address: ')
+	e = emp.Employee(eno,ename,eaddr)
+	pickle.dump(e,f)
+
+print('Employee objects pickled successfully....')
+
+# unpick.py
+# --------------
+import pickle,emp
+f = open('emp.dat','rb')
+print('Employee Details:')
+while True:
+	try:
+		obj = pickle.load(f)
+		obj.display()
+	except EOFError:
+		print('All employees completed')
+		break
+f.close()
