@@ -157,3 +157,180 @@ import re
 matcher = re.finditer('.','a7b k@9z')
 for match in matcher:
 	print(match.start(),'...',match.group())
+      
+# Quantifiers:
+# ==========
+# 	To specify the number of occyrences to match.
+
+# a==>Exactly on 'a'
+# a+==>Atleast one 'a'
+# a*==>Any number of a's including zero number.
+# a?==>Atmost one 'a' i.e either zero number or one number.
+# a{m}==>Exactly m number os a's
+# a{m,n}==>Minimum 'm' number of a's and max 'n' number of a's
+
+# EX : 
+
+import re   
+matcher = re.finditer('a','abaabaab')
+for match in matcher:
+	print(match.start(),'...',match.group())
+
+# Ex : 2
+
+import re   
+matcher = re.finditer('a+','abaabaab')
+for match in matcher:
+	print(match.start(),'...',match.group())
+
+# Ex : 3
+
+import re   
+matcher = re.finditer('a*','abaabaab')
+for match in matcher:
+	print(match.start(),'...',match.group())
+
+# Ex : 4
+
+import re   
+matcher = re.finditer('a?','abaabaab')
+for match in matcher:
+	print(match.start(),'...',match.group())
+
+# Ex : 5
+
+import re   
+matcher = re.finditer('a{2}','abaabaab')
+for match in matcher:
+	print(match.start(),'...',match.group())
+
+# Ex : 6
+
+import re   
+matcher = re.finditer('a{2,4}','abaabaab')
+for match in matcher:
+	print(match.start(),'...',match.group())
+
+# Note:
+# 	^x==>It will check whether target string starts with x or not
+# 	x$==>It will check whether target string ends with x or not
+
+# Functions of re module:
+# 	match(),fullmatch(),search(),findall(),finditer(),sub(),subn(),split(),compile()
+
+# 1.match():
+# 	To check the given pattern at beginning of target string.
+# 	If the match is available then we will get match object, otherwise we will get None.
+
+import re
+s = input('Enter pattern to check:')
+m = re.match(s,'abcdefg')
+if m != None:
+	print('Match is available at the beginning of the string')
+	print('Start index:',m.start(),'and end index:',m.end())
+else:
+	print('Match is not available at the beginning of the string')
+
+# 2.fullmatch():
+# 	To match a pattern to all of target string. i.e complete string should be matched according to given pattern
+
+import re
+s = input('Enter pattern to check:')
+m = re.fullmatch(s,'ababab')
+if m != None:
+	print('Full string matched')
+else:
+	print('Full string not matched')
+
+# 3.search():
+# 	To search the given pattern in the target string.
+# 	If the match is available then it returns the match object which represents first occurence of the match.
+
+import re
+s = input('Enter pattern to check:')
+m = re.search(s,'abaaaba')
+if m != None:
+	print('Match is available')
+	print('First occurence of match with start indes:',m.start(),'end index:',m.end())
+else:
+	print('Match is not available')
+
+# 4.findall():
+# 	To find all occurences of the match in the form of list.
+
+import re
+l = re.findall('[0-9]','a7b9c5kz')
+print(type(l))
+print(l)
+
+# 5.sub():
+# 	sub means substitution or replacement.
+# 		re.sub(regex,replacement,targetstring)
+# 	In the target string every matched pattern will be replaced with provided replacement.
+
+import re
+s = re.sub('[a-z]','#','a7b9c5k8z')
+print(s)
+
+# -->Every alphabate symbol is replaced with # symbol.
+
+# 6.subn():
+# 	It is exactly same as sub except it can also returns the number of replacements.
+# 	This function returns a tuple where first element is result string and second element is number of replacements.
+# 							(resultstring,number of replacements)
+
+import re
+t = re.subn('[a-z]','#','a7b9c5k8z')
+print(t)
+print('The Result String:',t[0])
+print('The number of replacements:',t[1])
+
+# 7).split():
+# 	-->If we want to split the given target strint according to a particular pattern then we should go for split() function.
+# 	-->This function returns list of all tokens.
+
+# Ex:
+
+import re
+l = re.split(',','sunny,bunny,vinny')
+print(l)
+for i in l:
+	print(i)
+
+# Ex:
+
+import re
+l = re.split('\.','www.nareshit.com')
+print(l)
+for i in l:
+	print(i)
+
+# ^ symbol:
+# ---------------
+# 	To check whether the given string starts with our provided pattern or not.
+
+# Ex:
+
+import re
+s = 'Learning Python Is Very Easy'
+res = re.search('^Learn',s)
+if res != None:
+	print('Target string starts with Learn')
+else:
+	print('Target string not starts with Learn')
+
+# $ symbol:
+# --------------
+# 	To check whether the given string ends with our provided pattern or not.
+
+import re
+s = 'Learning Python Is Very Easy'
+res = re.search('Easy$',s)
+if res != None:
+	print('Target string ends with Easy')
+else:
+	print('Target string not ends with Easy')
+
+# Note:
+# 	If we want to ignore case then we have to pass 3rd argument re.IGNORECASE for search() function.
+# 	Ex:res = re.search('Easy$',s,re.IGNORECASE)
