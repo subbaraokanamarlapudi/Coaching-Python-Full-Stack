@@ -65,3 +65,106 @@ JS printing methods:
 3.log() method:
 --------------------
 * The log() method writes HTML expressions (or) JS code to a document with line breaking  Syn: window.console.log(val1,val2........)
+
+Note points:
+-------------
+* We can write JS code without html code. We can use only script tag.
+* We can test the code in console. We dont need to create a file, write a code and run. It is used for instance checking.
+* No need provide semicolon[optional] at the end of code.
+* Sequence characters doesn't support in JS. <br> is support to display output is nextline.
+* If we make any mistake in JS. The error will through out in console page.
+* TypeError , ReferenceError , URIError , SyntaxError.
+
+* SyntaxError: If we did any mistake while writing a code the entire script will be disabled (or) it shows the error in console page.
+* Remaining errors nature is : If we write any mistake in JS code, that line and nextlines will not be disabled as output.
+
+--------------------------------------------------------------- (or) -----------------------------------------------------------------------------------
+
+You can write JavaScript code without HTML code, using only the <script> tag.
+
+You can test the code in the browser console without needing to create a file, write the code, and run it. It is used for quick checks and debugging.
+
+Providing a semicolon at the end of a statement in JavaScript is optional.
+
+JavaScript does not support sequence characters like \n for newlines in output. However, <br> can be used to display output on a new line when rendering HTML.
+
+If there is any mistake in the JavaScript code, errors will be shown in the console.
+
+Common error types include: TypeError, ReferenceError, URIError, and SyntaxError.
+
+Error Explanations:
+
+SyntaxError: If there's a mistake in the syntax of the code, the entire script will be disabled or the error will be displayed in the console.
+For the other error types (e.g., TypeError, ReferenceError), only the erroneous line and any dependent lines may not work, while the rest of the script can continue running.
+
+
+single and double quotes:
+----------------------------
+* It is used to print the single line text.
+* It is used to print text/string.
+* It doesn't support the interpolation.
+* It cannot provide the multiple lines of output
+
+Template laterls:
+--------------------
+* It is used to print the single line text.
+* It is used to print text/string.
+* It supports the interpolation.
+* It provide the 'n' no.of lines of output.
+
+JS Reversed words:
+--------------------
+* These cannot be used as JS variables,functions,methods,loop labels or any object names.
+
+Variables:
+-----------
+* Variables is a reference name of memory block.
+* It is used to create (or) stored in RAM(stack area)
+* Variables are used to store/to hold a value for reuse purpose and automatically substitute values.
+
+* We can use variables in JS three ways. They are:
+1. var
+2. let
+3. const
+* var is a global scope variable. 
+* let is a block scope variable.
+* const is a block scope variable.
+* let and const are the new version of JS (ES6).
+
+Where do we declare variables:
+----------------------------------
+* We can declare variables in open script tag(global), within function(local) (or) within block level.
+
+Rules:
+--------
+* Name should start with an alphabet (a-zA-Z), underscore(_) (or) $ sign.
+* After first character we can use digits (0to9).
+* Variables are case sensitive. For example: a and A are different variables.
+* spaces are not allowed, means name should be a single word.
+* special characters (symbols) are not allowed in name except "_ and $"
+
+EX:
+
+<script>
+    var a;  // variable declaration
+    document.writeln(a);
+
+    a = 10; // assiging values
+    document.writeln(a); 
+
+    var b = 20;  // initilization
+    document.writeln(b);
+
+    let x;  // variable declaration
+    document.writeln(x);
+
+    x = 10;    // assiging
+    document.writeln(x); 
+
+    let y = 20;
+    document.writeln(y);  //initilization
+
+    const PI = 3.14;
+    document.writeln(PI);
+</script>
+
