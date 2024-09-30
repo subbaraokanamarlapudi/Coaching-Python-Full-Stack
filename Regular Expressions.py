@@ -334,3 +334,75 @@ else:
 # Note:
 # 	If we want to ignore case then we have to pass 3rd argument re.IGNORECASE for search() function.
 # 	Ex:res = re.search('Easy$',s,re.IGNORECASE)
+
+# Write a regular expression to represent all s language indetifiers(s-programmmin)
+# ------------------------------------------------------------------------------------
+
+# Rules:
+# * The allowed characters are a-z,A-Z,0-9,#
+# * The first character should be lower case from a-k
+# * The second character should be digit divisible by 3
+# * The length of identifier should be atleast 2
+
+#    General regular expression : [a-k][0369][a-zA-Z0-9#]*
+
+# Ex:
+
+import re
+s = input('Enter identifier:')
+m = re.fullmatch('[a-k][0369][a-zA-Z0-9#]*',s)
+if m != None:
+	print(s,'is valid identifier')
+else:
+	print(s,'is invalid identifier')
+
+# Write a regular expression to represent 10-digit mobile numbers.
+# ----------------------------------------------------------------------
+
+# Rules:
+# 	1.Every number should contains exzctly 10-digits.
+# 	2.The first digit should be 6 or 7 or 8 or 9
+			
+# 			[6-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]
+
+# 			[6-9][0-9]{9}
+
+# 			[6-9]\d{9}
+
+# Ex:
+
+import re
+s = input('Enter mobile number:')
+m = re.fullmatch('[6-9]\d{9}',s)
+if m != None:
+	print(s,'is valid mobile number')
+else:
+	print(s,'is invalid mobile number')
+
+# Ex:w.a.p to extract all mobile numbers present in input.txt where numbers are mized with normal text data.
+# ------------------------------------------------------------------------------------------------------------
+
+# Ex:
+
+import re
+f1 = open('input.txt','r')
+f2 = open('output.txt','w')
+for line in f1:
+	list = re.findall('[6-9]\d{9}',line)
+	for n in list:
+		f2.write(n+'\n')
+
+print('Extracted all mobile numbers into output.txt')
+f1.close()
+f2.close()
+
+# w.a.p to check whether the given mobile number is valid or not
+# (10-digit or 11-digit or 12-digit)
+
+import re
+s = input('Enter Number:')
+m = re.fullmatch('(0|91)?[6-9]\d{9}',s)
+if m != None:
+	print(s,'is valid mobile number')
+else:
+	print(s,'is invalid mobile number')
