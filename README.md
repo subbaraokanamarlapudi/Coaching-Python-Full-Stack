@@ -30,3 +30,7 @@
    -> oops - 4 ===> Abstract class , Abstract method , Interface , Public , Private , Protected , __str__() method
                     Difference Between str() and ref() functions.
   
+* User-defined exceptions.
+* Pickling and unpickling.
+* Regular Expression.
+* Database connectivity with <b>ORACLE and MYSQL</b>
