@@ -142,3 +142,45 @@ while True:
 	if option == 'No':
 		con.commit()
 		break
+
+
+# W.A.P to update employee salaries with increment for the certain range with dynamic input
+# EX: Increment all employee salaries by 1200 whose salary < 15000
+
+con = cx_Oracle.connect('scott/tiger@ORCL')
+cursor = con.cursor()
+increment = float(input("Enter increment salary:"))
+salrange = float(input("Enter salary range:"))
+sql = 'update employee set esal = esal + %f where esal < %f'
+cursor.execute(sql%(increment,salrange))
+con.commit()
+
+# W.A.P to select all employees info by using fetchone() method?
+# ----------------------------------------------------------------
+
+con = cx_Oracle.connect('scott/tiger@ORCL')
+cursor = con.cursor()
+cursor.execute('select * from employee')
+row = cursor.fetchone()
+while row:
+	print(row)
+	row = cursor.fetchone()
+
+# w.a.p to select all employees info by using fetchall() method
+# ------------------------------------------------------------------------------------------
+cursor.execute("select * from employee")
+data = cursor.fetchall()
+for row in data:
+	print('Employee Number:',row[0])
+	print('Employee Name:',row[1])
+	print('Employee Salary:',row[2])
+	print('Employee Address:',row[3])
+	print()
+
+# w.a.p to select employees info by using fetchmany() method and the required number of rows will be provided as dynamic input?
+# -------------------------------------------------------------------------------------------------------------------------------
+cursor.execute("select * from employee")
+n = int(input('Enter the number of required rows:'))
+data = cursor.fetchmany(n)
+for row in data:
+	print(row)
