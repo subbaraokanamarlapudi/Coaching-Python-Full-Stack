@@ -117,3 +117,150 @@ t1.join()
 t2.join()
 endtime = time.time()
 print('The total time taken:',endtime-begintime)
+
+
+# Setting and getting name of the thread
+# ----------------------------------------------------------
+from threading import *
+print(current_thread().name)
+current_thread().name = 'Radhika'
+print(current_thread().name)
+
+# Thread identification number:
+# ---------------------------------------------
+# For every thread internally a unique identification number is available. We can access this id by using implicit variable ident.
+
+from threading import *
+def test():
+	print('Child Thread')
+	print('Child Thread identification number:',current_thread().ident)
+t = Thread(target=test)
+t.start()
+print('Main Thread identification number:',current_thread().ident)
+print('Child Thread identification number:',t.ident)
+
+# active_count():
+# 	It returns the number of active threads currently running.
+
+from threading import *
+import time
+def display():
+	print(current_thread().name,'....started')
+	time.sleep(3)
+	print(current_thread().name,'....ended')
+print('The number of active threads:',active_count())
+t1 = Thread(target=display,name='ChildThread-1')
+t2 = Thread(target=display,name='ChildThread-2')
+t3 = Thread(target=display,name='ChildThread-3')
+t1.start()
+t2.start()
+t3.start()
+print('The number of active threads:',active_count())
+time.sleep(5)
+print('The number of active threads:',active_count())
+
+# enumerate() function:
+# --------------------------------
+# 	It returns a list of all active threads currently running
+
+l = enumerate()
+for t in l:
+	print('Thread Name:',t.name)
+time.sleep(5)
+l = enumerate()
+for t in l:
+	print('Thread Name:',t.name)
+
+# is_alive():
+# 	It is to check whether a thread is still executing or not.
+
+print(t1.name,'is Alive:',t1.is_alive())
+print(t2.name,'is Alive:',t2.is_alive())
+time.sleep(5)
+print(t1.name,'is Alive:',t1.is_alive())
+print(t2.name,'is Alive:',t2.is_alive())
+
+# join() method:
+# ---------------------
+# -->If a thread wants to wait until completing some other thread then we should go for join() method.
+
+from threading import *
+import time
+def display():
+	for i in range(10):
+		print('Seetha Thread')
+		time.sleep(2)
+t = Thread(target=display)
+t.start()
+t.join()#This line executed by MainThread
+for i in range(10):
+	print('Rama Thread')
+
+# Note:we can call join() method with time period also.
+# 				t.join(seconds)
+# -->In this case thread will wait only specified amount of time.		
+# 				t.join(5)
+
+# Daemon Threads:
+# --------------------------
+# -->The threads which are running in the background are called as Daemon Threads.
+
+# -->The main objective of Daemon threads is to provide support for non-daemon threads(line Main Thread)
+
+# Ex:Garbage Collector
+
+# -->We can check whether thread is Daemon or not by using daemon property.
+
+# from threading import *
+# print(current_thread().daemon) #False
+
+# we can change dameon nature:
+# 		current_thread().daemon = True
+
+# -->But we can use this one before starting of Thread. i.e once thread started, we cannot change its daemon nature. If we try to change we will get an error.
+		
+# 		RuntimeError: cannot set daemon status of active thread
+
+# Default Nature:
+# -----------------------
+# -->Bydefault MainThread is always non-daemon. But for the remaining threads daemon nature will be inherited from parent to child.
+# -->If the parent thread is daemon then child thread is also daemon.
+# -->If the parent thread is non-daemon then child thread is also non-daemon.
+
+# Case-1:parent non-daemon===>child is non-daemon
+# ------------------------------------------------------------------------------
+from threading import *
+def job():
+	print('Child Thread')
+t = Thread(target = job)
+print(t.daemon)
+
+# Case-2:parent is daemon===>child is also daemon
+# ---------------------------------------------------------------------------
+from threading import *
+import time
+def job1():
+	print('job-1 execution')
+	print(current_thread().name,'is Daemon:',current_thread().daemon)
+	ct = Thread(target = job2,name='Child Thread-2')
+	print('ct is daemon:',ct.daemon)
+def job2():
+	print('Job2 execution...')
+t = Thread(target = job1,name='Child Thread')
+t.daemon = True
+t.start()
+time.sleep(10)
+
+# -->Whenever the last non-daemon thread terminates automatically all daemon threads will be terminated.
+
+from threading import *
+import time
+def job():
+	for i in range(10):
+		print('Lazy Thread')
+		time.sleep(1)
+t = Thread(target = job)
+t.daemon = True
+t.start()
+time.sleep(5)
+print('End of MainThread')
