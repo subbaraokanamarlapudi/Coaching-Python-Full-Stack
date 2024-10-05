@@ -34,3 +34,5 @@
 * Pickling and unpickling.
 * Regular Expression.
 * Database connectivity with <b>ORACLE and MYSQL</b>
+* Multi Threading
+* Synchronization
