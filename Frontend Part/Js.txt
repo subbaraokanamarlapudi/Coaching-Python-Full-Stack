@@ -168,3 +168,207 @@ EX:
     document.writeln(PI);
 </script>
 
+
+Loosely Typed:
+----------------
+Java script did not provide any data types for declaring variables and a variable in javascript can store any type of value. 
+Hence java script is loosely typed.
+
+dynamically typed:
+--------------------
+We can use a variable directly without declaring it in javascript, it’s called dynamic typed programming.
+
+
+
+Redefination and Hosting:
+----------------------------
+* var supports the hoisting and let doesn't suppport the hoisting.
+* var supports Redefination and redecleartion and let doesn't support the Redefination and it supports the redecleartion.
+
+
+<script>
+        var n = 100
+        document.write(n,'<br>')
+    
+        var n = 'Javascript'
+        document.write(n,'<br>')
+    
+        var n = true
+        document.write(n,'<br>')
+
+        x = 100;
+        document.write(x,'<br>')
+        document.write(x>0,'<br>')
+        var x;
+    </script>
+
+
+JavaScript DataTypes:
+------------------------
+
+* DataTypes supports primitive and non-primitive data types.
+
+* primitive Data Type (PDT):
+-------------------------------
+* It allows storing data directly.
+* It allows us store only one value.
+* It is stack area.
+* It is not shareable.
+* PDT are also known as non-reference.
+* pre-defined data type.
+
+* string , number , boolean , undefined , null(object)
+
+* Non primitive Data Types:
+------------------------------
+* It allows reference or address
+* It allows to maintain 'N' values.
+* It is heap area.
+* It is shareable.
+* NPT are also known as reference.
+
+* object , array , function , date , regex , etc.
+
+typeof --> It is one of reversed word, it is used to identify datatype of variable or value.
+syntax : typeof var_name    ,      typeof value.
+
+
+<script>
+    var a = 100
+    var b = 10.56
+    let c = 'Ramu'
+    let d = "R"
+    const e = true
+    var f
+    let g = null
+
+    document.write(a,'<br>')
+    document.write(b,'<br>')
+    document.write(c,'<br>')
+    document.write(d,'<br>')
+    document.write(e,'<br>')
+    document.write(f,'<br>')
+    document.write(g,'<br>')
+
+    let st1 = new String('Javascript')
+    let b1 = new Boolean(True)
+    const d1 = new Date('30-aug-2024')
+
+    document.write('st1',st,'<br>')
+    document.write('b1',b1,'<br>')
+    document.write('d1',d1,'<br>')
+</script>
+
+Javascript Operators:
+------------------------
+* operator is a special symbol (special char) and it is used to perform certain operations (task).
+* Every operator is a symbol, but every symbol is not an operator.
+* Every operator requires some values, those are called operands.
+
+1. Unary Operator:
+----------------------
+* increment and decrement
+
+2. Binary Operator:
+----------------------
+* arithmetic
+* relational
+* Logical
+* assignment
+* conditional
+
+3. Ternary Operator:
+------------------------
+* it is a combination of two operators.
+* It is a combination of two operands.
+
+
+<script>
+    // Assignment operator
+    let x = 5; 
+    let y = 10;
+    document.write('sum',x+y,'<br>')
+    document.write('sub',x-y,'<br>')
+    document.write('mul',x*y,'<br>')
+    document.write('div',x/y,'<br>')
+    document.write('pow',x**y,'<br>')
+    document.write('mod',x%y,'<br>')
+
+    // Relational operator
+
+    document.write(x>=0,'<br>')
+    document.write(x>0,'<br>')
+    document.write(x<=0,'<br>')
+    document.write(x<0,'<br>')
+
+    let z = '5'
+    document.write(x==z,'<br>')
+    document.write(x===z,'<br>')
+    document.write(x!=z,'<br>')
+    document.write(x!==z,'<br>')
+
+    // Logical operator
+
+    document.write(y>=1 && y<=10, '<br>')
+    document.write(y>=1 || y<=10, '<br>')
+    document.write(!(y>=1), '<br>')
+
+    // Increment and Decrement operator
+    let a = 10;
+    document.write(a++, '<br>')
+    document.write(a, '<br>')
+    document.write(++a, '<br>')
+    document.write(a, '<br>')
+    document.write(a--, '<br>')
+    document.write(a, '<br>')
+    document.write(--a, '<br>')
+    document.write(a, '<br>')
+
+    // Assignment operator
+
+    x += 40
+    x -= 40
+    x *= 40
+    x /= 40
+    x %= 40
+    x **= 40
+    document.write(x,'<br>')
+
+    // Conditional operator
+    let age = 18;
+    let result = (age>=18) ? 'Eligible' : 'Not Eligible';
+    document.write(result,'<br>')
+</script>
+
+JavaScript Dialogs:
+----------------------
+* alert : It is to display the message to the user -----> window.alert("Hello world");
+* confirm : It is to take conformation from the user -----> window.confirm('Boi')
+* prompt : It takes the input values from the user. -----> window.prompt('Sai charan')
+
+Note : It doesn't support any html tag and operators.
+
+<script>
+    window.alert('Hello world')
+    alert("hello boi")
+    console.log('Hello world')
+    alert("Product is: ",(10*20))
+
+    let x = window.confirm('Are you student?')
+
+    let a = prompt("Enter your age: ")
+    document.write(a)
+    document.write(n + ' ' + a + 'year(s) older')
+</script>
+
+
+Parsing:
+---------
+1. Auto Parsing:
+------------------
+* while using the following operators auto parsing applied. 
+     - * / % ** ++ --
+
+2. Exlicit Parsing:
+----------------------
+* using functions -> parseInt(), paresefloat()
