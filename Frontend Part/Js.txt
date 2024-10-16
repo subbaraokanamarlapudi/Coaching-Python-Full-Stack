@@ -372,3 +372,36 @@ Parsing:
 2. Exlicit Parsing:
 ----------------------
 * using functions -> parseInt(), paresefloat()
+
+window.pareseInt(data)
+'10' -> 10
+'10.56' -> 10
+'Ramu' -> NaN
+
+window.paresefloat(data)
+'10' -> 10
+'10.56' -> 10.56
+'Ramu' -> NaN
+
+* Example:
+-----------
+
+<script>
+    let x = "15" , y = "9"
+    // auto-parsing
+
+    document.write(x-y)
+    document.write(x*y)
+    document.write(++x,'<br>')
+    document.write(--y,'<br>')
+
+    // Manual parsing
+
+    let i = '12' , j = '8'
+    let res = window.parseInt(i) + window.parseInt(j);
+    document.write(res,'<br>');
+
+    document.write(+i > +j, '<br>')
+    document.write(+i < +j, '<br>')
+    document.write(+'ram', '<br>')
+</script>
