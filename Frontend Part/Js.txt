@@ -543,3 +543,109 @@ switch : It a selection statement, but it is not decision making. It is better p
             document.write('Invalid input')
     }
 </script>
+
+
+Looping Statements:
+-----------------------
+* It is set of instructions given to the interpreter to execute untill the condition becomens false is called loops.
+* The basic purpose of loop is minizie the code repetition.
+* The way of repetition will be formating a circle that's why repetition Statements called loops.
+* while-loop (top testing / entry level)
+* for loop
+* do-while (bottom testing / exit level)
+
+while-loop (top testing / entry level)
+----------------------------------------
+<h3> Demo on Interation </h3>
+<script>
+    let i = 1
+    while (i <= 10) {
+        // console.log(i)
+        document.write(i + "<br>")
+        i++
+    }
+
+    let j = 0
+    while (j <= 10) {
+        // console.log(j)
+        document.write(j + "<br>")
+        //j += 2
+        ++j
+    }
+</script>
+
+for-loop:
+----------
+
+<h3> Demo on Iternations </h3>
+<script>
+for (let i=0; i<9; i++)
+{
+    document.write("The number is " + i + "<br>");
+}
+
+const imgs = []
+for (let i=0; i<9; i++)
+{
+    document.writeln("<img src='images/'+imgs[i]+ width='150' height='150' title='' + imgs[i]+>");
+}
+</script>
+
+do-while loop:
+------------------
+
+<h3> Demo on while loops </h3>
+<script>
+    document.write('<table>');
+    document.write('<caption> Student Details </caption>');
+    document.write('<tr> <th>Slno</th> <th>Name</th> <th>Course</th> <th>Contact Number</th></tr>')
+
+    let i = 1;
+    do{
+        document.write(`<tr>
+            <td>1</td>
+            <td>Siva</td>
+            <td>HTML</td>
+            <td>77777</td>
+            </tr>`)
+        i++;
+    }while(i<=10)
+</script>
+
+continue:
+----------
+* It is used to skip the some iterations and it is used only for the loops
+<h3> Demo on continue </h3>
+<script>
+    let n = +prompt("Enter n value");
+    
+    for (let i = 1; i <= n; ++i) {
+        if (i === 5 || i === 8 || i === 14) {
+            continue; 
+        }
+        document.writeln(i + "<br>");  
+    }
+</script>
+
+break:
+-------
+* When we apply break it terminated the loops of all iterations we can use loops,switch.
+
+<h3> Demo on continue </h3>
+<script>
+    let n = +prompt("Enter n value");
+    
+    // for (let i = 1; i <= n; ++i) {
+    //     if (i === 5 || i === 8 || i === 14) {
+    //         continue; 
+    //     }
+    //     document.writeln(i + "<br>");  
+    // }
+
+    for (let i = 1; i <= n; ++i) {
+        if (i%4 === 0) {
+            break; 
+        }
+        document.writeln(i + "<br>");  
+    }
+</script>
