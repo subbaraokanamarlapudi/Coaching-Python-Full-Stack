@@ -405,3 +405,141 @@ window.paresefloat(data)
     document.write(+i < +j, '<br>')
     document.write(+'ram', '<br>')
 </script>
+
+
+Example : Addition of 2 numbers
+------------------------------------
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adding numbers</title>
+</head>
+<body>
+    <h3>Addition of 2 numbers</h3>
+
+    <label for="firstNum">Enter First Number</label><br>
+    <input type="text" id="firstNum"><br>
+
+    <label for="secondNum">Enter Second Number</label><br>
+    <input type="text" id="secondNum"><br>
+
+    <button onclick="addition()">Addition</button><br>
+    <output id="op"></output>
+
+
+    <script>
+        function addition()
+        {
+            let x,y,res;  // local variables
+            // data collection
+
+            x = firstNum.value
+            y = secondNum.value;
+            res = +x + +y;
+
+            // document.write('sum is:'+res)
+            alert('sum is:'+res)
+            op.value = 'sum is:' + res;
+        }
+    </script>
+</body>
+</html>
+
+CONTROL STATEMENTS
+-----------------------
+* It is used to control (change) execution order of a program based on user input data.
+
+Types:
+--------
+1. Conditional Statements:
+---------------------------
+* if
+* if-else
+* if-else-if
+* switch
+
+Examples:
+----------
+if : It is used to execute the given condition is true or false.
+<h3>Demo on conditonal statements</h3>
+<script>
+    let n = +prompt("Enter any value")
+    if(n<0){
+        n = n*-1
+    }
+    document.write("Absolute value of the number is: "+n)
+</script>
+
+if-else : It is used to execute whether the condition is true it will execute the if block of code and it executes the else block of code.
+
+<h3>Demo on conditonal statements</h3>
+<script>
+    let n = +prompt("Enter any value")
+
+    if (n % 2 == 0) {
+        document.write("Even")
+    } else {
+        document.write("Odd")
+    }
+</script>
+
+
+if-else-if : It executes the multiple conditions are avaliable that block will execute otherwise else block will execute.
+
+<h3>Demo on conditonal statements</h3>
+<script>
+    let x = +prompt("Enter any value"); // Getting value of x
+    let y = +prompt("Enter any value"); // Getting value of y
+
+    if (x > y) {
+        console.log("x is greater than y: " + x); // Corrected 'X' to 'x'
+    }
+    else if (y > x) {
+        console.log("x is less than y: " + y); // Corrected the concatenation
+    }
+    else {
+        console.log("x is equal to y");
+    }
+</script>
+
+switch : It a selection statement, but it is not decision making. It is better performance.
+<h3>Demo on conditonal statements</h3>
+<script>
+    let x = +prompt("Enter any value");
+
+    switch(x){
+        case 1:
+            document.write("sunday")
+            break;
+        
+        case 2:
+            document.write("Monday")
+            break;
+
+        case 3:
+            document.write('Tuesday')
+            break;
+
+        case 4:
+            document.write('Wednesday')
+            break;
+        
+        case 5:
+            document.write('Thursday')
+            break;
+        
+        case 6:
+            document.write('Friday')
+            break;
+        
+        case 7:
+            document.write('Saturday')
+            break;
+
+        default:
+            document.write('Invalid input')
+    }
+</script>
