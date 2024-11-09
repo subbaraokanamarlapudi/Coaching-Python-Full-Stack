@@ -807,3 +807,192 @@ a.itemsize #4
 # s ==> String
 # U ==> Unicode String
 # M ==> datetime etc.......
+
+
+
+# int8->i1; int16->i2; int32->i4(default); int64->i8
+# float16->f2; float32->f4(default); float64->f8
+
+# int8:
+# 	-->The value will be represented by 8-bits.
+# 	-->MSB is reserved for sign
+# 	-->The range:-128 to 127
+
+# int16:
+# 	-->The value will be represented by 16-bits.
+# 	-->MSB is reserved for sign
+# 	-->The range:-32768 to 32767
+
+# int32:
+# 	-->The value will be represented by 32-bits.
+# 	-->MSB is reserved for sign
+# 	-->The range:-2147483648 to 2147483647
+
+# EX:
+# ----
+
+import numpy as np
+import sys
+a = np.array([10,20,30,40])
+a.dtype
+sys.getsizeof(a)
+
+a = np.array([10,20,30,40],dtype='int8')
+a.dtype
+sys.getsizeof(a)
+
+
+# Changing the data type of an existing array:
+# -----------------------------------------------
+
+# Ex:1
+
+a = np.array([10,20,30,40])
+a.dtype
+
+b = a.astype('float64')
+b.dtype
+
+# Ex:2
+
+a = np.array([10,0,20,0,30])
+x = np.bool(a)   #Invalid 
+
+x = np.bool_(a)
+x
+
+# How to get/access elements of numpy array:
+# --------------------------------------------------
+
+# 1. Indexing ----> Only one element
+# 2. Slicing ----> group (or) Multiple elements
+# 3. Advanced Indexing
+
+# 1. Indexing:
+# -------------------
+
+# * By using index, we can get single element from the array.
+# * Zero based indexing. i.e the index of first element is 0, second element is 1 and so on.
+# * Supports both positive and negative indexing.
+
+# Ex:
+a = np.array([10,20,30,40,50,60])
+a
+a[0] #10
+a[-1] #60
+a[10] #IndexError
+
+# Accessing elements from 2-D array:
+# -----------------------------------
+
+# a[row index][column index]
+
+a = np.array([[10,20,30],[40,50,60]])
+a
+
+# To access 50 [possibities]:
+# ------------------------------
+
+a[1][1]
+a[1][-2]
+a[-1][-2]
+a[-1][1]
+
+# Accessing elements from 3-D array:
+# -----------------------------------
+
+# (2,3,4)
+	
+# 		a[i][j][k]:
+# 			i-->represents which 2-D array(index of 2-D array)
+# 			j-->represents row index in that 2-D array
+# 			k-->represents column index in that 2-D array
+
+# a[0][1][2]:
+# 	0-indexed 2-D array
+# 	In that 2-D array 1 indexed row and 2-indexed column
+
+l = [[[1,2,3],[4,5,6],[7,8,9]],[[10,11,12],[13,14,15],[16,17,18]]]
+
+l = [[[1,2,3],[4,5,6],[7,8,9]],[[10,11,12],[13,14,15],[16,17,18]]]
+a = np.array(l)
+a
+a.ndim #3
+
+# To access 14
+# -------------------
+a[1][1][1]
+a[-1][-2][-2]
+a[1][-2][-2]
+a[-1][1][-2]
+
+# Accessing elements of 4-D array:
+# -------------------------------------------------
+# 	-->4-D array contains multiple 3-D arrays
+# 	-->Every 3-D array contains multiple 2-D arrays
+# 	-->Every 2-D contains rows and columns
+# 				(i,j,k,l)==>(2,3,4,5)
+# 	-->2==>represents the number of 3-D arrays
+# 	-->3 ==>Every 3-D array contains 3 2-D arrays
+# 	-->Every 2-D array contains 4-rows and 5-columns
+
+# a[i][j][k][l]:
+# 	i==>represents which 3-D array
+# 	j==>In that 3-D array which 2-D array
+# 	k==>row index of the 2-D array
+# 	l==>column index of the 2-D array
+
+# Ex:
+
+a = np.arange(1,121).reshape(2,3,4,5)
+a
+# To find 88 position in the array
+np.where(a==88)
+
+#Accessing elements at a[1][1][1][2]
+a[1][1][1][2]
+
+# Accessing elements of ndarray by using slice operator
+# --------------------------------------------------------------------------------
+# Slice operator 1-D array:
+# -------------------------------------
+# a[begin:end:step]
+# Same rules of python's slice operator applicabpe here.
+
+a = np.arange(10,101,10)
+a
+a[2:5]
+a[::1]
+a[::-1]
+a[::-2]
+
+# Slice operator on 2-D Numpy Array:
+# ----------------------------------------------------
+# a[row,column]
+# a[begin:end:step, begin:end:step]
+
+a = np.array([[10,20],[30,40],[50,60]])
+a
+array([[10, 20],
+       [30, 40],
+       [50, 60]])
+
+# To acess:[10,20]
+# -------------------------
+a[0:1,:]
+
+# To access:[20,40]
+# ---------------------
+a[:2,1:]
+
+a[0::2,:]
+
+# Ex:
+# -----
+a = np.array([[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]])
+a[0:2,:]
+a[0::3,:]
+a[:,0:2] 
+a[:,::2] 
+a[1:3,1:3]
+a[::3,::3]
