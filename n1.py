@@ -996,3 +996,221 @@ a[:,0:2]
 a[:,::2] 
 a[1:3,1:3]
 a[::3,::3]
+
+# Slice on 3-D array:
+# ---------------------
+# (2,3,4)   2->number of 2-D arrays
+# 3-> number of rows in every 2-D array
+# 4-> number of columns in every 2-D array
+
+# EX:
+# -------
+
+# import numpy as np
+
+l = [[[1,2,3,4],[5,6,7,8],[9,10,11,12]],[[13,14,15,16],[17,18,19,20],[21,22,23,24]]]
+a = np.array(l)
+print(a)
+
+# a[i,j,k]  ----------> a[begin:end:step,begin:end:step,begin:end:step]
+
+print(a[:,:,0:1])
+print(a[:,:1,:])
+print(a[:,::2,:])
+print(a[:,:2,1:3])
+print(a[:,::2,::3])
+
+# To use slice operator, compulsory elements should be in order. We cannot select elements which are out of order. i.e we cannot select arbitrary elements.
+
+# Advanced Indexing:
+# ---------------------------
+
+# By using index, we can access only one element at a time. a[i],a[i][j], a[i][j][k]
+
+# By using slice operator we can access multiple elements at a time, but all elements should be in order.
+
+# a[begin:end:step]
+# a[begin:end:step,begin:end:step]
+# a[begin:end:step,begin:end:step,begin:end:step]
+
+
+# Accessing multiple arbitrary elements
+# ----------------------------------------------------------
+# 1-D array:
+# 	array[x]: x can be either ndarray or list, which represents required indexes.
+
+a = np.array([10,20,30,40,50,60,70,80,90,100])
+print(a)
+
+# required values are:[30,50,60,90]
+# --------------------------------------------------
+# 1st way
+# -----------
+# cretae ndarray with required indices
+indices = np.array([2,4,5,8])
+a[indices] #array([30, 50, 60, 90])
+
+# 2nd way:
+# --------------
+l = [2,4,5,8]
+a[l] #array([30, 50, 60, 90])
+
+
+# Ex:
+# -----
+# [10,50,70,100]
+# ----------------------
+# >>> a[[0,4,6,9]]
+
+# [10,100,50,70]
+# ----------------------
+# >>> a[[0,9,4,6]]
+
+# [10,100]
+# ------------
+# >>> a[[0,-1]]
+
+# Accessing elements of 2-D array:
+# --------------------------------------------------
+
+l = [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]
+a = np.array(l)
+print(a)
+
+
+# I want to select:1,6,11,16
+# Syn:
+# 	a[[row_indices],[column_indices]]
+# 	a[[0,1,2,3],[0,1,2,3]]
+# 	It select elements from  (0,0),(1,1),(2,2),(3,3)
+
+a[[0,1,2,3],[0,1,2,3]]
+# array([ 1,  6, 11, 16])
+
+# To select:2,8,9,15
+a[[0,1,2,3],[1,3,0,2]]
+
+
+# L-shape elements:
+# ----------------------------
+# to select:1,5,9,13,14,15,16
+a[[0,1,2,3,3,3,3],[0,0,0,0,1,2,3]]
+
+# Note:
+# 	a[[0,1,2],[0,1]]#Error
+# 	a[[0,1],[0,1,2]] #Error
+# 	a[[0,1,2],[0]]#array([1, 5, 9])
+# 	a[[0],[0,1,2]]#array([1, 2, 3])
+
+# Accessing multiple arbitrary elements in 3-D array:
+# ----------------------------------------------------------------------------
+a = np.arange(1,25).reshape(2,3,4)
+a
+array([[[ 1,  2,  3,  4],
+        [ 5,  6,  7,  8],
+        [ 9, 10, 11, 12]],
+
+       [[13, 14, 15, 16],
+        [17, 18, 19, 20],
+        [21, 22, 23, 24]]])
+
+#Accessing 7 and 18 from the array
+# Syn:
+# 	a[[indices of 2-D array],[row indices],[column indices]]
+
+# step-1:Find coordinates of arbitrary elements:
+# 			7:						18:
+# 				i=0					i=1
+# 				j=1					j=1
+# 				k=2					k=1
+# step-2:create list of i,j,k
+# 				i:[0,1]
+# 				j:[1,1]
+# 				k:[2,1]
+# step-3:pass the list as argument to the original array
+a[[0,1],[1,1],[2,1]]
+# array([ 7, 18])
+
+
+# Condition based selection:
+# ----------------------------------------
+# Syn:
+# 	array[boolean_array]
+# -->In the boolean_array, where ever True present, the corresponding value will be selected.
+
+a = np.array([10,20,30,40])
+boolean_array=np.array([True,False,False,True])
+boolean_array #array([ True, False, False,  True])
+a[boolean_array] #array([10, 40])
+
+# Select elements which are greater than 25
+# ---------------------------------------------------------------
+b_a = a>25
+a[b_a] #array([30, 40])
+a[a>25] #array([30, 40])
+
+# Ex:
+# -----
+a = np.array([10,-5,20,40,-3,-1,75])
+# Select only negative numbers
+a[a<0] #array([-5, -3, -1])
+# Select only +ve numbers
+a[a>0]#array([10, 20, 40, 75])
+# Only even numbers
+array([10, 20, 40])
+
+# Condition based section 2-D array also
+# ----------------------------------------------------------
+a = np.arange(1,26).reshape(5,5)
+a
+a[a%2==0]
+array([ 2,  4,  6,  8, 10, 12, 14, 16, 18, 20, 22, 24])
+a[a%10==0]
+array([10, 20])
+
+# Slicing vs Advanced Indexing:
+# ---------------------------------------------
+# Python's Slicing:
+# -------------------------
+# In case of list, slice operator will creates a separate copy.
+# If we perform any changes in one copy those changes wont be reflected in other copy
+
+l1 = [10,20,30,40]
+l2 = l1[:]
+l1[0] = 333
+l1 #[333, 20, 30, 40]
+l2 #[10, 20, 30, 40]
+
+# Numpy Array Slicing:
+# --------------------------------
+# A separate copy wont be created and just we are getting view of the original copy.
+
+# Table and View
+# View is logical entity where as Table is physical entity.
+
+a = np.arange(10,101,10)
+a #array([ 10,  20,  30,  40,  50,  60,  70,  80,  90, 100])
+b = a[0:4]
+b #array([10, 20, 30, 40])
+a[0] = 333
+a #array([333,  20,  30,  40,  50,  60,  70,  80,  90, 100])
+b #array([333,  20,  30,  40])
+b[1] = 999
+b #array([333, 999,  30,  40])
+a #array([333, 999,  30,  40,  50,  60,  70,  80,  90, 100])
+
+# Advanced indexing and condition based selection:
+# ---------------------------------------------------------------------------
+# It will sleect required elements based on provided index or condition with those elements a new 1-D array obejct will be created.
+# The output is always a new 1-D array only.
+
+a = np.arange(10,101,10)
+a
+b = a[[0,2,5]]
+b #array([10, 30, 60])
+a[0] = 333
+a #array([333,  20,  30,  40,  50,  60,  70,  80,  90, 100])
+b #array([10, 30, 60])
+b[1] = 999
+b #array([ 10, 999,  60])
+a #array([333,  20,  30,  40,  50,  60,  70,  80,  90, 100])
