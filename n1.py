@@ -1214,3 +1214,229 @@ b #array([10, 30, 60])
 b[1] = 999
 b #array([ 10, 999,  60])
 a #array([333,  20,  30,  40,  50,  60,  70,  80,  90, 100])
+
+'''
+Slicing:
+---------
+* The element should be in order.
+* We can't select arbitrary elements.
+* Conditional based selection is not possible.
+* Just we will get view but not copy.
+* Memory,performance wise it is the best.
+
+Advanced Indexing:
+-------------------
+* The element need not be in order.
+* We can select arbitrary elements.
+* Conditional based selection is possible.
+* Just we will get copy but not view.
+* Memory,performance wise it is the worst.
+
+'''
+
+
+# How to iterate elements from ndarray:
+# ---------------------------------------
+# 1. By using python's loop
+# 2. nditer() function
+# 3. ndenumerate() function
+
+# By using python's loop:
+# -----------------------------
+# To iterate elements of 1-D array:
+# ---------------------------------------
+
+a = np.arange(10,51,10)
+for x in a:
+	print(x)
+
+# To iterate elements of 2-D array:
+# ---------------------------------------
+
+a = np.array([[10,20,30],[40,50,60],[70,80,90]])
+for x in a:   #x is 1-D array but not scalar value
+	for y in x: #y is a scalar value present in 1-D array
+		print(y)
+
+# To iterate elements of 3-D array:
+# ---------------------------------------
+
+a = np.array([[[10,20],[30,40]],[[50,60],[70,80]]])
+for x in a:   #x is 2-D array but not scalar value
+	for y in x:  #y is 1-D array but not scalaerr value
+		for z in y:  #z is scalar value
+			print(z)
+
+# Note : To iterate elements of N-D array we required 'n' loops.
+
+# 2. By using numpy's nditer() function:
+# ------------------------------------------------
+# * Advantage : For any n-D array only one loop is required.
+# * nditer is a class present in numpy module.
+# * nditer() --> creating an object for nditer class.
+
+# 1-D array:
+# ---------------
+import numpy as np
+a = np.arange(10,51,10)
+for x in np.nditer(a):
+	print(x)
+
+# 2-D array:
+# ---------------
+import numpy as np
+a = np.array([[10,20,30],[40,50,60],[70,80,90]])
+for x in np.nditer(a):
+	print(x)
+
+# 3-D array:
+# ---------------
+import numpy as np
+a = np.array([[[10,20],[30,40]],[[50,60],[70,80]]])
+for x in np.nditer(a):
+	print(x)
+
+# Iterate elements of sliced array:
+# ---------------------------------------
+a = np.array([[10,20,30],[40,50,60],[70,80,90]])
+for x in np.nditer(a[:,:2]):
+	print(x)
+
+# Using nditer() to get elements of required data type:
+# --------------------------------------------------------- 
+# we have to use op_dtype
+help(np.nditer)
+
+import numpy as np
+a = np.array([[[10,20],[30,40]],[[50,60],[70,80]]])
+for x in np.nditer(a,flags=['buffered'],op_dtypes=['float']):
+	print(x)
+
+
+# Normal python's loop VS nditer():
+# ----------------------------------
+# 1. n loops are required.
+# 2. only one loop is required.
+# 3. There is no way to specify our required data type.
+# 4. There is a way to specify required data type. For this we have to use op_dtype argument.
+
+
+# 3).By using ndenumerate() function:
+# ------------------------------------------------------
+# If we want to find co-ordinates alsi in addtion to elements
+
+# array indices(coordinates) and values
+
+# 1-D array:
+# ---------------
+import numpy as np
+a = np.array([10,20,30,40,50,60,70])
+for pos,element in np.ndenumerate(a):
+	print(f'{element} element present at index/pos:{pos}')
+
+# 2-D array:
+# ---------------
+import numpy as np
+a = np.array([[10,20,30],[40,50,60],[70,80,90]])
+for pos,element in np.ndenumerate(a):
+	print(f'{element} element present at index/pos:{pos}')
+
+# 3-D array:
+# ---------------
+import numpy as np
+a = np.arange(1,25).reshape(2,3,4)
+for pos,element in np.ndenumerate(a):
+	print(f'{element} element present at index/pos:{pos}')
+
+
+# Arithmetic operators:
+# --------------------------------
+# 		+, -, *, /, %, //, **
+
+# Arithmetic operators for Numpy arrays with scalar:
+# ----------------------------------------------------------------------------
+# 1-D array:
+# ---------------
+a = np.array([10,20,30,40])
+a #array([10, 20, 30, 40])
+a+2 #array([12, 22, 32, 42])
+a-2 #array([ 8, 18, 28, 38])
+a*2 #array([20, 40, 60, 80])
+a%2 #array([0, 0, 0, 0], dtype=int32)
+a/2 #array([ 5., 10., 15., 20.])
+a//2 #array([ 5, 10, 15, 20], dtype=int32)
+
+# 2-D array:
+# ---------------
+a = np.array([[10,20,30],[40,50,60]])
+a
+a+2
+a-2
+a*2
+a**2
+a/2
+a//2
+a%2
+
+# -->In python anything by zero including zero/zero alse result s in:10/0 and 0/0
+# ZeroDivisionError
+
+# But in Numpy there is no ZeroDivisionError
+# 10/0==>Infinity(inf) 
+# 0/0 ==>Undefined(NaN)-->Not a Number
+
+# Ex:
+a = np.arange(6)
+a #array([0, 1, 2, 3, 4, 5])
+a/0 #array([nan, inf, inf, inf, inf, inf])
+
+# Arithmetic operators for Array with Arrays:
+# 	To perform arithmetic operators between numpy array, compulsory both arrays should have:
+# 			-->same dimension
+# 			-->same shape 
+# 			-->same size
+# 	otherwise we will get error.
+
+# Ex:1-D array
+# -------------------
+a = np.array([1,2,3,4])
+b = np.array([10,20,30,40])
+a+b #array([11, 22, 33, 44])
+a-b #array([ -9, -18, -27, -36])
+a*b #array([ 10,  40,  90, 160])
+b/a #array([10., 10., 10., 10.])
+b//a #array([10, 10, 10, 10])
+
+# 2-D array:
+# ---------------
+a = np.array([[1,2],[3,4]])
+b = np.array([[5,6],[7,8]])
+a+b
+a-b
+a*b
+b/a
+b//a
+
+# Ex:
+a = np.array([10,20,30,40])
+b = np.array([10,20,30,40,50])
+a + b
+# ValueError: operands could not be broadcast together with shapes (4,) (5,)
+
+# Equavalant functions for arithmetic operators in numpy
+# -----------------------------------------------------------------------------------
+a = np.array([10, 20, 30, 40])
+b = np.array([1,2,3,4])
+np.add(a,b)
+np.subtract(a,b)
+np.multiply(a,b)
+np.divide(a,b)
+np.floor_divide(a,b)
+np.mod(a,b)
+np.power(a,b)
+
+# Nply():Element multiplicationote:The functions which operates element by element on whole array are called Univerals functions (ufunc)
+
+# Q.What is difference between np.dot() and np.multiply()?
+# 			np.dot():Matrix multiplication/Dot product
+# 			np.multi
