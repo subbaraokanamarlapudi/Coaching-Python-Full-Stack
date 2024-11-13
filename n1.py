@@ -1439,4 +1439,165 @@ np.power(a,b)
 
 # Q.What is difference between np.dot() and np.multiply()?
 # 			np.dot():Matrix multiplication/Dot product
-# 			np.multi
+# 			np.multiply():Element multiplication
+
+# Broadcasting:
+# ----------------
+# * Eventhough dimensions are different, shapes are different and sizes are different still some arithematic operations are allowed by broadcasting.
+# * Broadcasting will be performed automatically by numpy itself and we are not required to perform explicitly.
+
+# Rules:
+# ---------
+# 1. Make sure both array should have same dimension. Padded(Add) 1's in the shape of  lesser dimension array of the left side, untill both arrays have same dimension.
+
+# Before:
+# 	(4,3)--->2D
+# 	(3,)-->1D
+
+# After:
+# 	(4,3)
+# 	(1,3)
+
+# 2. If the size of 2-arrays does not match in any dimension, then the arrays with size of other dimension to match.
+
+# Note : In any dimension, the sizes are not matched and neither equal to 1, then we will get error, numpy does not able to perform broadcasting between those array.
+
+# Before:
+# 	(4,3)
+# 	(1,3)
+# After:
+# 	(4,3)-->2-D
+# 	(4,3)-->2-D
+# -->Now dimensions,shapes and sizes are equal.
+
+
+
+# Ex:
+# Broadcasting between (3,2,2) and (3,) possible or not.
+# Before Rule-1:
+# 	(3,2,2)
+# 	(3,)
+# After Rule-1:
+# 	(3,2,2)
+# 	(1,1,3)
+
+# After Rule-2:
+# 	(3,2,2)
+# 	(3,2,3)
+# Same dimensions. but shapes, so numpy unable to perform broadcasting.
+
+# Note:
+# 	The data will be reused from the same input array.
+# 	If the rows are required then re-use existing rows.
+# 	If the columns are required then re-use existing columns.
+# 	The result is always higher dimension of input array.
+
+# Ex-1:
+# --------
+a = np.array([10,20,30,40])
+b = np.array([1,2,3])
+a + b
+# ValueError: operands could not be broadcast together with shapes (4,) (3,)
+
+# Ex-2:
+a = np.array([10,20,30])			#--->1-D	shape(3,)
+b = np.array([40])					#--->1-D	shape(1,)
+a + b #array([50, 60, 70])
+
+# Ex:
+# ----
+a = np.array([[10,20],[30,40],[50,60]])	#--->2D----> shape(3,2)
+b = np.array([10,20]) #--->1-D	-->shape(2,)
+a + b
+ 
+
+# Ex:
+# ------
+a = np.array([[10],[20],[30]])	#--->2-D	shape(3,1)
+b = np.array([10,20,30])			#-->1-D	shape(3,)
+a+b
+ 
+
+#  Array Manipulation Functions:
+# ---------------------------------------------
+# 1.reshape()
+# 2.resize()
+# 3.flatten()
+# 4.flat variable
+# 5.ravel()
+# 6.transpose()
+# 7.swapaxes()
+
+# 1.reshape():
+# 	shape to another shape.
+# 	(10,) -->(5,2),(2,5),(1,10),(10,1)
+# 	(24,)--->(3,8)-->(2,3,4),(6,4),(2,2,2,3)
+
+# 1).The data should not be changed
+# 		input size and output size must be matched.
+
+# np.reshape(array,shape)
+# array.reshape(shape)
+
+# Ex:
+# -----
+a = np.arange(10)
+a.ndim
+a.shape
+b = np.reshape(a,(5,2))
+b
+b = np.reshape(a,(10,1))
+b
+b.ndim
+b.shape
+b = a.reshape(1,5,2)
+b
+b.ndim
+b.shape
+b.size
+
+# Ex:
+a = np.arange(24)
+a
+b = np.reshape(a,(6,4))
+b
+b = np.reshape(a,(6,5))#Error
+b = np.reshape(a,(2,3,4))
+b
+
+# 2).No changes in the data. New array object won't be created.
+# 	Just we are getting view of existing object.
+# 	View but not copy
+# 	If we perform any changes in the original array, that changes will be reflected to reshaped array. Viceversa.
+
+a = np.arange(12)
+a
+b = np.reshape(a,(4,3))
+b
+a[0] = 333
+a
+b
+b[1][1] = 3113
+b
+a
+
+# 3).If we can specify unkown dimension size as -1
+
+# a = (12,)
+# b = (6,-1)===>(6,2)
+
+a = np.arange(12)
+a
+b = np.reshape(a,(6,-1))
+b.shape #(6,2)
+b = np.reshape(a,(-1,3))
+b.shape #(4,3)
+b = np.reshape(a,(-1,-1))#Error
+
+# Ex:
+a = np.arange(24)
+b = np.reshape(a,(2,3,-1))
+b = np.reshape(a,(2,-1,4))
+b = np.reshape(a,(-1,3,4))
+b = np.reshape(a,(3,4,-1))
+b = np.reshape(a,(5,-1))
