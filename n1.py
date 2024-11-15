@@ -1529,6 +1529,7 @@ a+b
 # 7.swapaxes()
 
 # 1.reshape():
+# -------------------
 # 	shape to another shape.
 # 	(10,) -->(5,2),(2,5),(1,10),(10,1)
 # 	(24,)--->(3,8)-->(2,3,4),(6,4),(2,2,2,3)
@@ -1601,3 +1602,222 @@ b = np.reshape(a,(2,-1,4))
 b = np.reshape(a,(-1,3,4))
 b = np.reshape(a,(3,4,-1))
 b = np.reshape(a,(5,-1))
+
+
+# 4).
+# help(np.reshape)
+# 		reshape(a, newshape, order='C')
+
+# C style--->Row Major order
+# Fortran style-->Column major order
+
+a = np.arange(12).reshape(3,4)
+a
+b = np.reshape(a,(12,),'C')
+b
+b = np.reshape(a,(12,),'F')
+b
+
+# EX : 
+a = np.arange(24)
+a
+np.reshape(a,(6,4),'C')
+np.reshape(a,(6,4),'F')
+
+# Conclusion:
+# --------------
+# 1. To reshape array without changing data.
+# 2. The size must be matched.
+# 3. We can use either numpy library function or ndarray class method.
+# 	-->np.reshape()
+# 	-->a.reshape()
+# 4.It wont create a new array object, just we will get view.
+# 5.We can use -1 in unknown dimension, but only once.
+# 6.Order:'C','F'
+
+
+# 2.resize():
+# -------------
+# output array be any dimension,any shape,any size.
+# 1. Input size and output size must not be matched.
+# 2. The data may be chaanged.
+# 3. We will get copy but not view.
+# 4. How to get that the new data.
+# 	np.resize()--->repeat elements of input array.
+# 	a.resize()-->use zeros for extra elements.
+# 5.-1 such type of story not applicable for resize()
+# 		input:(10,)
+# 		reshape:(5,-1)
+# 		resize:(5,-1)
+# 6.If we use ndarray class resize() method, inline modification will be happened.
+
+# Ex:
+a = np.arange(1,6)
+a 
+b = np.resize(a,(4,3))
+b
+a[0] = 333
+b[0][1] = 999
+a
+b
+b = np.resize(3,-1)   #value error
+
+refcheck = False
+a = np.arange(1,6)
+a.resize(5,3)
+a
+
+# Q.Difference between np.resize() and ndarray.resize()?
+# --------------------------------------------------------------------------------
+# 	np.resize()												ndarray.resize()		
+# 	----------------									    ------------------------
+# 1.It is library function in numpy module.	    1.It is method present in ndarray class.
+
+# 2.It will create new array and returns it.		2.It wont return new array and existing
+# 													array will be modified.
+							
+# 3.If the new_shape required more elements        3.Extra elements filled with zeros.
+# then repeated copies of original array will
+# be returned.
+
+# Q.Differences between reshape() and resize()?
+# -------------------------------------------------------------------
+# 		reshape()											resize()
+# 		--------------									  -----------
+# 1.It is just to reshape to array without	  1.It is to resize an array, data may be
+# changing size and data.							changed, size may be changed.
+
+# 2.Just view will be created but not copy,	  2.Separate copy will be created. If we
+# if we perform any change in the original	   perform any changes in the original array
+# array, automatically those changes will		   those changes wont be reflected in resize
+# be reflected in reshaped copy also.				array.
+
+# 3.We can use -1 in unknown dimension		  3.There is no story like -1.
+
+
+# 3).flatten():
+# ---------------
+# 1-D,2-D,3-D......n-D
+
+# 1.Convert any n-D array to 1-D array.
+# 2.It is method present in ndarray class but not numpy library function.
+# 			a.flatten()-->valid
+# 			np.flatten()-->invalid
+# 3.a.flatten(order='C')
+# 	C-style===>row major order
+# 	F-style===>column major order
+# 4.It will create a new array and returns it(i.e copy but not view)
+# 5.The output of flatten method is always 1-D array.
+
+# EX : 
+a = np.arange(6).reshape(3,2)
+a
+a.flatten()
+a.flatten('F')
+b = a.flatten()
+b
+a[0][0] = 333
+a
+b[1] = 999
+b
+a
+
+# Ex:
+a = np.arange(1,19).reshape(3,3,2)
+a
+a.ndim #3
+b = a.flatten()
+b
+
+# flat variable:
+# ------------------
+# It is a 1-D iterator over the array
+# This is  a 'numpy.flatiter' instance
+
+help(np.flatiter)
+
+a = np.arange(1,19).reshape(3,3,2)
+a
+a.flat[2]
+a.flat[10]
+for x in a.flat:print(x)
+
+# 5).ravel():
+# 	It is exactly same as flatten function except that it returns view but not copy.
+
+# 1.Convert any n-D array to 1-D array
+# 2.It is method present in ndarray class and also numpy library function.		
+# 					a.ravel()
+# 					np.ravel()
+# 3.a.ravel(order='C'/'F')
+# 4.It returns view but not copy.
+# 5.The output of ravel() method is always 1-D array.
+
+# Ex:
+a = np.arange(24).reshape(2,3,4)
+a
+b = a.ravel()
+b
+b[0] = 333
+b
+a
+
+
+# Q.Difference between flatten() an dravel()?
+# --------------------------------------------------------------
+# 		flatten()											ravel()
+# 		------------										----------
+# 1.To convert any n-D array to 1-D array		    1.To convert any n-D array to 1-D array
+# and a new array object will be created.		    but returns just view but not copy.
+
+# 2.If we perform any changes in the				2.If we perform any changes in the ravel
+# flatten copy, then those changes wont		    copy, then those changes will be
+# be reflected in the original copy.				reflected in the original copy.
+
+# 3.It is ndarray class method but not			3.We can use as a method and as well as
+# numpy library function.							a function.
+
+# 6).transpose():
+# 	To find transpose of given ndarray
+
+# Ex:
+a = np.arange(1,5).reshape(2,2)
+a
+b = np.transpose(a)
+b
+
+# Note : No changes in data hence it returned only view but not copy.
+
+a[0][0] = 333
+a
+b
+
+# for 3-D array:
+# --------------------
+# (2,3,4)
+# 2--->2-D arrays
+# 3--->number of rows
+# 4--->number of columns
+# 24--->total size.
+
+# If we transpose this array:
+help(np.transpose)
+
+np.transpose(a)
+# (4,3,2)
+# 4--->2-D arrays
+# 3--->number of rows
+# 2--->number of columns
+# total size:24
+
+a = np.arange(24).reshape(2,3,4)
+a
+b = np.transpose(a)
+b.shape
+(4, 3, 2)
+b
+
+# 4-D array:
+# ---------------
+a = (2,3,4,5)
+np.transpose(a) (5,4,3,2)
