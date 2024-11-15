@@ -1743,6 +1743,7 @@ a.flat[10]
 for x in a.flat:print(x)
 
 # 5).ravel():
+# 
 # 	It is exactly same as flatten function except that it returns view but not copy.
 
 # 1.Convert any n-D array to 1-D array
@@ -1821,3 +1822,185 @@ b
 # ---------------
 a = (2,3,4,5)
 np.transpose(a) (5,4,3,2)
+
+
+# axes parameter:
+# -----------------------
+# -->If we are not using axes parameter, then dimension will be reversed.
+# -->axes parameter describes in which order we have to take axes.
+# -->It is very helpful for 3-D and 4-D arrays.
+
+# for 3-D array:(2,3,4)
+
+# The size of axis-0: 2
+# The size of axis-1: 3
+# The size of axis-2: 4
+
+# np.transpose(a)---->(4,3,2)
+
+# My required order is:(2,4,3)/(4,2,3)/(3,4,2)
+
+a = np.arange(24).reshape(2,3,4)
+a
+b = np.transpose(a,axes=(0,2,1))
+b.shape #(2, 4, 3)
+b
+
+# My required order is:(3,4,2)
+b = np.transpose(a,axes=(1,2,0))
+b.shape #(3, 4, 2)
+
+b = np.transpose(a,axes=(2,0,1))
+b.shape
+(4, 2, 3)
+
+# for 2-D array:
+# --------------------
+# axis-0--->number of rows
+# axis-1--->number of columns
+
+a = np.array([[10,20,30],[40,50,60]])
+a
+a.shape #(2, 3)
+np.transpose(a,axes=(1,0))
+np.transpose(a,axes=(0,1))
+np.transpose(a)
+
+# Note:
+# --------
+# 1.For 1-D array, there is no impact of transpose() function.
+# 2.If we are not using axes argument, then dimensions will be reversed.
+# 3.If we provide axes argument, then we can specify our own order axes.
+# 4.Repeated axes in transpose is not allowed.
+# 5.axes parameter is more helpful from 3-D array onwards but not for 2-D array
+
+# ndarray class transpose() method:
+# ---------------------------------------------------
+help(np.ndarray.transpose)
+# a.transpose(*axes)
+#     Returns a view of the array with axes transposed.
+# Ex:
+a = np.arange(24).reshape(2,3,4)
+b = a.transpose()
+b.shape #(4, 3, 2)
+b = a.transpose((2,0,1))
+b.shape #(4, 2, 3)
+a.shape #(2, 3, 4)
+b = a.T
+b.shape #(4, 3, 2)
+
+# 7).swapaxes():
+# --------------------
+# input:(2,3,4)
+# output:(4,3,2)/(3,2,4)/(2,4,3)/(3,4,2) etc........
+
+# By transpose() function, we can interchange any number of dimensions.
+# But if we want to interchange only two dimensions then we should go for swapaxes.
+
+# swapaxes(a, axis1, axis2)
+#     Interchange two axes of an array.
+
+# a = (2,3,4)
+# np.swapaxes(a,0,2)--->(4,3,2)
+# np.swapaxes(a,1,2)--->(2,4,3)
+
+a = np.arange(24).reshape(2,3,4)
+a
+b = np.swapaxes(a,0,2)
+b.shape #(4, 3, 2)
+b = np.swapaxes(a,1,2)
+b.shape #(2, 4, 3)
+
+# Q.Difference between transpose() and swapaxes()?
+# -------------------------------------------------------------------------
+# By using transpose() we can interchange any number of dimensions.
+# But by using swapaxes() we can interchabge only two dimensions.
+
+# Joining of multiple ndarrays into a single array:
+# ------------------------------------------------------------------------
+# It is something like join queries in Oracle.
+
+# 1.cocatenate()
+# 2.stack()
+# 3.vstack()
+# 4.hstack()
+# 5.dstack()
+
+# Joining of multiple ndarrays into a single array by using concatenate():
+# ---------------------------------------------------------------------------------------------------------
+# >>> help(np.concatenate)
+# 	concatenate(...)
+#     concatenate((a1, a2, ...), axis=0, out=None, dtype=None, casting="same_kind")
+#     Join a sequence of arrays along an existing axis.
+
+# 2-D array + 2-D array
+# axis=0(default):vertical concatination will happens
+# axis=1: Horizontal concatenation will happens
+# axis=None
+# These 2-D arrays will be flatten to 1-D array and then concatenation will be happened.
+
+# Ex:
+a = np.array([[1,2],[3,4]])
+b = np.array([[5,6],[7,8]])
+np.concatenate((a,b))
+np.concatenate((a,b),axis=0)
+np.concatenate((a,b),axis=1)
+np.concatenate((a,b),axis=None)
+
+# Rules:
+# ----------
+# 1.We can join any number of arrays, but all arrays should be same dimension.
+# 2.The sizes of all axes, except concatenation axes must be matched.
+# 			(2,3)
+# 			(5,3)
+# 3.The result of concatenation and output have same shape.
+
+# Ex:Concatenation of two 1-D arrays:
+# ------------------------------------------------------
+a = np.arange(4)
+b = np.arange(5)
+np.concatenate((a,b))#array([0, 1, 2, 3, 0, 1, 2, 3, 4])
+
+# Concatenate of three 1-D arrays:
+# -------------------------------------------------
+c = np.arange(3)
+np.concatenate((a,b,c)) #array([0, 1, 2, 3, 0, 1, 2, 3, 4, 0, 1, 2])
+
+# Storing result out parameter
+# -------------------------------------------
+a #array([0, 1, 2, 3])
+b #array([0, 1, 2, 3, 4])
+c #array([0, 1, 2])
+d = np.zeros(12,dtype=int)
+d #array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+np.concatenate((a,b,c),out=d)
+d #array([0, 1, 2, 3, 0, 1, 2, 3, 4, 0, 1, 2])
+
+d = np.empty(12,dtype=int)
+d
+np.concatenate((a,b,c),out=d)
+d
+d = np.empty(10,dtype=int)
+np.concatenate((a,b,c),out=d)#ValueError: Output array is the wrong shape
+
+# Using dtype parameter:
+# -----------------------------------
+np.concatenate((a,b),dtype='float')
+array([0., 1., 2., 3., 0., 1., 2., 3., 4.])
+np.concatenate((a,b),dtype='str')
+array(['0', '1', '2', '3', '0', '1', '2', '3', '4'], dtype='<U11')
+
+# Note:
+# 	We cannot use dtype and out simultaneously, because out array has its own dtype.
+
+c = np.empty(9)
+np.concatenate((a,b),out=c,dtype='int')
+# TypeError: concatenate() only takes `out` or `dtype` as an argument, but both were provided.
+
+# Q.Is it possible to join 1-D array and 2-D array?
+# Not possible. To use concatenate function, compulsory all input arrays must have same dimension.
+
+a = np.arange(5)
+b = np.arange(12).reshape(3,4)
+np.concatenate(a,b)
+# TypeError: only integer scalar arrays can be converted to a scalar index
