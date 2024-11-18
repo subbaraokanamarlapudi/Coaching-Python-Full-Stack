@@ -36,3 +36,9 @@
 * Database connectivity with <b>ORACLE and MYSQL</b>
 * Multi Threading
 * Synchronization
+* -------------------------------------------------------- NUMPY , PANDAS , MATPLOTLIB --------------------------------------------------------
+* NUMPY:<br>
+   -> Numpy files are n1.py and n2.py
+
+* PANDAS:<br>
+* MATPLOTLIB:<br>
