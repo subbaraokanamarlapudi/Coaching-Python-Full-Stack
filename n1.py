@@ -2004,3 +2004,229 @@ a = np.arange(5)
 b = np.arange(12).reshape(3,4)
 np.concatenate(a,b)
 # TypeError: only integer scalar arrays can be converted to a scalar index
+
+# Joining of 2-D arrays:
+# ---------------------------
+# For 2-D array the exisiting axes are:
+#     axis - 0 ==> Represents the number of rows
+#     axis - 1 ==> Represents the number of columns
+
+# * We can perform concatenation based on either axis - 0 or axis - 1.
+# * The size of all dimensions(axes) must be matched except concatenation axis.
+# * If we are not specifying axis the default value is 0. If axis is None, then arrays will be flattened to 1-D array and then concatenation will be happened.
+
+# Ex-1:
+# --------
+a = np.array([[10,20],[30,40],[50,60]])
+a
+b = np.array([[70,80],[90,100]])
+b
+np.concatenate((a,b))
+np.concatenate((a,b),axis=1)#Not Possible
+np.concatenate((a,b),axis=None)
+
+# Ex-2:
+# --------
+a = np.arange(6).reshape(3,2)
+a
+b = np.arange(9).reshape(3,3)
+b
+np.concatenate((a,b),axis=0)#Not possible
+np.concatenate((a,b),axis=1)
+np.concatenate((a,b),axis=None)
+
+# Concatenation of 3-D arrays:
+# -------------------------------------------
+# (x,y,z)
+# axis-0-->The number of 2-D arrays
+# axis-1-->The number of rows in every 2-D array
+# axis-2-->The number of columns in every 2-D array
+
+# Ex-1:
+# --------
+a = (2,2,2)
+b = (2,2,2)
+
+a = np.arange(8).reshape(2,2,2)
+b = np.arange(8).reshape(2,2,2)
+a
+b
+np.concatenate((a,b),axis=0)
+np.concatenate((a,b),axis=1)
+np.concatenate((a,b),axis=2)
+
+# Ex-2:
+# -------
+a = (2,3,2)
+b = (2,3,3)
+
+# axis-0-->no
+# axis-1-->no
+# axis-2-->yes
+
+a = np.arange(12).reshape(2,3,2)
+b = np.arange(18).reshape(2,3,3)
+a
+b
+np.concatenate((a,b),axis=0)#Not possible
+np.concatenate((a,b),axis=1)#Not possible
+np.concatenate((a,b),axis=2)
+
+# Q.
+# a:(2,3,3)
+# b:(1,3,3)
+# axis-0 only possible
+
+# Q.(3,2,3) and (2,1,3)
+# not possible to perform concatenation on any axis
+# But axis=None is possible
+
+
+# Joining of multiple arrays by using stack() function:
+# -----------------------------------------------------------------------------
+# 1-D + 1-D ---> 2-D
+# 2-D + 2-D ---> 3-D
+
+# Rules:
+# 	The input arrays must have same shape
+# 	The resultant stacked array has one more dimension than the input array.
+# 	Joining will be happended along new axis of newly created array.
+
+# For stacking of 1-D array:
+# --------------------------------------
+# Ex-1:
+# --------
+a = np.array([10,20,30])
+b = np.array([40,50,60,70])
+np.stack((a,b))
+
+# Ex-2:
+# --------
+a = np.array([10,20,30])
+b = np.array([40,50,60])
+np.stack((a,b))
+array([[10, 20, 30],
+       [40, 50, 60]])
+np.stack((a,b),axis=1)
+array([[10, 40],
+       [20, 50],
+       [30, 60]])
+
+# Ex:Stacking of 2-D array
+# ------------------------------------
+# The resultant array will be:3-D array
+# 3-D array shape:(x,y,z)
+
+a = np.array([[1,2,3],[4,5,6]])
+a
+b = np.array([[7,8,9],[10,11,12]])
+b
+np.stack((a,b),axis=0)
+np.stack((a,b),axis=1)
+np.stack((a,b),axis=2)
+
+# Ex:
+a = np.arange(1,7).reshape(3,2)
+b = np.arange(7,13).reshape(3,2)
+c = np.arange(13,19).reshape(3,2)
+a
+b
+c
+np.stack((a,b,c),axis=0)
+np.stack((a,b,c),axis=1)
+np.stack((a,b,c),axis=2)
+
+# Stacking three 1-D array
+# -------------------------------------
+a = np.arange(4)
+b = np.arange(4,8)
+c = np.arange(8,12)
+a
+b
+c
+np.stack((a,b,c),axis=0)
+np.stack((a,b,c),axis=1)
+
+# Q.What is the difference between concatenate() and stack()?
+
+# Joining of arrays by using vstack() function:
+# ------------------------------------------------------------------
+# vstack-->vertical stack-->joining is always based on axis-0
+# For 1-D arrays ---> 2-D arrays is output
+# For the remaining dimensions it acts as concatenating along with axis-0
+# The result of vstack() function should be atleast 2-D.
+# For 1-D array the size must be same.
+
+# Ex-1
+# -------
+a = np.array([10,20,30,40])
+b = np.array([50,60,70,80])
+np.vstack((a,b))
+
+# Ex:-2:
+# ---------
+a = np.arange(1,10).reshape(3,3)
+a
+b = np.arange(10,16).reshape(2,3)
+b
+np.vstack((a,b))
+
+# Ex-3:
+# -------
+a = np.arange(1,10).reshape(3,3)
+b = np.arange(10,16).reshape(3,2)
+np.vstack((a,b))#Not possible
+
+# Ex-4:For 3-D array
+# ---------------------------
+# axis-0 means the number of 2-D arrays
+
+a = np.arange(1,25).reshape(2,3,4)
+b = np.arange(25,49).reshape(2,3,4)
+np.vstack((a,b))
+
+# Joining of arrays by using hstack() function:
+# ------------------------------------------------------------------
+# Exactly same as concatenate() but joining is always based on axis-1
+# hstack--->horizontal stack--->column wise
+# 1-D + 1-D -->1-D
+
+# Ex:For 1-D array:
+# --------------------------
+a = np.array([10,20,30])
+b = np.array([40,50,60,70])
+np.hstack((a,b))
+
+# Ex-2:For 2-D array
+# ----------------------------
+a = np.arange(1,7).reshape(3,2)
+b = np.arange(7,16).reshape(3,3)
+np.hstack((a,b))
+
+# Ex:
+a = np.arange(1,7).reshape(2,3)
+b = np.arange(7,16).reshape(3,3)
+np.hstack((a,b))#Not possible
+
+# Joining of arrays by using dstack() function:
+# -------------------------------------------------------------------
+# dstcak means ---> depth stack/height stacke based on axis-2
+# 1-D and 2-D arrays will be converted to 3-D array
+# The result is minimum 3-D array.
+
+a = np.array((1,2,3))
+b = np.array((2,3,4))
+np.dstack((a,b))
+
+# Ex:
+a = np.array([[1],[2],[3]])
+b = np.array([[2],[3],[4]])
+np.dstack((a,b))
+
+# Summary of joining of nd-arrays:
+# --------------------------------------------------
+# 1).concatenate()==>Join a sequence of arrays along an existing axis.
+# 2).stack()==>Join a sequence of arrays along a new axis.
+# 3).vstack()==>Stack arrays in sequence vertically according too first axis-0
+# 4).hstack()==>Stack arrays in sequence horizontally according too second axis-1
+# 5).dstack()==>Stack arrays in sequence depth wise according to third axis-2
