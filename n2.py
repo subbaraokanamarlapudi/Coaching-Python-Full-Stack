@@ -229,3 +229,182 @@ np.sort(a)
 # --------------------------------------------------------
 np.sort(a)[::-1]
 -np.sort(-a) #Invalid
+
+
+# for 2-D array:
+# --------------------
+a = np.array([[40,20,70],[30,20,60],[70,90,80]])
+a
+np.sort(a)
+np.sort(a,axis=0)
+np.sort(a,axis=-2)
+
+# Searching elements of ndarray:
+# ----------------------------------------------
+# where() function
+
+# where(...)
+#     where(condition, [x, y], /)
+
+# where() function wont return elements.
+# It returns indices where condition is True.
+
+# a = np.array([3,5,7,6,9,4,10,15])
+
+# Ex-1:Find indices where the value is 7
+np.where(a==7)
+# (array([2], dtype=int64),)
+
+# Ex-2:Find indices where odd numbers present in array
+np.where(a%2 != 0)
+# (array([0, 1, 2, 4, 7], dtype=int64),)
+
+# To get elements directly:
+indices = np.where(a%2 != 0)
+a[indices]
+# array([ 3,  5,  7,  9, 15])
+
+# condition bsed selection:
+a[a%2 != 0]
+# array([ 3,  5,  7,  9, 1/5])
+
+# Ex:Find indices where element divisible by 3
+b = np.where(a%3==0)
+b #(array([0, 3, 4, 7], dtype=int64),)
+a[b] #array([ 3,  6,  9, 15])
+
+# where(condition, [x, y]):
+# 	This function can perform replace operation also
+
+# If condition satisfied that element will be replaced from x and if the condition False that element will be replaced by y.
+
+# Ex:Replace even numbers with 3113 and odd numbers with 9345.
+a #array([ 3,  5,  7,  6,  9,  4, 10, 15])
+np.where(a%2==0,3113,9345)
+
+# Ex:Every odd number present in a ,replace with 9999.
+np.where(a%2 != 0,9999)
+# ValueError: either both or neither of x and y should be given
+
+np.where(a%2 != 0,9999,a)
+
+# Ex:For 2-D array
+# ------------------------
+a = np.arange(12).reshape(4,3)
+a
+np.where(a%5==0)
+# (array([0, 1, 3], dtype=int64), array([0, 2, 1], dtype=int64))
+
+# The first ndarray represents row indices and second ndarray represents column indices. i.e required elements present at (0,0), (1,2) and (3,1) index places
+
+# If we want to see the elements
+# ----------------------------------------------
+b = np.where(a%5==0)
+a[b] #array([ 0,  5, 10])
+
+# Even we can perform replacement operation also.
+np.where(a%5==0,999,a)
+
+# searchsorted() function:
+# -----------------------------------
+# Internally this function will use Binary search algorithm. Hence we can call this function only for sorted arrays.
+# If the array is not sorted we will get abnormal results.
+
+# >>>help(np.searchsorted)
+# 	searchsorted(a, v, side='left', sorter=None)
+# 		Find indices where elements should be inserted to maintain order.
+
+# Ex-1:
+a = np.arange(0,31,5)
+a #array([ 0,  5, 10, 15, 20, 25, 30])
+np.searchsorted(a,5) #1
+np.searchsorted(a,13) #3
+
+# Note:
+# 	Bydefault it will always search from left hand side to identify insertion point. If we want to search from right hand side we should use side = 'right'
+
+a = np.array([3,5,7,6,7,9,4,10,15,6])
+a = np.sort(a)
+a
+np.searchsorted(a,6) #3
+np.searchsorted(a,6,side='right') #5
+
+# Summary:
+# ---------------
+# 1.sort():To sort given array
+# 2.where():To perform search and replace operation
+# 3.searchsorted():To identify insertion point in the given sorted array.
+
+# How to insert elements into ndarray?
+# --------------------------------------------------------
+# 1.insert()
+# 2.append()
+
+# 1.insert():
+# --------------
+# insert(arr, obj, values, axis=None)
+#     Insert values along the given axis before the given indices.
+
+# obj-->object that defines index or indices before which the value will be inserted.
+
+# Inserting into 1-D array:
+# ------------------------------------
+a = np.arange(10)
+a #array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+b = np.insert(a,2,999)
+b
+a
+
+# Ex:Insert 333 before index 2 and 5.
+b = np.insert(a,[2,5],999)
+b
+
+# Ex:To insert 333 before index 2 and 999 before index 5?
+b = np.insert(a,[2,5],[333,999])
+b
+
+b = np.insert(a,[2,5],[333,666,999])#Error
+b = np.insert(a,[2,5,7],[333,666])#Error
+b = np.insert(a,[2,5,5],[111,222,333])
+b #array([  0,   1, 111,   2,   3,   4, 222, 333,   5,   6,   7,   8,   9])
+b = np.insert(a,25,333) #IndexError
+
+# Note:
+# 	Array should contain only homogenious elements. If we are trying to insert any other element, thet element will be converted to array type automatically before insertion. If the conversion not possible then we will get an error.
+
+# Ex:
+a #array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+np.insert(a,2,123.456) #array([  0,   1, 123,   2,   3,   4,   5,   6,   7,   8,   9])
+np.insert(a,2,True)#array([0, 1, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+np.insert(a,2,'Mahesh')
+# ValueError: invalid literal for int() with base 10: 'Mahesh'
+
+# Summary:
+# ---------------
+# while inserting elements into 1-D array:
+# 	1.The number of indices and the number of elements should be matched.
+# 	2.Out of range index is not allowed.
+# 	3.Elements will be converted automatically to the array type.
+
+# Inserting elements into 2-D array
+# -------------------------------------------------
+# We should provide axis.
+# If we are not providing axis, then default value None, will be considered. Then the array will be flatten to 1-D array and then insertion will be happened.
+
+a = np.array([[10,20],[30,40]])
+a
+np.insert(a,1,100)
+# array([ 10, 100,  20,  30,  40])
+np.insert(a,1,100,axis=0)
+np.insert(a,1,[100,200],axis=0)
+np.insert(a,1,[100,200,300],axis=0) #Error
+
+# Ex:
+np.insert(a,1,100,axis=1)
+np.insert(a,1,[100,200],axis=1)
+
+# In 2-D array axis-0 means rows(axis:-2)
+# In 2-D array axis-1 means columns(axis:-1)
+
+# Ex:
+np.insert(a,0,[100,200],axis=-1)
