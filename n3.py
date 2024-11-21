@@ -13,6 +13,7 @@ np.dot(a,b)
 
 # A.B ===>a.dot(b)
 
+# -------------------------------------------------------------- Importance of matrix class in numpy library --------------------------------------------
 
 # 1-D array is caled ---> Vector
 # 2-D array is called --> Matrix
