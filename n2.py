@@ -408,3 +408,128 @@ np.insert(a,1,[100,200],axis=1)
 
 # Ex:
 np.insert(a,0,[100,200],axis=-1)
+
+# Appending elements to ndarray by using append():
+# ---------------------------------------------------
+# insert()--->To insert elements at our required position.
+# append()-->To insert elements at last.
+
+# help(np.append)
+# 		append(arr, values, axis=None)
+# 			Append values to the end of an array.
+
+# Ex-1:
+# -------
+
+a = np.arange(10)
+a
+np.append(a,333)
+np.append(a,[10,20,30])
+
+# Note : If we are trying to append hetrogenious elements, then array elements and new element will be converted to some common type and then append will be happend. 
+
+
+np.append(a,10.5)
+np.append(a,'mahesh')
+np.append(a,True)
+np.append(a,10+3j)
+
+# Appending elements to 2-D array:
+# -----------------------------------
+a = np.array([[10,20],[30,40]])
+a
+np.append(a,70) #array([10, 20, 30, 40, 70])
+np.append(a,70,axis=0) #Invalid
+np.append(a,[70,80],axis=0) #Invalid
+np.append(a,[[70,80]],axis=0)
+np.append(a,[[70,80],[50,60]],axis=0)
+
+
+# Ex:
+# ----
+np.append(a,[[70,80]],axis=1)#Invalid
+np.append(a,[[70],[80]],axis=1)
+np.append(a,[[70,80],[50,60]],axis=1)
+ 
+
+# Q.Consider the query?
+a = np.arange(12).reshape(4,3)
+a
+
+# Which of the following operations will be performed successfully?
+# A. np.append(a,[[10,20,30]],axis=0)#Valid
+# B. np.append(a,[[10,20,30]],axis=1)#Invalid
+# C. np.append(a,[[10],[20],[30]],axis=0)#Invalid
+# D. np.append(a,[[10],[20],[30],[40]],axis=1)#Valid
+# E. np.append(a,[[10,20,30],[40,50,60]],axis=0)#Valid
+# F. np.append(a,[[10,20],[30,40],[50,60],[70,80]],axis=1) #Valid
+
+# Q.What is the difference between insert() and append() function?
+# -----------------------------------------------------------------------------------------------
+# By using insert() function we can insert element at our required index position.
+# By using append() function, we can add elements always at the end of the ndarray.
+
+# Deletion of elements from ndarray:
+# ----------------------------------------------------
+# delete(arr, obj, axis=None)
+
+# To delete elements of 1-D array
+# -----------------------------------------------
+a = np.arange(10,101,10)
+a #array([ 10,  20,  30,  40,  50,  60,  70,  80,  90, 100])
+np.delete(a,3) #array([ 10,  20,  30,  50,  60,  70,  80,  90, 100])
+np.delete(a,[0,4,6]) #array([ 20,  30,  40,  60,  80,  90, 100])
+np.delete(a,np.s_[2:6]) #array([ 10,  20,  70,  80,  90, 100])
+np.delete(a,np.s_[:]) #array([], dtype=int32)
+np.delete(a,range(2,6)) #array([ 10,  20,  70,  80,  90, 100])
+
+
+# To delete elements of 2-D array:
+# ------------------------------------------------
+# We should provide axis. If we are not providing axis, then array will be flatten to 1-D array and then delete will be happened.
+
+# Ex:
+a = np.arange(1,13).reshape(3,4)
+a
+np.delete(a,1)
+np.delete(a,1,axis=0)
+np.delete(a,[0,2],axis=0)
+np.delete(a,np.s_[:2],axis=0)
+
+# Ex:Delete column wise
+# -----------------------------------
+a
+np.delete(a,0,axis=1)
+np.delete(a,[0,2],axis=1)
+np.delete(a,np.s_[::2],axis=1)
+np.delete(a,np.s_[1::3],axis=1)
+np.delete(a,np.s_[1:],axis=1)
+
+# Delete elements from 3-D array:
+# ------------------------------------------------
+a = np.arange(24).reshape(2,3,4)
+a
+# axis-0--->index of 2-D array
+# axis-1-->Rows in every 2-D array
+# axis-2-->COlumns in every 2-D array
+
+# Ex:
+np.delete(a,3)#flatten to 1-D array and delete 3rd index element
+np.delete(a,0,axis=0)#1st 2-D array deleted
+np.delete(a,1,axis=0)#2nd 2-D array deleted
+np.delete(a,1,axis=1)#To delete 1st indexed row in every 2-D array
+np.delete(a,2,axis=2)#To delete 2nd indexed column in every 2-D array
+np.delete(a,[0,2],axis=2)
+np.delete(a,np.s_[1:],axis=2)
+
+# Case study:
+# ----------------
+a = np.arange(12).reshape(4,3)
+a
+
+# Replace last row with the following row:[70,80,90]
+# 		delete last row and insert the required row
+
+b = np.delete(a,3,axis=0)
+b
+np.append(b,[[70,80,90]],axis=0)
