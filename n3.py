@@ -346,3 +346,77 @@ np.savetxt('out.csv',a1,fmt='%d',delimiter=',')
 
 a2 = np.loadtxt('out.csv',delimiter=',')
 print(a2)
+
+
+# Creation of array by using diag() function:
+# ------------------------------------------------
+print(help(np.diag))
+
+# Parameters
+#     ----------
+#     v : array_like
+#         If `v` is a 2-D array, return a copy of its `k`-th diagonal.
+#         If `v` is a 1-D array, return a 2-D array with `v` on the `k`-th
+#         diagonal.
+#     k : int, optional
+#         Diagonal in question. The default is 0. Use `k>0` for diagonals
+#         above the main diagonal, and `k<0` for diagonals below the main
+#         diagonal.
+
+# Ex:
+
+a = np.arange(1,10).reshape(3,3)
+a
+np.diag(a,k=0)
+np.diag(a,k=1)
+np.diag(a,k=-1)
+np.diag(a,k=2)
+np.diag(a,k=-2)
+np.diag(a,k=-3)
+
+# Ex:
+
+a = np.diag([10,20,30,40])
+a
+np.diag(a,k=0)
+np.diag(a,k=1)
+np.diag(a,k=-1)
+np.diag(a,k=2)
+
+'''
+View vs Copy:
+--------------------
+View:
+--------
+-->View is not a separate object and just it is logical representation of existing array.
+If we perofrm any changes to the original array, those changes will be reflected to the view. Viceversa also.
+-->We can create view explicitly by using view() method of ndarray class.
+Ex:
+a = np.array([10,20,30,40])
+a #array([10, 20, 30, 40])
+b = a.view()
+a[0] = 333 
+a #array([333,  20,  30,  40])
+b #array([333,  20,  30,  40])
+b[-1] = 999
+a #array([333,  20,  30, 999])
+b #array([333,  20,  30, 999])
+
+Copy:
+--------
+-->Copy means separate object.
+-->If we perform any changes to the original array, those changes wont be reflected to the copy. Viceversa also.
+-->By using copy() method of ndarray class, we can create copy of existing ndarray.
+
+Ex:
+a = np.array([10,20,30,40])
+b = a.copy()
+b
+a[0] = 333
+a #array([333,  20,  30,  40])
+b #array([10, 20, 30, 40])
+b[-1] = 999
+b #array([ 10,  20,  30, 999])
+a #array([333,  20,  30,  40])
+
+'''
