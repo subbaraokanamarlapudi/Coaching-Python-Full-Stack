@@ -38,7 +38,8 @@
 * Synchronization
 * -------------------------------------------------------- NUMPY , PANDAS , MATPLOTLIB --------------------------------------------------------
 * NUMPY:<br>
-   -> Numpy files are n1.py and n2.py
+   -> Numpy files are : n1.py , n2.py , n3.py
 
 * PANDAS:<br>
 * MATPLOTLIB:<br>
+   -> Matplotlib files are : mat1.py
